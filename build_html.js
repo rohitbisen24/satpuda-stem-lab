@@ -216,6 +216,32 @@ const htmlContent = `<!DOCTYPE html>
     .team-card { background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.5rem; text-align: center; }
     .team-card h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: #fff; margin-bottom: 0.2rem; }
     .team-card p { font-size: 0.8rem; color: var(--cyan); font-weight: 700; margin-bottom: 1rem; }
+
+    /* Universal Level Map Styles */
+    .universal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .universal-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.2rem; text-align: center; cursor: pointer; transition: all 0.25s; }
+    .universal-card:hover, .universal-card.active { border-color: var(--box-accent, var(--cyan)); transform: translateY(-3px); box-shadow: 0 5px 15px var(--box-glow, rgba(6,182,212,0.1)); }
+    .universal-card h4 { font-family: 'Outfit', sans-serif; font-size: 1.05rem; margin-bottom: 0.3rem; color: #fff; }
+    .universal-card .badge { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 5px; background: rgba(255,255,255,0.05); color: var(--text-muted); display: inline-block; margin-bottom: 0.5rem; }
+    .level-badge-1 { color: var(--yellow) !important; background: var(--glow-yellow) !important; }
+    .level-badge-2 { color: var(--blue) !important; background: var(--glow-blue) !important; }
+    .level-badge-3 { color: var(--green) !important; background: var(--glow-green) !important; }
+    .level-badge-4 { color: var(--red) !important; background: var(--glow-red) !important; }
+    
+    .level-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .level-col { background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.2rem; min-height: 400px; }
+    .level-col-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--card-border); }
+    .level-col-header h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: #fff; }
+    .level-col-header span { font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+    
+    .mini-task-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.03); border-radius: 10px; padding: 0.8rem; margin-bottom: 0.8rem; transition: border-color 0.2s; }
+    .mini-task-card:hover { border-color: rgba(255,255,255,0.1); }
+    .mini-task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
+    .mini-task-day { font-size: 0.65rem; font-weight: 800; color: var(--text-muted); }
+    .mini-task-chip { font-size: 0.58rem; font-weight: 800; padding: 1px 5px; border-radius: 3px; background: rgba(6,182,212,0.1); color: var(--cyan); }
+    .mini-task-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .mini-task-desc { font-size: 0.72rem; color: var(--text-secondary); line-height: 1.35; margin-bottom: 0.4rem; }
+    .mini-task-goal { font-size: 0.65rem; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.02); padding-top: 0.3rem; display: block; }
   </style>
 </head>
 <body>
@@ -242,6 +268,7 @@ const htmlContent = `<!DOCTYPE html>
       <button class="tab-btn" onclick="switchTab('tab-boxes')"><i class="fas fa-box"></i> Box Maps</button>
       <button class="tab-btn" onclick="switchTab('tab-distribution')"><i class="fas fa-sitemap"></i> Kit Distribution</button>
       <button class="tab-btn" onclick="switchTab('tab-curriculum')"><i class="fas fa-book-open"></i> Syllabus (300 Topics)</button>
+      <button class="tab-btn" onclick="switchTab('tab-universal')"><i class="fas fa-layer-group"></i> Universal Level Map</button>
       <button class="tab-btn" onclick="switchTab('tab-proposal')"><i class="fas fa-file-invoice-dollar"></i> Budget & Proposal</button>
     </div>
 
@@ -513,6 +540,105 @@ const htmlContent = `<!DOCTYPE html>
       </div>
     </div>
 
+    <!-- TAB: UNIVERSAL LEVEL MAP -->
+    <div id="tab-universal" class="tab-panel">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family:'Outfit'; font-size:1.8rem; margin-bottom: 0.5rem;"><i class="fas fa-layer-group text-glow-cyan"></i> Universal Level Map (Option 2)</h2>
+        <p style="color:var(--text-muted);">This dashboard maps the 4 Class-wise Levels to the 4 Standalone Student Kits (Box A, B, C, D) and shows the task-wise micro levels (Foundation, Build, Integration) for each class.</p>
+      </div>
+
+      <!-- Class-wise Levels Grid -->
+      <div class="universal-grid">
+        <div class="universal-card active" onclick="selectUniversalLevel(1)" id="lvl-card-1" style="--box-accent: var(--yellow); --box-glow: var(--glow-yellow);">
+          <span class="badge level-badge-1">Level 1</span>
+          <h4>Mechanical Basics</h4>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem;">Classes 2 & 3 • Box A</p>
+        </div>
+        <div class="universal-card" onclick="selectUniversalLevel(2)" id="lvl-card-2" style="--box-accent: var(--blue); --box-glow: var(--glow-blue);">
+          <span class="badge level-badge-2">Level 2</span>
+          <h4>Circuit Logic</h4>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem;">Classes 4 & 5 • Box B</p>
+        </div>
+        <div class="universal-card" onclick="selectUniversalLevel(3)" id="lvl-card-3" style="--box-accent: var(--green); --box-glow: var(--glow-green);">
+          <span class="badge level-badge-3">Level 3</span>
+          <h4>Universal IoT</h4>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem;">Classes 6-10 • Box C</p>
+        </div>
+        <div class="universal-card" onclick="selectUniversalLevel(4)" id="lvl-card-4" style="--box-accent: var(--red); --box-glow: var(--glow-red);">
+          <span class="badge level-badge-4">Level 4</span>
+          <h4>Avionics & Drones</h4>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem;">Class 11 • Box D</p>
+        </div>
+      </div>
+
+      <!-- Interactive Kit Specification Table -->
+      <div class="glass-card" style="margin-bottom: 2rem;">
+        <h3 style="font-family:'Outfit'; font-size:1.3rem; margin-bottom: 1rem; color:#fff;" id="univ-kit-title">📦 Standalone Kit Specification: Box A</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.2rem;">Complete 1-1 component list inside this standalone kit under the Universal Model.</p>
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th width="30%">Component Name</th>
+              <th width="50%">Specification Details</th>
+              <th width="20%" style="text-align:right">Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="univ-kit-tbody">
+            <!-- Dynamic components rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Task-wise Micro Levels Columns -->
+      <div class="glass-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <h3 style="font-family:'Outfit'; font-size:1.3rem; color:#fff;"><i class="fas fa-tasks text-glow-cyan"></i> Class Task Breakdown (30 Topics)</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted);">Select a class to view the topics grouped by difficulty and learning goals.</p>
+          </div>
+          <div class="class-tabs-row" style="margin: 0;">
+            <span class="class-tab-chip active" id="univ-cls-chip-2" onclick="selectUnivClass(2)">Class 2</span>
+            <span class="class-tab-chip" id="univ-cls-chip-3" onclick="selectUnivClass(3)">Class 3</span>
+            <span class="class-tab-chip" id="univ-cls-chip-4" onclick="selectUnivClass(4)">Class 4</span>
+            <span class="class-tab-chip" id="univ-cls-chip-5" onclick="selectUnivClass(5)">Class 5</span>
+            <span class="class-tab-chip" id="univ-cls-chip-6" onclick="selectUnivClass(6)">Class 6</span>
+            <span class="class-tab-chip" id="univ-cls-chip-7" onclick="selectUnivClass(7)">Class 7</span>
+            <span class="class-tab-chip" id="univ-cls-chip-8" onclick="selectUnivClass(8)">Class 8</span>
+            <span class="class-tab-chip" id="univ-cls-chip-9" onclick="selectUnivClass(9)">Class 9</span>
+            <span class="class-tab-chip" id="univ-cls-chip-10" onclick="selectUnivClass(10)">Class 10</span>
+            <span class="class-tab-chip" id="univ-cls-chip-11" onclick="selectUnivClass(11)">Class 11</span>
+          </div>
+        </div>
+
+        <div class="level-columns">
+          <!-- Col 1: Foundation -->
+          <div class="level-col">
+            <div class="level-col-header">
+              <span style="background:var(--glow-yellow); color:var(--yellow)">Tasks 1-10</span>
+              <h4>🚀 Foundation</h4>
+            </div>
+            <div id="univ-col-target-1"></div>
+          </div>
+          <!-- Col 2: Build & Configure -->
+          <div class="level-col">
+            <div class="level-col-header">
+              <span style="background:var(--glow-blue); color:var(--blue)">Tasks 11-20</span>
+              <h4>⚙️ Build & Tune</h4>
+            </div>
+            <div id="univ-col-target-2"></div>
+          </div>
+          <!-- Col 3: Systems Integration -->
+          <div class="level-col">
+            <div class="level-col-header">
+              <span style="background:var(--glow-green); color:var(--green)">Tasks 21-30</span>
+              <h4>🧠 Integration</h4>
+            </div>
+            <div id="univ-col-target-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB: LAB SCHEDULE & FLOW -->
     <div id="tab-schedule" class="tab-panel active">
       <div class="glass-card" style="border-left: 4px solid var(--purple);">
@@ -642,134 +768,128 @@ const htmlContent = `<!DOCTYPE html>
     
     const boxData = {
       boxA: {
-        name: "Box A: Mechatronics Structural Kit", accent: "var(--yellow)", glow: "var(--glow-yellow)",
+        name: "Box A: Mechatronics Structural Kit (Class 2 & 3)", accent: "var(--yellow)", glow: "var(--glow-yellow)",
         grid: [
           {
             row: "Structural Parts",
             cells: [
-              { coord: "Cell 1", merge: 3, name: "Perforated Plastic Beams", qty: "40 Units", desc: "Lego-compatible structural beams with holes (various lengths)." },
-              { coord: "Cell 2", merge: 2, name: "Connector Pegs", qty: "80 Units", desc: "Quick-snap connector pins (black friction pegs, grey axle pegs)." }
+              { coord: "A1", merge: 3, name: "Perforated Plastic Beams", qty: "20 Units", desc: "Lego-compatible structural beams with holes (various lengths)." },
+              { coord: "A2", merge: 2, name: "Connector Pegs", qty: "40 Units", desc: "Quick-snap connector pins (black friction pegs, grey axle pegs)." }
             ]
           },
           {
             row: "Mechanical Drive Parts",
             cells: [
-              { coord: "Cell 1", merge: 1, name: "Spur Gears", qty: "12 Units", desc: "8T, 20T, 40T gears." },
-              { coord: "Cell 2", merge: 1, name: "Specialty Gears", qty: "8 Units", desc: "Bevel & Crown gears." },
-              { coord: "Cell 3", merge: 1, name: "Plastic Pulleys", qty: "6 Units", desc: "For belt linkages." },
-              { coord: "Cell 4", merge: 1, name: "Axles/Shafts", qty: "10 Units", desc: "Steel or hard plastic." },
-              { coord: "Cell 5", merge: 1, name: "Wheels & Locks", qty: "24 Units", desc: "4 High-Grip Wheels + 20 Bushings." }
+              { coord: "A3", merge: 1, name: "Spur Gears", qty: "18 Units", desc: "8T, 20T, 40T precision gears." },
+              { coord: "A4", merge: 1, name: "Axles/Shafts", qty: "10 Units", desc: "Steel or hard plastic shafts." },
+              { coord: "A5", merge: 1, name: "Rubber Wheels", qty: "4 Units", desc: "High-grip wheels for carts/chassis." },
+              { coord: "A6", merge: 1, name: "Pulleys & Belts", qty: "4 Sets", desc: "Pulleys and elastic drive belts." },
+              { coord: "A7", merge: 1, name: "Manual Cranks", qty: "4 Sets", desc: "Rotary levers and linkages." }
+            ]
+          },
+          {
+            row: "Art & Tools",
+            cells: [
+              { coord: "A8", merge: 3, name: "3D Pen Set", qty: "1 Set", desc: "Drawing 3D pen + colored PLA loops (on demand)." },
+              { coord: "A9", merge: 2, name: "Base Grid Plate", qty: "1 Unit", desc: "Rigid plastic mounting grid board." }
             ]
           }
         ]
       },
       boxB: {
-        name: "Box B: Basic Electronics Kit", accent: "var(--blue)", glow: "var(--glow-blue)",
+        name: "Box B: Foundation Electronics & Pico Kit (Class 4 & 5)", accent: "var(--blue)", glow: "var(--glow-blue)",
         grid: [
           {
-            row: "Controllers & Boards",
+            row: "Controller & Power",
             cells: [
-              { coord: "Cell 1", merge: 2, name: "Arduino Uno R3", qty: "1 Set", desc: "SMD development board + blue USB cable." },
-              { coord: "Cell 2", merge: 2, name: "NodeMCU ESP8266", qty: "1 Set", desc: "Wi-Fi board + micro-USB cable." },
-              { coord: "Cell 3", merge: 1, name: "Breadboards", qty: "2 Units", desc: "830 tie-point dual bus strip." }
+              { coord: "B1", merge: 2, name: "Raspberry Pi Pico", qty: "1 Unit", desc: "Dual-core RP2040 microcontroller board (Dedicatd to Class 4 & 5)." },
+              { coord: "B2", merge: 2, name: "Solderless Breadboard", qty: "1 Unit", desc: "830 tie-point dual bus strip for circuits." },
+              { coord: "B3", merge: 1, name: "9V Battery Power", qty: "1 Set", desc: "9V alkaline battery + DC jack snap connector." }
             ]
           },
           {
-            row: "Motors & Actuators",
+            row: "Actuators & Outputs",
             cells: [
-              { coord: "Cell 1", merge: 2, name: "DC BO Motors & Wheels", qty: "6 Units", desc: "2 Yellow gear motors + 4 high-grip wheels." },
-              { coord: "Cell 2", merge: 1, name: "SG90 Servo", qty: "2 Units", desc: "9g miniature analog servo." },
-              { coord: "Cell 3", merge: 2, name: "Passives & Wires", qty: "1 Pack", desc: "100 jumper wires, 40 LEDs, 40 Resistors, Buzzers, Switches." }
+              { coord: "B4", merge: 2, name: "Diffused LEDs", qty: "20 Units", desc: "Assorted 5mm LEDs (Red/Green/Yellow/Blue)." },
+              { coord: "B5", merge: 1, name: "Active Buzzer", qty: "1 Unit", desc: "5V piezo buzzer for acoustic warnings." },
+              { coord: "B6", merge: 1, name: "DC Hobby Motor", qty: "2 Units", desc: "3V-6V small toy motor + fan propeller." },
+              { coord: "B7", merge: 1, name: "SG90 Servo Motor", qty: "1 Unit", desc: "9g micro servo (180 degree rotation)." }
+            ]
+          },
+          {
+            row: "Sensors & Inputs",
+            cells: [
+              { coord: "B8", merge: 1, name: "LDR Light Sensor", qty: "2 Units", desc: "Photoresistors for light-sensitive logic." },
+              { coord: "B9", merge: 1, name: "LM35 Temp Sensor", desc: "Analog temperature sensor.", qty: "1 Unit" },
+              { coord: "B10", merge: 2, name: "Passive Components", desc: "Tactile buttons (4x), resistors pack, potentiometer.", qty: "1 Pack" },
+              { coord: "B11", merge: 1, name: "Digital Multimeter", desc: "Handheld multimeter for testing.", qty: "1 Unit" }
             ]
           }
         ]
       },
       boxC: {
-        name: "Box C: Advanced IoT & Sensors Kit", accent: "var(--green)", glow: "var(--glow-green)",
+        name: "Box C: Standalone Universal IoT & Sensors Kit (Class 6-10)", accent: "var(--green)", glow: "var(--glow-green)",
         grid: [
           {
-            row: "Environmental & Input Sensors",
+            row: "Microcontrollers",
             cells: [
-              { coord: "Cell 1", merge: 1, name: "HC-SR04", qty: "1 Unit", desc: "Ultrasonic distance sensor." },
-              { coord: "Cell 2", merge: 1, name: "HC-05 Bluetooth", qty: "1 Unit", desc: "Serial RF transceiver." },
-              { coord: "Cell 3", merge: 1, name: "Soil & Rain", qty: "2 Sets", desc: "Soil moisture and Rain sensor modules." },
-              { coord: "Cell 4", merge: 1, name: "DHT11 & LDR", qty: "2 Units", desc: "Temp/Humidity and Light sensors." },
-              { coord: "Cell 5", merge: 1, name: "Membrane Keypad", qty: "1 Unit", desc: "16-key matrix flat keypad." }
+              { coord: "C1", merge: 2, name: "Arduino Uno R3", qty: "1 Unit", desc: "Microcontroller board (Dedicated to Class 6 & 7)." },
+              { coord: "C2", merge: 2, name: "NodeMCU ESP8266", qty: "1 Unit", desc: "WiFi enabled board (Dedicated to Class 8 & 9)." },
+              { coord: "C3", merge: 1, name: "ESP32-CAM DevKit", qty: "1 Unit", desc: "Edge camera + serial programmer shield (Dedicated to Class 10)." }
             ]
           },
           {
-            row: "Displays & Modules",
+            row: "Chassis & Drive Module",
             cells: [
-              { coord: "Cell 1", merge: 2, name: "LCD1602 (I2C)", qty: "1 Unit", desc: "16x2 character blue backlight LCD." },
-              { coord: "Cell 2", merge: 1, name: "MPU6050", qty: "1 Unit", desc: "3-axis gyro + accel module." },
-              { coord: "Cell 3", merge: 1, name: "Neo-6M GPS", qty: "1 Set", desc: "Satellite receiver board." },
-              { coord: "Cell 4", merge: 1, name: "IR Set & Relay", qty: "2 Units", desc: "IR Receiver/Remote + 1CH 5V Relay." }
+              { coord: "C4", merge: 2, name: "Acrylic Chassis Plate", qty: "1 Set", desc: "Robotics chassis plate + caster wheel + mounting kit." },
+              { coord: "C5", merge: 1, name: "BO Gear Motors", qty: "2 Units", desc: "Dual-shaft DC motors (150 RPM) + rubber wheels." },
+              { coord: "C6", merge: 2, name: "L298N Motor Driver", qty: "1 Unit", desc: "Dual H-Bridge motor controller + heatsink." }
+            ]
+          },
+          {
+            row: "Digital Sensors Hub",
+            cells: [
+              { coord: "C7", merge: 1, name: "HC-SR04 Sonar", qty: "1 Unit", desc: "Ultrasonic distance sensor module." },
+              { coord: "C8", merge: 1, name: "DHT11 Sensor", qty: "1 Unit", desc: "Digital temperature/humidity module." },
+              { coord: "C9", merge: 1, name: "Soil Hygrometer", qty: "1 Unit", desc: "Soil moisture probe + comparator." },
+              { coord: "C10", merge: 2, name: "Rain Sensor Module", qty: "1 Unit", desc: "Rain detection nickel board." }
+            ]
+          },
+          {
+            row: "Interfaces & Controls",
+            cells: [
+              { coord: "C11", merge: 2, name: "LCD1602 (I2C)", qty: "1 Unit", desc: "16x2 character display with I2C module." },
+              { coord: "C12", merge: 1, name: "Membrane Keypad", qty: "1 Unit", desc: "4x4 matrix 16-key flat keypad." },
+              { coord: "C13", merge: 2, name: "Relay & RFID", qty: "1 Set", desc: "1CH 5V Relay + RC522 RFID reader (rotation basis)." }
             ]
           }
         ]
       },
       boxD: {
-        name: "Box D: Drone Assembly Kit", accent: "var(--red)", glow: "var(--glow-red)",
+        name: "Box D: Drone Assembly & Avionics Kit (Class 11)", accent: "var(--red)", glow: "var(--glow-red)",
         grid: [
           {
-            row: "Flight Core",
+            row: "Avionics Core",
             cells: [
-              { coord: "Cell 1", merge: 2, name: "ESP32 DevKit V1", qty: "1 Unit", desc: "Acts as flight controller." },
-              { coord: "Cell 2", merge: 2, name: "Motor Driver PCB", qty: "1 Board", desc: "Pre-built custom PCB." },
-              { coord: "Cell 3", merge: 1, name: "MPU6050 & Boost", qty: "2 Units", desc: "Gyro module + MT3608 boost converter." }
+              { coord: "D1", merge: 2, name: "ESP32 Flight Core", qty: "1 Unit", desc: "ESP32 DevKit V1 pre-programmed as Flight Controller." },
+              { coord: "D2", merge: 2, name: "Motor Driver PCB", qty: "1 Board", desc: "Custom MOSFET power distribution board." },
+              { coord: "D3", merge: 1, name: "MPU6050 Gyro/Accel", qty: "1 Unit", desc: "Angle sensor module for stability." }
             ]
           },
           {
             row: "Drone Hardware",
             cells: [
-              { coord: "Cell 1", merge: 2, name: "8520 Coreless Motors", qty: "6 Units", desc: "4 active + 2 spare high-speed motors." },
-              { coord: "Cell 2", merge: 1, name: "65mm Propellers", qty: "3 Sets", desc: "CW and CCW pairs." },
-              { coord: "Cell 3", merge: 2, name: "Frame & Battery", qty: "3 Units", desc: "3D Printed Frame + 2x 1S LiPo Batteries." }
-            ]
-          }
-        ]
-      },
-      binE: {
-        name: "Bin E: Teacher Vault (High Value)", accent: "var(--grey)", glow: "var(--glow-grey)",
-        grid: [
-          {
-            row: "Secure Assets",
-            cells: [
-              { coord: "Vault", merge: 2, name: "ESP32-CAM", qty: "Vault", desc: "High value camera modules." },
-              { coord: "Vault", merge: 3, name: "3S LiPo & Smart Chargers", qty: "Vault", desc: "Drone high-discharge batteries." }
+              { coord: "D4", merge: 2, name: "8520 Coreless Motors", qty: "6 Units", desc: "High-RPM brushed motors (4 active, 2 spare)." },
+              { coord: "D5", merge: 1, name: "65mm Propellers", qty: "3 Sets", desc: "CW and CCW matched flight propeller sets." },
+              { coord: "D6", merge: 2, name: "Frame & Guards", qty: "1 Frame", desc: "3D printed quad frame + rotor protection rails." }
             ]
           },
           {
-            row: "Tools",
+            row: "Power & Transceiver",
             cells: [
-              { coord: "Vault", merge: 5, name: "Multimeters, Soldering Kits, 3D Pens", qty: "Vault", desc: "Issued by teacher only during specific practicals." }
-            ]
-          }
-        ]
-      },
-      boxF: {
-        name: "Box F: Lab Safety & Consumables Kit", accent: "var(--purple)", glow: "var(--glow-purple)",
-        grid: [
-          {
-            row: "Safety & First Aid",
-            cells: [
-              { coord: "F1", merge: 2, name: "First Aid Kit", qty: "1 Set", desc: "Basic medical supplies, band-aids, burn cream." },
-              { coord: "F2", merge: 3, name: "Safety Glasses", qty: "10 Pairs", desc: "Clear polycarbonate safety goggles for drilling/soldering." }
-            ]
-          },
-          {
-            row: "Hand Tools",
-            cells: [
-              { coord: "F3", merge: 2, name: "Wire Strippers", qty: "5 Units", desc: "Automatic wire strippers/cutters." },
-              { coord: "F4", merge: 2, name: "Hot Glue Guns", qty: "5 Units", desc: "40W glue guns + 50 glue sticks." },
-              { coord: "F5", merge: 1, name: "Soldering Irons", qty: "2 Units", desc: "60W Temperature controlled iron." }
-            ]
-          },
-          {
-            row: "Consumables",
-            cells: [
-              { coord: "F6", merge: 2, name: "Insulation Tape", qty: "10 Rolls", desc: "Electrical tape rolls (Red/Black/Yellow)." },
-              { coord: "F7", merge: 3, name: "Misc Hardware", qty: "Bulk", desc: "Zip ties, double-sided tape, spare batteries." }
+              { coord: "D7", merge: 2, name: "1S LiPo Batteries", qty: "2 Units", desc: "3.7V high-discharge rechargeable batteries." },
+              { coord: "D8", merge: 1, name: "Smart USB Charger", qty: "1 Unit", desc: "1S LiPo multi-port charger." },
+              { coord: "D9", merge: 2, name: "Radio Transceiver", qty: "1 Set", desc: "2.4GHz controller + receiver module." }
             ]
           }
         ]
@@ -807,6 +927,7 @@ const htmlContent = `<!DOCTYPE html>
       if (btn) btn.classList.add('active');
       if (tabId === 'tab-boxes') loadBoxGrid('boxA');
       if (tabId === 'tab-curriculum') filterClass(2);
+      if (tabId === 'tab-universal') selectUniversalLevel(1);
     }
 
     function loadBoxGrid(boxType) {
@@ -910,6 +1031,173 @@ const htmlContent = `<!DOCTYPE html>
           </div>
         \`;
         target.appendChild(card);
+      });
+    }
+
+    /* Universal Level Map Functions */
+    const universalBoxSpecs = {
+      boxA: [
+        { name: "Perforated Plastic Beams", desc: "Lego-compatible structural beams with holes (various lengths)", qty: "20 Units" },
+        { name: "Connector Pegs & Pins", desc: "Quick-snap connectors (black friction pegs, grey axle pegs)", qty: "40 Units" },
+        { name: "Spur Gears", desc: "8T, 20T, and 40T precision plastic gears", qty: "18 Units" },
+        { name: "Axles & Shafts", desc: "Steel and high-strength plastic axles (various lengths)", qty: "10 Units" },
+        { name: "Rubber Wheels & Tires", desc: "High-traction rubber wheels for chassis builds", qty: "4 Units" },
+        { name: "Pulley Wheels & Belts", desc: "Friction drive wheels and rubber transmission belts", qty: "4 Units" },
+        { name: "Manual Cranks & Linkages", desc: "Rotary levers and structural connecting links", qty: "4 Sets" },
+        { name: "Base Grid Plate", desc: "Rigid plastic mounting grid board for structural assembly", qty: "1 Unit" },
+        { name: "3D Pen & PLA Filaments", desc: "3D drawing pen with multi-color PLA plastic filament rolls", qty: "1 Set" },
+        { name: "Safety Plastic Screwdriver", desc: "Dual-head kid-safe plastic screwdriver tool", qty: "1 Unit" }
+      ],
+      boxB: [
+        { name: "Raspberry Pi Pico", desc: "Dual-core RP2040 microcontroller (Dedicated to Class 4 & 5)", qty: "1 Unit" },
+        { name: "Solderless Breadboard", desc: "830 tie-point dual bus strip for prototyping circuits", qty: "1 Unit" },
+        { name: "Assorted LEDs", desc: "5mm bright LEDs (5x Red, 5x Green, 5x Yellow, 5x Blue)", qty: "20 Units" },
+        { name: "Assorted Resistors", desc: "Carbon film resistors (10x 220Ω, 10x 1kΩ, 10x 10kΩ)", qty: "30 Units" },
+        { name: "Tactile Push-buttons", desc: "4-pin PCB mount tactile momentary switches", qty: "4 Units" },
+        { name: "Active Buzzer", desc: "5V active piezo electronic buzzer for acoustic feedback", qty: "1 Unit" },
+        { name: "Light Sensors (LDR)", desc: "Photoresistors (Light Dependent Resistors) for analog lux reading", qty: "2 Units" },
+        { name: "Temperature Sensor (LM35)", desc: "Precision analog centigrade temperature sensor", qty: "1 Unit" },
+        { name: "DC Hobby Motor", desc: "3V-6V small round DC motor for fan and propeller models", qty: "2 Units" },
+        { name: "Rotary Potentiometer", desc: "10kΩ panel-mount rotary dial potentiometer", qty: "1 Unit" },
+        { name: "Male-to-Male Jumper Wires", desc: "Breadboard-friendly flexible hookup wires", qty: "30 Units" },
+        { name: "9V Battery Clip & Connector", desc: "Standard 9V battery snap with DC barrel jack output", qty: "1 Set" },
+        { name: "Mini Servo Motor (SG90)", desc: "9g micro analog gear servo (180 degree rotation)", qty: "1 Unit" },
+        { name: "Digital Multimeter", desc: "Handheld mini multimeter with probe cables", qty: "1 Unit" }
+      ],
+      boxC: [
+        { name: "Arduino Uno R3", desc: "Standard microcontroller board (Dedicated to Class 6 & 7)", qty: "1 Unit" },
+        { name: "NodeMCU ESP8266", desc: "WiFi enabled serial IoT board (Dedicated to Class 8 & 9)", qty: "1 Unit" },
+        { name: "ESP32-CAM DevKit", desc: "ESP32 microcamera module + programmer shield (Dedicated to Class 10)", qty: "1 Unit" },
+        { name: "Solderless Breadboard", desc: "830 tie-point prototyping breadboard", qty: "1 Unit" },
+        { name: "Chassis Base Plate", desc: "Pre-cut acrylic robotics frame with mounting hardware", qty: "1 Set" },
+        { name: "BO Gear Motors", desc: "Dual-shaft DC gear motors (150 RPM)", qty: "2 Units" },
+        { name: "Robotics Wheels", desc: "High-friction rubber tread wheels compatible with BO shaft", qty: "2 Units" },
+        { name: "L298N Motor Driver", desc: "Dual H-Bridge motor driver board for DC speed/direction control", qty: "1 Unit" },
+        { name: "Ultrasonic Distance Sensor", desc: "HC-SR04 sonar ranging sensor (2cm - 400cm range)", qty: "1 Unit" },
+        { name: "Soil Moisture Sensor", desc: "Corrosion-resistant analog capacitive soil moisture probe", qty: "1 Unit" },
+        { name: "DHT11 Sensor", desc: "Digital temperature and relative humidity sensor module", qty: "1 Unit" },
+        { name: "MQ-2 Gas Sensor", desc: "Liquefied petroleum gas (LPG), smoke, and propane sensor", qty: "1 Unit" },
+        { name: "RFID RC522 Module", desc: "13.56MHz SPI RFID reader card reader + card & key fob tag", qty: "1 Set" },
+        { name: "SG90 Servo Motor", desc: "9g micro servo with horns and gears (180 degree)", qty: "1 Unit" },
+        { name: "LCD1602 with I2C", desc: "16 characters x 2 lines alphanumeric display with backpack", qty: "1 Unit" },
+        { name: "Jumper Wires Assortment", desc: "Flexible ribbon cables (20x M-M, 20x M-F, 20x F-F)", qty: "60 Units" },
+        { name: "Potentiometer & Switches", desc: "10kΩ rotary pot + 4 tactile switches", qty: "1 Set" },
+        { name: "Passives Bundle", desc: "Bundled LEDs, resistors, buzzer, and capacitor pack", qty: "1 Set" },
+        { name: "18650 Battery Holder & Cells", desc: "Dual slot battery box + 2 high-capacity 18650 batteries + protection", qty: "1 Set" }
+      ],
+      boxD: [
+        { name: "ESP32 Flight Controller", desc: "Pre-programmed flight control processor (Dedicated to Class 11)", qty: "1 Unit" },
+        { name: "Carbon Fiber Frame", desc: "Lightweight 250mm diagonal quadcopter frame", qty: "1 Unit" },
+        { name: "8520 Coreless Motors", desc: "High-RPM micro coreless motors (4 active, 2 spare)", qty: "6 Units" },
+        { name: "65mm Propellers", desc: "CW and CCW matched flight propellers", qty: "3 Sets" },
+        { name: "Custom Motor Driver PCB", desc: "Dedicated power distribution and driver board", qty: "1 Unit" },
+        { name: "MPU6050 Gyro Module", desc: "3-axis gyroscope and 3-axis accelerometer", qty: "1 Unit" },
+        { name: "MT3608 Boost Converter", desc: "High-efficiency step-up voltage regulator", qty: "1 Unit" },
+        { name: "1S LiPo Batteries", desc: "3.7V 500mAh high-discharge lipo flight batteries", qty: "2 Units" },
+        { name: "Smart USB Charger", desc: "Compact 1S LiPo charger with indicator LEDs", qty: "1 Unit" },
+        { name: "Radio Transceiver System", desc: "2.4GHz transmitter controller + receiver module", qty: "1 Set" },
+        { name: "Safety Guard Rails", desc: "Impact-absorbing plastic rotor guards", qty: "1 Set" }
+      ]
+    };
+
+    let selectedUniversalLevelNum = 1;
+    let selectedUniversalClassNum = 2;
+
+    function selectUniversalLevel(lvlNum) {
+      selectedUniversalLevelNum = lvlNum;
+      document.querySelectorAll('.universal-card').forEach(c => c.classList.remove('active'));
+      const card = document.getElementById('lvl-card-' + lvlNum);
+      if (card) card.classList.add('active');
+      
+      let boxId = 'boxA';
+      let targetClass = 2;
+      if (lvlNum === 1) { boxId = 'boxA'; targetClass = 2; }
+      else if (lvlNum === 2) { boxId = 'boxB'; targetClass = 4; }
+      else if (lvlNum === 3) { boxId = 'boxC'; targetClass = 6; }
+      else if (lvlNum === 4) { boxId = 'boxD'; targetClass = 11; }
+      
+      loadUniversalBoxSpec(boxId);
+      selectUnivClass(targetClass);
+    }
+
+    function loadUniversalBoxSpec(boxId) {
+      const components = universalBoxSpecs[boxId] || [];
+      const tbody = document.getElementById('univ-kit-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      
+      const boxNames = { boxA: "Box A: Junior Mechatronics Kit", boxB: "Box B: Foundation Electronics Kit", boxC: "Box C: Universal IoT & Sensors Kit", boxD: "Box D: Drone Assembly Kit" };
+      const titleElem = document.getElementById('univ-kit-title');
+      if (titleElem) titleElem.innerText = '📦 Standalone Kit Specification: ' + (boxNames[boxId] || boxId);
+      
+      components.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = \`<td><b>\${c.name}</b></td><td>\${c.desc}</td><td style="text-align:right; font-weight:700;">\${c.qty}</td>\`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function selectUnivClass(classNum) {
+      selectedUniversalClassNum = classNum;
+      
+      // Update chips UI
+      document.querySelectorAll('.class-tab-chip').forEach(chip => {
+        if (chip.getAttribute('onclick') && chip.getAttribute('onclick').includes('selectUnivClass')) {
+          chip.classList.remove('active');
+        }
+      });
+      const targetChip = document.getElementById('univ-cls-chip-' + classNum);
+      if (targetChip) targetChip.classList.add('active');
+      
+      // Update Class-wise level card selection based on class
+      let lvl = 1;
+      if (classNum == 2 || classNum == 3) lvl = 1;
+      else if (classNum == 4 || classNum == 5) lvl = 2;
+      else if (classNum >= 6 && classNum <= 10) lvl = 3;
+      else if (classNum == 11) lvl = 4;
+      
+      document.querySelectorAll('.universal-card').forEach(c => c.classList.remove('active'));
+      const lvlCard = document.getElementById('lvl-card-' + lvl);
+      if (lvlCard) lvlCard.classList.add('active');
+      
+      const boxNames = { 1: 'boxA', 2: 'boxB', 3: 'boxC', 4: 'boxD' };
+      loadUniversalBoxSpec(boxNames[lvl]);
+
+      renderUnivColumns();
+    }
+
+    function renderUnivColumns() {
+      const days = curriculumData[selectedUniversalClassNum] || [];
+      const col1 = document.getElementById('univ-col-target-1');
+      const col2 = document.getElementById('univ-col-target-2');
+      const col3 = document.getElementById('univ-col-target-3');
+      
+      if (!col1 || !col2 || !col3) return;
+      
+      col1.innerHTML = '';
+      col2.innerHTML = '';
+      col3.innerHTML = '';
+      
+      days.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'mini-task-card';
+        card.innerHTML = \`
+          <div class="mini-task-header">
+            <span class="mini-task-day">Topic \${d.day}</span>
+            <span class="mini-task-chip">\${d.parts}</span>
+          </div>
+          <div class="mini-task-title">\${d.topic}</div>
+          <div class="mini-task-desc">\${d.desc}</div>
+          <span class="mini-task-goal">🎯 <b>Goal:</b> \${d.test}</span>
+        \`;
+        
+        if (d.day >= 1 && d.day <= 10) {
+          col1.appendChild(card);
+        } else if (d.day >= 11 && d.day <= 20) {
+          col2.appendChild(card);
+        } else if (d.day >= 21 && d.day <= 30) {
+          col3.appendChild(card);
+        }
       });
     }
 

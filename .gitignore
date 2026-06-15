@@ -14,3 +14,6 @@ scratch/
 
 # Local build artifacts (optional, but since we publish the prebuilt deploy folder we can commit it)
 # We will keep build_html.js and deploy/ so Netlify can either serve prebuilt or build it.
+
+# Local Netlify folder
+.netlify
