@@ -95,10 +95,10 @@ Teachers should only distribute the specific box needed for the class topic.
 
 Total Investment (Excl. GST): **₹ 4,23,200**
 
-* Module 1: Junior Mechatronics Kit (10x): ₹ 22,000
-* Module 2: Foundation Electronics Kit (10x): ₹ 35,000
-* Module 3: Intermediate Robotics & IoT Kit (10x): ₹ 58,000
-* Module 4: Advanced Edge AI & Drone Kit (10x): ₹ 1,65,000
+* Module 1: Junior Mechatronics Kit (Grade 2-3) (10x): ₹ 22,000
+* Module 2: Foundation Electronics Kit (Grade 4-5) (10x): ₹ 35,000
+* Module 3: Universal IoT & Sensors Kit (Grade 6-10) (10x): ₹ 58,000
+* Module 4: Drone Assembly & Avionics Kit (Grade 11) (10x): ₹ 1,65,000
 * Bambu Lab P1S Combo: ₹ 68,200
 * Lab Safety, Tools & Consumables: ₹ 30,000
 * 4-Month Onsite Visiting Trainer: ₹ 45,000

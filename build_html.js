@@ -519,25 +519,25 @@ const htmlContent = `<!DOCTYPE html>
           </thead>
           <tbody>
             <tr>
-              <td>Module 1: Junior Mechatronics Kit (Grade 1-2)</td>
+              <td>Module 1: Junior Mechatronics Kit (Grade 2-3)</td>
               <td>₹ 2,200</td>
               <td>10</td>
               <td style="text-align:right">₹ 22,000</td>
             </tr>
             <tr>
-              <td>Module 2: Foundation Electronics Kit (Grade 3-5)</td>
+              <td>Module 2: Foundation Electronics Kit (Grade 4-5)</td>
               <td>₹ 3,500</td>
               <td>10</td>
               <td style="text-align:right">₹ 35,000</td>
             </tr>
             <tr>
-              <td>Module 3: Intermediate Robotics & IoT Kit (Grade 6-8)</td>
+              <td>Module 3: Universal IoT & Sensors Kit (Grade 6-10)</td>
               <td>₹ 5,800</td>
               <td>10</td>
               <td style="text-align:right">₹ 58,000</td>
             </tr>
             <tr>
-              <td>Module 4: Advanced Edge AI & Drone Kit (Grade 9-10)</td>
+              <td>Module 4: Drone Assembly & Avionics Kit (Grade 11)</td>
               <td>₹ 16,500</td>
               <td>10</td>
               <td style="text-align:right">₹ 1,65,000</td>
