@@ -60,7 +60,7 @@ To achieve maximum Value for Money (VFM) and easy storage, the lab is set up wit
   * Primary Hardware: ESP32 Flight Controller (using ESP32 DevKit V1), MPU6050 Gyro/Accel, custom MOSFET Motor Driver PCB, MT3608 boost converter, 8520 coreless brushed motors, 65mm propellers, 3D printed drone frame + prop guards, JST LiPo flight batteries, JST multi-port USB charger, 2.4GHz radio transceiver controller.
 * **Bin E: Teacher's Shared Vault (GREY)**
   * Eligible Grades: All grades (facilitated by teacher)
-  * Primary Hardware: Bambu Lab P1S 3D Printer, PLA filaments, 25W soldering iron kits, digital multimeters, wire strippers, hot glue guns with sticks, precision screwdrivers, extension boards, and 18650 smart battery chargers.
+  * Primary Hardware: Bambu Lab P1S Combo, PLA filaments, 25W soldering iron kits, digital multimeters, wire strippers, hot glue guns with sticks, precision screwdrivers, extension boards, and 18650 smart battery chargers.
 * **Box F: Lab Safety & Consumables (PURPLE)**
   * Eligible Grades: All grades (available for safety & maintenance)
   * Primary Hardware: Safety goggles, first aid kit, ABC chemical powder fire extinguisher, heat shrink sleeves, and insulation PVC tapes.
@@ -71,7 +71,7 @@ To achieve maximum Value for Money (VFM) and easy storage, the lab is set up wit
 
 To maintain physical order, the lab is partitioned into 5 distinct activity zones:
 * **Zone A:** Electronics & Prototyping Workstations (10 workbenches for 30 students).
-* **Zone B:** Mechanical Fabrication & 3D Printing Area (Bambu Lab P1S 3D Printer).
+* **Zone B:** Mechanical Fabrication & 3D Printing Area (Bambu Lab P1S Combo).
 * **Zone C:** Central Storage Cabinet (The Vault).
 * **Zone D:** Teacher Station (Demo desk, projector).
 * **Zone E:** Classroom Open Storage Racks.
@@ -108,13 +108,13 @@ Teachers should only distribute the specific box needed for the class topic.
 
 ## 💰 Budget & Proposal Summary
 
-Total Investment (Excl. GST): **₹ 4,07,450**
+Total Investment (Excl. GST): **₹ 4,23,200**
 
 * Module 1: Junior Mechatronics Kit (10x): ₹ 22,000
 * Module 2: Foundation Electronics Kit (10x): ₹ 35,000
 * Module 3: Intermediate Robotics & IoT Kit (10x): ₹ 58,000
 * Module 4: Advanced Edge AI & Drone Kit (10x): ₹ 1,65,000
-* Bambu Lab P1S 3D Printer: ₹ 52,450
+* Bambu Lab P1S Combo: ₹ 68,200
 * Lab Safety, Tools & Consumables: ₹ 30,000
 * 4-Month Onsite Visiting Trainer: ₹ 45,000
 * Professional Onsite Lab Setup & LMS: FREE

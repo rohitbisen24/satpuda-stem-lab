@@ -450,7 +450,7 @@ const htmlContent = `<!DOCTYPE html>
     <div id="tab-proposal" class="tab-panel">
       <div class="budget-summary">
         <div class="budget-metric">
-          <div class="val">₹4.07L</div>
+          <div class="val">₹4.23L</div>
           <div class="lbl">Total Investment (Excl GST)</div>
         </div>
         <div class="budget-metric">
@@ -504,10 +504,10 @@ const htmlContent = `<!DOCTYPE html>
               <td style="text-align:right">₹ 1,65,000</td>
             </tr>
             <tr>
-              <td>Bambu Lab P1S 3D Printer</td>
-              <td>₹ 52,450</td>
+              <td>Bambu Lab P1S Combo</td>
+              <td>₹ 68,200</td>
               <td>1</td>
-              <td style="text-align:right">₹ 52,450</td>
+              <td style="text-align:right">₹ 68,200</td>
             </tr>
             <tr>
               <td>Heavy-Duty Tools & Consumables Pack</td>
@@ -925,7 +925,7 @@ const htmlContent = `<!DOCTYPE html>
           {
             row: "3D Printing & Filament",
             cells: [
-              { coord: "E1", merge: 3, name: "Bambu Lab P1S 3D Printer", qty: "1 Unit", desc: "Enclosed CoreXY high-speed 3D printer for additive slicing." },
+              { coord: "E1", merge: 3, name: "Bambu Lab P1S Combo", qty: "1 Unit", desc: "Enclosed CoreXY high-speed 3D printer for additive slicing." },
               { coord: "E2", merge: 2, name: "PLA Filament Spools", qty: "5 Spools", desc: "1.75mm PLA filament rolls for prototyping." }
             ]
           },
