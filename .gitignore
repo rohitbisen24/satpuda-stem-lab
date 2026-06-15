@@ -1,0 +1,16 @@
+# Large PDF files
+*.pdf
+
+# Extracted text files
+_extracted_*.txt
+
+# Node modules
+node_modules/
+
+# Temporary files & zips
+*.zip
+temp/
+scratch/
+
+# Local build artifacts (optional, but since we publish the prebuilt deploy folder we can commit it)
+# We will keep build_html.js and deploy/ so Netlify can either serve prebuilt or build it.

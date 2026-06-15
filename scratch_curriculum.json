@@ -1,0 +1,2122 @@
+{
+  "2": [
+    {
+      "day": 1,
+      "topic": "Wheeling Cart Build",
+      "parts": "MECHATRONICS",
+      "desc": "How wheels and axles roll",
+      "test": "WHEEL LOGIC"
+    },
+    {
+      "day": 2,
+      "topic": "Balloon Car",
+      "parts": "MECHATRONICS",
+      "desc": "Air power and pushing forces",
+      "test": "AIR POWER"
+    },
+    {
+      "day": 3,
+      "topic": "📗",
+      "parts": "#",
+      "desc": "Class 2 — Junior Mechatronics Linkages (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 4,
+      "topic": "Suspension Car",
+      "parts": "MECHATRONICS",
+      "desc": "Springs and bumpy road absorbers",
+      "test": "SPRINGS & SHOCKS"
+    },
+    {
+      "day": 5,
+      "topic": "Truss Bridge",
+      "parts": "MECHATRONICS",
+      "desc": "How triangles make structures strong",
+      "test": "STRONG TRIANGLES"
+    },
+    {
+      "day": 6,
+      "topic": "Simple Steering Car",
+      "parts": "MECHATRONICS",
+      "desc": "How cars turn and steer",
+      "test": "TURNING CARS"
+    },
+    {
+      "day": 7,
+      "topic": "Maze Board Game",
+      "parts": "MECHATRONICS",
+      "desc": "Finding routes and solving pathways",
+      "test": "MAZE PATHWAYS"
+    },
+    {
+      "day": 8,
+      "topic": "Scissor Arm Linkage",
+      "parts": "MECHATRONICS",
+      "desc": "Extending arms and lazy tongs",
+      "test": "EXTENDING ARMS"
+    },
+    {
+      "day": 9,
+      "topic": "Table Fan Model",
+      "parts": "MECHATRONICS",
+      "desc": "How gears speed up spinning blades",
+      "test": "FAST FANS"
+    },
+    {
+      "day": 10,
+      "topic": "Railway Barrier Gate",
+      "parts": "MECHATRONICS",
+      "desc": "Pivot arms and balancing weights",
+      "test": "PIVOT GATES"
+    },
+    {
+      "day": 11,
+      "topic": "Windmill Model",
+      "parts": "MECHATRONICS",
+      "desc": "Converting wind direction to rotation",
+      "test": "WIND ENERGY"
+    },
+    {
+      "day": 12,
+      "topic": "Revolving Swivel Seat",
+      "parts": "MECHATRONICS",
+      "desc": "How rotating shafts spin smoothly",
+      "test": "SMOOTH SWIVELS"
+    },
+    {
+      "day": 13,
+      "topic": "Desk Lamp Linkage",
+      "parts": "MECHATRONICS",
+      "desc": "Keeping a lamp steady at different angles",
+      "test": "LAMP ARMS"
+    },
+    {
+      "day": 14,
+      "topic": "Food Grabber Tool",
+      "parts": "MECHATRONICS",
+      "desc": "Using mechanical pincers to pick up items",
+      "test": "GRABBERS"
+    },
+    {
+      "day": 15,
+      "topic": "Multi-Gear Speed Box",
+      "parts": "MECHATRONICS",
+      "desc": "Connect driver gear to follower gear",
+      "test": "GEAR DRIVES"
+    },
+    {
+      "day": 16,
+      "topic": "High-Torque Gear Box",
+      "parts": "MECHATRONICS",
+      "desc": "Using small gears to drive large gears",
+      "test": "HIGH TORQUE"
+    },
+    {
+      "day": 17,
+      "topic": "Reverse Gear System",
+      "parts": "MECHATRONICS",
+      "desc": "Changing rotation direction with idler gears",
+      "test": "REVERSE GEARS"
+    },
+    {
+      "day": 18,
+      "topic": "Pulley & Belt System",
+      "parts": "MECHATRONICS",
+      "desc": "Connecting two rotating wheels with a band",
+      "test": "BELT DRIVES"
+    },
+    {
+      "day": 19,
+      "topic": "Rope Lift Elevator",
+      "parts": "MECHATRONICS",
+      "desc": "Hoisting small items with string pulleys",
+      "test": "CABLE LIFTS"
+    },
+    {
+      "day": 20,
+      "topic": "Measuring Wheel",
+      "parts": "MECHATRONICS",
+      "desc": "Counting wheel turns to measure distance",
+      "test": "DISTANCE WHEELS"
+    },
+    {
+      "day": 21,
+      "topic": "Balance Scale Model",
+      "parts": "MECHATRONICS",
+      "desc": "Equal arm balance and weight comparisons",
+      "test": "BALANCE SCALES"
+    },
+    {
+      "day": 22,
+      "topic": "Coin Tipping Box",
+      "parts": "MECHATRONICS",
+      "desc": "Lever balances that tip when a coin falls",
+      "test": "COIN TIPPERS"
+    },
+    {
+      "day": 23,
+      "topic": "Quick-Release Clip",
+      "parts": "MECHATRONICS",
+      "desc": "Trigger pins that release stored rubber band power",
+      "test": "SPRING RELEASE"
+    },
+    {
+      "day": 24,
+      "topic": "Parallel Ruler Linkage",
+      "parts": "MECHATRONICS",
+      "desc": "Drawing straight parallel lines using links",
+      "test": "PARALLEL ARMS"
+    },
+    {
+      "day": 25,
+      "topic": "Soil Plow Simulator",
+      "parts": "MECHATRONICS",
+      "desc": "Dragging blades to simulate tillage",
+      "test": "FARM TOOLS"
+    },
+    {
+      "day": 26,
+      "topic": "Catapult Game",
+      "parts": "MECHATRONICS",
+      "desc": "Throwing paper balls using elastic tension",
+      "test": "PAPER LAUNCHERS"
+    },
+    {
+      "day": 27,
+      "topic": "Carousel Model",
+      "parts": "MECHATRONICS",
+      "desc": "Spinning crowns and right-angle gear joints",
+      "test": "CAROUSELS"
+    },
+    {
+      "day": 28,
+      "topic": "Walking Horse Linkage",
+      "parts": "MECHATRONICS",
+      "desc": "Converting rotation into a walking foot movement",
+      "test": "WALKING GAITS"
+    },
+    {
+      "day": 29,
+      "topic": "Goal Kicker Toy",
+      "parts": "MECHATRONICS",
+      "desc": "Swivel levers that strike a small ball",
+      "test": "KICKER ARMS"
+    },
+    {
+      "day": 30,
+      "topic": "Drumming Robot",
+      "parts": "MECHATRONICS",
+      "desc": "Cam wheels that lift and drop drum sticks",
+      "test": "CAM DRUMS"
+    }
+  ],
+  "3": [
+    {
+      "day": 1,
+      "topic": "Scratch Block Coding Intro",
+      "parts": "CODING",
+      "desc": "Visual blocks, sprites, making things move",
+      "test": "VISUAL CODING"
+    },
+    {
+      "day": 2,
+      "topic": "Walking Sprite",
+      "parts": "CODING",
+      "desc": "Step-by-step loops and moving characters",
+      "test": "SPRITE MOVEMENT"
+    },
+    {
+      "day": 3,
+      "topic": "Aquarium Screen",
+      "parts": "CODING",
+      "desc": "Adding fish sprites, bouncing off screen edges",
+      "test": "AQUARIUM SCENES"
+    },
+    {
+      "day": 4,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 3 — Block Coding & 3D Drafting (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 5,
+      "topic": "Simple Add-Calculator",
+      "parts": "CODING",
+      "desc": "Storing numbers in variables and adding them",
+      "test": "SIMPLE ADDERS"
+    },
+    {
+      "day": 6,
+      "topic": "Rainbow Spirographs",
+      "parts": "CODING",
+      "desc": "Drawing repeating patterns with the Pen tool",
+      "test": "DRAWING LOOPS"
+    },
+    {
+      "day": 7,
+      "topic": "Dance Party Animation",
+      "parts": "CODING",
+      "desc": "Changing costumes on beats",
+      "test": "CHARACTER COSTUMES"
+    },
+    {
+      "day": 8,
+      "topic": "Balloon Pop Game",
+      "parts": "CODING",
+      "desc": "Popping falling balloons with mouse clicks",
+      "test": "CLICK GAMES"
+    },
+    {
+      "day": 9,
+      "topic": "Simple Maze Game",
+      "parts": "CODING",
+      "desc": "Keyboard arrows control, wall sensing blocks",
+      "test": "EASY MAZES"
+    },
+    {
+      "day": 10,
+      "topic": "Keyboard Piano",
+      "parts": "CODING",
+      "desc": "Assigning key presses to sound notes",
+      "test": "PIANO KEYS"
+    },
+    {
+      "day": 11,
+      "topic": "Jumping Game",
+      "parts": "CODING",
+      "desc": "Simulating a simple jump using vertical movements",
+      "test": "JUMPING LOGIC"
+    },
+    {
+      "day": 12,
+      "topic": "Score Counter Game",
+      "parts": "CODING",
+      "desc": "Adding points to a score variable",
+      "test": "SCORE VARIABLES"
+    },
+    {
+      "day": 13,
+      "topic": "Falling Apple Catch",
+      "parts": "CODING",
+      "desc": "Catching falling apples in a basket",
+      "test": "CATCHING GAMES"
+    },
+    {
+      "day": 14,
+      "topic": "Talking Character Story",
+      "parts": "CODING",
+      "desc": "Broadcasting messages to sync character talk",
+      "test": "SYNC TALK"
+    },
+    {
+      "day": 15,
+      "topic": "LED Light Bulb circuit",
+      "parts": "ELECTRONICS",
+      "desc": "Connecting batteries to bulbs with wires",
+      "test": "SIMPLE LIGHTS"
+    },
+    {
+      "day": 16,
+      "topic": "Switch LED Circuit",
+      "parts": "ELECTRONICS",
+      "desc": "Toggling lights using a sliding switch",
+      "test": "LIGHT SWITCHES"
+    },
+    {
+      "day": 17,
+      "topic": "Motor Fan Propeller",
+      "parts": "ELECTRONICS",
+      "desc": "Connecting a battery to a small spinning fan",
+      "test": "DC FANS"
+    },
+    {
+      "day": 18,
+      "topic": "Series Lights string",
+      "parts": "ELECTRONICS",
+      "desc": "Connecting multiple LEDs in a single line",
+      "test": "SERIES LIGHTS"
+    },
+    {
+      "day": 19,
+      "topic": "Parallel Lights board",
+      "parts": "ELECTRONICS",
+      "desc": "Branching wires to glow multiple LEDs",
+      "test": "PARALLEL LIGHTS"
+    },
+    {
+      "day": 20,
+      "topic": "Pencil Lead Conductor",
+      "parts": "ELECTRONICS",
+      "desc": "Testing if pencil graphite conducts electricity",
+      "test": "CONDUCTORS"
+    },
+    {
+      "day": 21,
+      "topic": "Solderless Breadboard Intro",
+      "parts": "ELECTRONICS",
+      "desc": "How to insert wires into breadboard sockets",
+      "test": "BREADBOARDS"
+    },
+    {
+      "day": 22,
+      "topic": "Rubber Band Launcher",
+      "parts": "MECHATRONICS",
+      "desc": "Releasing tension to throw soft objects",
+      "test": "ELASTIC LAUNCH"
+    },
+    {
+      "day": 23,
+      "topic": "Ferris Wheel Model",
+      "parts": "MECHATRONICS",
+      "desc": "Simple pulley rotation from motor to wheel",
+      "test": "FERRIS WHEELS"
+    },
+    {
+      "day": 24,
+      "topic": "Trailer Hitch Joint",
+      "parts": "MECHATRONICS",
+      "desc": "Designing pivot hitches for wagon toys",
+      "test": "HITCH JOINTS"
+    },
+    {
+      "day": 25,
+      "topic": "3D Pen Basics",
+      "parts": "3D PRINTING",
+      "desc": "Safety rules, melting plastic, drawing straight lines",
+      "test": "DRAW LINES"
+    },
+    {
+      "day": 26,
+      "topic": "3D Pen Butterfly",
+      "parts": "3D PRINTING",
+      "desc": "Drawing flat stencils and joining wing parts",
+      "test": "2D TO 3D"
+    },
+    {
+      "day": 27,
+      "topic": "3D Pen Flower Assembly",
+      "parts": "3D PRINTING",
+      "desc": "Layering petals and stems",
+      "test": "LAYERS ASSEMBLY"
+    },
+    {
+      "day": 28,
+      "topic": "3D Pen Glasses",
+      "parts": "3D PRINTING",
+      "desc": "Creating customized wearable frames",
+      "test": "GLASSES FRAMES"
+    },
+    {
+      "day": 29,
+      "topic": "3D Pen Mini-House",
+      "parts": "3D PRINTING",
+      "desc": "Drawing wall panels and connecting them",
+      "test": "BUILDING WALLS"
+    },
+    {
+      "day": 30,
+      "topic": "3D Pen Toy Bicycle",
+      "parts": "3D PRINTING",
+      "desc": "Making wireframe wheels and frames",
+      "test": "BICYCLE MODELS"
+    }
+  ],
+  "4": [
+    {
+      "day": 1,
+      "topic": "Repeating Shape Draw",
+      "parts": "CODING",
+      "desc": "Using repeat loops to draw squares and circles",
+      "test": "DRAWING SHAPES"
+    },
+    {
+      "day": 2,
+      "topic": "Ask & Answer shapes",
+      "parts": "CODING",
+      "desc": "Getting user input for number of sides",
+      "test": "INTERACTIVE SHAPES"
+    },
+    {
+      "day": 3,
+      "topic": "Backdrop Color Changers",
+      "parts": "CODING",
+      "desc": "Clicking buttons to change background layouts",
+      "test": "COLOR CHANGERS"
+    },
+    {
+      "day": 4,
+      "topic": "Multi-Choice Quiz Game",
+      "parts": "CODING",
+      "desc": "Creating score counters and correct/incorrect paths",
+      "test": "VISUAL QUIZZES"
+    },
+    {
+      "day": 5,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 4 — Scratch level 2 & Circuit Laws (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 6,
+      "topic": "Draw Screen Paint Brush",
+      "parts": "CODING",
+      "desc": "Making cursor draw trailing colored lines",
+      "test": "PAINT TOOLS"
+    },
+    {
+      "day": 7,
+      "topic": "Countdown Timer game",
+      "parts": "CODING",
+      "desc": "Creating decrementing variables for game-over alerts",
+      "test": "TIMER BLOCKS"
+    },
+    {
+      "day": 8,
+      "topic": "Virtual Pet Simulator",
+      "parts": "CODING",
+      "desc": "Happy/Hungry variables dropping over time",
+      "test": "PET STATS"
+    },
+    {
+      "day": 9,
+      "topic": "Space Invaders Clone",
+      "parts": "CODING",
+      "desc": "Spawning laser clones on spacebar press",
+      "test": "SPRITE CLONES"
+    },
+    {
+      "day": 10,
+      "topic": "Solderless LED Circuits",
+      "parts": "ELECTRONICS",
+      "desc": "Plugging LEDs and battery clips into breadboards",
+      "test": "BREADBOARD LEDS"
+    },
+    {
+      "day": 11,
+      "topic": "Resistors & Safety",
+      "parts": "ELECTRONICS",
+      "desc": "What are resistors, how they protect delicate LEDs",
+      "test": "RESISTOR SAFETY"
+    },
+    {
+      "day": 12,
+      "topic": "Custom Toggle Switch",
+      "parts": "ELECTRONICS",
+      "desc": "Designing manual paper-clip switches",
+      "test": "DIY SWITCHES"
+    },
+    {
+      "day": 13,
+      "topic": "Parallel LED Arrays",
+      "parts": "ELECTRONICS",
+      "desc": "Splitting current across parallel lines on breadboard",
+      "test": "PARALLEL WIRES"
+    },
+    {
+      "day": 14,
+      "topic": "Series LED String drop",
+      "parts": "ELECTRONICS",
+      "desc": "Observing brightness drop across series lines",
+      "test": "SERIES WIRES"
+    },
+    {
+      "day": 15,
+      "topic": "Buzzer Alert Sounder",
+      "parts": "ELECTRONICS",
+      "desc": "Connecting buzzers with battery keys",
+      "test": "ALARM BUZZERS"
+    },
+    {
+      "day": 16,
+      "topic": "Resistor Tester",
+      "parts": "ELECTRONICS",
+      "desc": "Comparing brightness of LEDs with different resistors",
+      "test": "RESISTOR TESTING"
+    },
+    {
+      "day": 17,
+      "topic": "Dial Light Controller",
+      "parts": "ELECTRONICS",
+      "desc": "Using variable dials to fade LEDs",
+      "test": "LIGHT DIALS"
+    },
+    {
+      "day": 18,
+      "topic": "Night Light Sensor",
+      "parts": "ELECTRONICS",
+      "desc": "Using light-dependent resistors to control output",
+      "test": "LIGHT SENSORS"
+    },
+    {
+      "day": 19,
+      "topic": "Transistor Switch Block",
+      "parts": "ELECTRONICS",
+      "desc": "Using transistors as automatic switches",
+      "test": "TRANSISTORS"
+    },
+    {
+      "day": 20,
+      "topic": "Body Touch Light",
+      "parts": "ELECTRONICS",
+      "desc": "Glowing LEDs by touching wire tips",
+      "test": "TOUCH LIGHTS"
+    },
+    {
+      "day": 21,
+      "topic": "Sound Siren Buzzer",
+      "parts": "ELECTRONICS",
+      "desc": "Combining capacitors and buzzers for fade alarms",
+      "test": "FADE SIRENS"
+    },
+    {
+      "day": 22,
+      "topic": "Security Door Alarm",
+      "parts": "ELECTRONICS",
+      "desc": "Building pressure switch wire trigger systems",
+      "test": "DIY ALARMS"
+    },
+    {
+      "day": 23,
+      "topic": "Balloon Chassis Car",
+      "parts": "MECHATRONICS",
+      "desc": "Building light chassis powered by balloon nozzles",
+      "test": "BALLOON VEHICLES"
+    },
+    {
+      "day": 24,
+      "topic": "Wobbly Crawling Robot",
+      "parts": "MECHATRONICS",
+      "desc": "Using asymmetric motor weights to crawl",
+      "test": "WOBBLY BOTS"
+    },
+    {
+      "day": 25,
+      "topic": "Waving Robot Arms",
+      "parts": "MECHATRONICS",
+      "desc": "Crank linkages converting spin to waves",
+      "test": "WAVING ARMS"
+    },
+    {
+      "day": 26,
+      "topic": "Crown Gear Rotator",
+      "parts": "MECHATRONICS",
+      "desc": "Changing spin from flat to upright",
+      "test": "CROWN GEARS"
+    },
+    {
+      "day": 27,
+      "topic": "Multi-Axle Gearbox",
+      "parts": "MECHATRONICS",
+      "desc": "Fitting motor drives to turn multiple wheels",
+      "test": "AXLE DRIVES"
+    },
+    {
+      "day": 28,
+      "topic": "Slow & Fast Gear Drives",
+      "parts": "MECHATRONICS",
+      "desc": "Combining small and large gears for speed adjustments",
+      "test": "GEAR BOX SPEED"
+    },
+    {
+      "day": 29,
+      "topic": "3D Pen Cube Stencils",
+      "parts": "3D PRINTING",
+      "desc": "Joining flat square drawings into 3D boxes",
+      "test": "3D BOXES"
+    },
+    {
+      "day": 30,
+      "topic": "3D Pen Sculpture",
+      "parts": "3D PRINTING",
+      "desc": "Assembling stable animal skeletons",
+      "test": "WIREFRAME SCULPTING"
+    }
+  ],
+  "5": [
+    {
+      "day": 1,
+      "topic": "Score Calculator program",
+      "parts": "CODING",
+      "desc": "Collecting marks variables and printing averages",
+      "test": "AVERAGE MATH"
+    },
+    {
+      "day": 2,
+      "topic": "Voting Machine check",
+      "parts": "CODING",
+      "desc": "Conditional checks if age variable is 18 or above",
+      "test": "SIMPLE CHECKERS"
+    },
+    {
+      "day": 3,
+      "topic": "Catching Falling Objects",
+      "parts": "CODING",
+      "desc": "Score counts, random coordinates drop loops",
+      "test": "CATCH GAMES"
+    },
+    {
+      "day": 4,
+      "topic": "Virtual Shopping List",
+      "parts": "CODING",
+      "desc": "Storing items inside Scratch list arrays",
+      "test": "LIST BLOCKS"
+    },
+    {
+      "day": 5,
+      "topic": "Asteroids Splitting Clones",
+      "parts": "CODING",
+      "desc": "Spawning clone obstacles with random positions",
+      "test": "CLONE TRAJECTORIES"
+    },
+    {
+      "day": 6,
+      "topic": "📙",
+      "parts": "#",
+      "desc": "Class 5 — AI Principles & Active Circuits (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 7,
+      "topic": "Touch Trigger Transistor",
+      "parts": "ELECTRONICS",
+      "desc": "Body current switching NPN base lines",
+      "test": "TRANSISTOR SWITCHES"
+    },
+    {
+      "day": 8,
+      "topic": "Charge Storage Capacitor",
+      "parts": "ELECTRONICS",
+      "desc": "Storing energy and slowly discharging to dim LED",
+      "test": "ENERGY STORAGE"
+    },
+    {
+      "day": 9,
+      "topic": "Automatic Night Light",
+      "parts": "ELECTRONICS",
+      "desc": "LDR turning on LED automatically in the dark",
+      "test": "NIGHT LIGHTS"
+    },
+    {
+      "day": 10,
+      "topic": "Smart Emergency Light",
+      "parts": "ELECTRONICS",
+      "desc": "Transistor routing power when primary LDR goes dark",
+      "test": "EMERGENCY BACKUPS"
+    },
+    {
+      "day": 11,
+      "topic": "Police Siren Sounder",
+      "parts": "ELECTRONICS",
+      "desc": "Capacitor discharge timing a buzzer sweep",
+      "test": "SIREN ALARMS"
+    },
+    {
+      "day": 12,
+      "topic": "Darkness Alert Siren",
+      "parts": "ELECTRONICS",
+      "desc": "LDR resistance drops sounding emergency buzzers",
+      "test": "DARK ALARMS"
+    },
+    {
+      "day": 13,
+      "topic": "Sound Switch LED",
+      "parts": "ELECTRONICS",
+      "desc": "Clapping hands to trigger transistor switches",
+      "test": "SOUND SWITCHES"
+    },
+    {
+      "day": 14,
+      "topic": "H-Bridge Motor Swapper",
+      "parts": "ELECTRONICS",
+      "desc": "Double pole switch reversing DC motor spin direction",
+      "test": "DIRECTION CONTROLS"
+    },
+    {
+      "day": 15,
+      "topic": "Fan Speed Regulator",
+      "parts": "ELECTRONICS",
+      "desc": "Rotary dials adjusting voltages fed to DC motors",
+      "test": "SPEED CONTROLS"
+    },
+    {
+      "day": 16,
+      "topic": "Sound Level Indicators",
+      "parts": "ELECTRONICS",
+      "desc": "Series LEDs glowing based on mic sound volumes",
+      "test": "SOUND INDICATORS"
+    },
+    {
+      "day": 17,
+      "topic": "Fire Alarm Simulator",
+      "parts": "ELECTRONICS",
+      "desc": "Heat sensor resistance drop sounding alarm buzzers",
+      "test": "HEAT SENSORS"
+    },
+    {
+      "day": 18,
+      "topic": "Water Level Indicator",
+      "parts": "ELECTRONICS",
+      "desc": "Water bridging open wire ends to glow indicator LEDs",
+      "test": "LIQUID SENSORS"
+    },
+    {
+      "day": 19,
+      "topic": "Wiggle Crawling Bug",
+      "parts": "MECHATRONICS",
+      "desc": "Motor off-center weights driving structural bug limbs",
+      "test": "MOTOR BUGS"
+    },
+    {
+      "day": 20,
+      "topic": "Motorized Tractor Build",
+      "parts": "MECHATRONICS",
+      "desc": "Mounting AA cells, slider switches, and BO motors on a chassis",
+      "test": "TOY TRACTORS"
+    },
+    {
+      "day": 21,
+      "topic": "String Lift Winch",
+      "parts": "MECHATRONICS",
+      "desc": "Building rotating string drums to lift light keys",
+      "test": "WINCH MODELS"
+    },
+    {
+      "day": 22,
+      "topic": "Secret Dial Vault",
+      "parts": "MECHATRONICS",
+      "desc": "Interlocking cardboard wheels with gear notches",
+      "test": "GEAR LOCKS"
+    },
+    {
+      "day": 23,
+      "topic": "Drumming Robot Assembly",
+      "parts": "MECHATRONICS",
+      "desc": "Tuning cam alignments for custom tap rhythms",
+      "test": "CAM ADJUSTERS"
+    },
+    {
+      "day": 24,
+      "topic": "3D Pen Spinning Top",
+      "parts": "3D PRINTING",
+      "desc": "Perfect balance circles with a central spindle",
+      "test": "SPINNER MODELS"
+    },
+    {
+      "day": 25,
+      "topic": "3D Pen Sturdy Arch",
+      "parts": "3D PRINTING",
+      "desc": "Building interlocking load-bearing arches",
+      "test": "ARCH BUILDINGS"
+    },
+    {
+      "day": 26,
+      "topic": "Teachable Machine Game",
+      "parts": "AI",
+      "desc": "Training Scratch webcam to recognize Hand gestures",
+      "test": "GESTURE RECOG"
+    },
+    {
+      "day": 27,
+      "topic": "Visual Object Classifier",
+      "parts": "AI",
+      "desc": "Training models to recognize classroom items",
+      "test": "OBJECT CLASSIFIER"
+    },
+    {
+      "day": 28,
+      "topic": "Happy/Sad Text Tester",
+      "parts": "AI",
+      "desc": "Detecting emoji keywords to change background moods",
+      "test": "TEXT MOODS"
+    },
+    {
+      "day": 29,
+      "topic": "Voice Control Sprite",
+      "parts": "AI",
+      "desc": "Moving sprites up/down using mic speech triggers",
+      "test": "VOICE COMMANDS"
+    },
+    {
+      "day": 30,
+      "topic": "Language Translator bot",
+      "parts": "AI",
+      "desc": "Translating text variables to Spanish/French blocks",
+      "test": "LANGUAGE BOTS"
+    }
+  ],
+  "6": [
+    {
+      "day": 1,
+      "topic": "Personal Webpage HTML",
+      "parts": "CODING",
+      "desc": "Writing basic tags (h1, p, body, colors)",
+      "test": "HTML BASICS"
+    },
+    {
+      "day": 2,
+      "topic": "Webpage Multi-Pages",
+      "parts": "CODING",
+      "desc": "Adding anchors, images and menu bars to websites",
+      "test": "MULTI-PAGE HTML"
+    },
+    {
+      "day": 3,
+      "topic": "Webpage Layout Design",
+      "parts": "CODING",
+      "desc": "Div borders, background colors, text margins",
+      "test": "WEB STYLING"
+    },
+    {
+      "day": 4,
+      "topic": "Online Quiz Page",
+      "parts": "CODING",
+      "desc": "Button inputs triggering popup alert answers",
+      "test": "INTERACTIVE FORMS"
+    },
+    {
+      "day": 5,
+      "topic": "Arduino LED Blinker",
+      "parts": "ROBOTICS",
+      "desc": "Setting digital pin 13 to HIGH/LOW delay states",
+      "test": "ARDUINO BLINKS"
+    },
+    {
+      "day": 6,
+      "topic": "SOS Morse Code Siren",
+      "parts": "ROBOTICS",
+      "desc": "Delay pulses creating buzzer SOS flashes",
+      "test": "MORSE SIRENS"
+    },
+    {
+      "day": 7,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 6 — Embedded C++ & Web Basics (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 8,
+      "topic": "3 − Phase Traffic Lights",
+      "parts": "ROBOTICS",
+      "desc": "Red, yellow, green timing delay cycles",
+      "test": "TRAFFIC LIGHTS"
+    },
+    {
+      "day": 9,
+      "topic": "Light Theremin Sounder",
+      "parts": "ROBOTICS",
+      "desc": "LDR sensor changing pitch outputs of buzzers",
+      "test": "LIGHT INSTRUMENTS"
+    },
+    {
+      "day": 10,
+      "topic": "Laser Intruder Alarm",
+      "parts": "ROBOTICS",
+      "desc": "Laser pointer shining on LDR, buzzer sounds if broken",
+      "test": "LASER ALARMS"
+    },
+    {
+      "day": 11,
+      "topic": "Arduino Serial Monitor",
+      "parts": "ROBOTICS",
+      "desc": "Reading analog voltages and printing to laptop screen",
+      "test": "SERIAL LOGS"
+    },
+    {
+      "day": 12,
+      "topic": "Arduino Push Button Toggle",
+      "parts": "ROBOTICS",
+      "desc": "Arduino checking pin state to toggle LEDs",
+      "test": "BUTTON TOGGLES"
+    },
+    {
+      "day": 13,
+      "topic": "Police Alarms C++",
+      "parts": "ROBOTICS",
+      "desc": "Frequency sweeping buzzers inside Arduino loops",
+      "test": "C++ SOUNDERS"
+    },
+    {
+      "day": 14,
+      "topic": "Dial Servo Controller",
+      "parts": "ROBOTICS",
+      "desc": "Dial positions sweeping micro servos 0 to 180 degrees",
+      "test": "SERVOS DIAL"
+    },
+    {
+      "day": 15,
+      "topic": "Light-Sensitive LED",
+      "parts": "ROBOTICS",
+      "desc": "Arduino reading LDR values to turn on night lamp",
+      "test": "LIGHT LAMPS"
+    },
+    {
+      "day": 16,
+      "topic": "Digital Piano Keyboard",
+      "parts": "ROBOTICS",
+      "desc": "Interfacing push buttons to trigger specific tones",
+      "test": "PIANO KEYS"
+    },
+    {
+      "day": 17,
+      "topic": "Binary LED Display",
+      "parts": "ROBOTICS",
+      "desc": "3 digital pins showing numbers 0 to 7 in binary",
+      "test": "BINARY LEDS"
+    },
+    {
+      "day": 18,
+      "topic": "Slow Dimming Lamps",
+      "parts": "ROBOTICS",
+      "desc": "AnalogWrite PWM cycles fading LEDs",
+      "test": "LAMP DIMMING"
+    },
+    {
+      "day": 19,
+      "topic": "Plant Soil Monitor",
+      "parts": "ROBOTICS",
+      "desc": "Reading moisture sensor bounds, serial prints",
+      "test": "SOIL MONITORS"
+    },
+    {
+      "day": 20,
+      "topic": "Non-Blocking LED Blink",
+      "parts": "ROBOTICS",
+      "desc": "Double timers using simple C++ variables",
+      "test": "TIMING LOOPS"
+    },
+    {
+      "day": 21,
+      "topic": "3D Toy Name Plate",
+      "parts": "3D PRINTING",
+      "desc": "Tinkercad text shapes extruded on a base",
+      "test": "3D NAME PLATES"
+    },
+    {
+      "day": 22,
+      "topic": "3D Toy Pencil Cup",
+      "parts": "3D PRINTING",
+      "desc": "Designing hollow cylinder shapes in Tinkercad",
+      "test": "HOLLOW PRISMS"
+    },
+    {
+      "day": 23,
+      "topic": "3D Precision Nut-Bolt",
+      "parts": "3D PRINTING",
+      "desc": "Designing matching screw threading parameters",
+      "test": "PRECISION FITS"
+    },
+    {
+      "day": 24,
+      "topic": "3D Car Chassis Model",
+      "parts": "3D PRINTING",
+      "desc": "Assembling base plates, axles and wheels",
+      "test": "MODEL CARS"
+    },
+    {
+      "day": 25,
+      "topic": "3D Mechanical Gears",
+      "parts": "3D PRINTING",
+      "desc": "Designing matching teeth circles in Tinkercad",
+      "test": "GEAR MODELS"
+    },
+    {
+      "day": 26,
+      "topic": "Hand Gesture Counter",
+      "parts": "AI",
+      "desc": "Webcam AI counts raised fingers in Scratch",
+      "test": "VISUAL COUNTERS"
+    },
+    {
+      "day": 27,
+      "topic": "Smart Talking Assistant",
+      "parts": "AI",
+      "desc": "Text intents mapped to interactive answers in Scratch",
+      "test": "CHATBOT BASICS"
+    },
+    {
+      "day": 28,
+      "topic": "Webcam Paddle Game",
+      "parts": "AI",
+      "desc": "Game paddle tracking user nose location",
+      "test": "WEBCAM GAMES"
+    },
+    {
+      "day": 29,
+      "topic": "AI Spam Filter",
+      "parts": "AI",
+      "desc": "Supervised machine learning labels sorting text inputs",
+      "test": "SMART SORTING"
+    },
+    {
+      "day": 30,
+      "topic": "Self-Routing Sprite",
+      "parts": "AI",
+      "desc": "Pathfinding blocks routing sprite around maze walls",
+      "test": "SMART PATHS"
+    }
+  ],
+  "7": [
+    {
+      "day": 1,
+      "topic": "Python First Programs",
+      "parts": "PYTHON",
+      "desc": "Code syntax, print expressions, running scripts",
+      "test": "PYTHON BASICS"
+    },
+    {
+      "day": 2,
+      "topic": "Python Score Calculator",
+      "parts": "PYTHON",
+      "desc": "Variable comparisons, True/False outputs",
+      "test": "COMPARISON CODE"
+    },
+    {
+      "day": 3,
+      "topic": "Python Simple Calculator",
+      "parts": "PYTHON",
+      "desc": "Scripting math operations using user inputs",
+      "test": "CALCULATORS"
+    },
+    {
+      "day": 4,
+      "topic": "Python Guess Game",
+      "parts": "PYTHON",
+      "desc": "Guessing random numbers using simple while-loops",
+      "test": "NUMBER GAMES"
+    },
+    {
+      "day": 5,
+      "topic": "Python Shopping List",
+      "parts": "PYTHON",
+      "desc": "Append, pop, and search list items",
+      "test": "LISTS ARRAYS"
+    },
+    {
+      "day": 6,
+      "topic": "Python Grading System",
+      "parts": "PYTHON",
+      "desc": "Multi-conditional if-elif-else statements",
+      "test": "DECISION LOGIC"
+    },
+    {
+      "day": 7,
+      "topic": "Python Word Reverser",
+      "parts": "PYTHON",
+      "desc": "Loop algorithms reversing string characters",
+      "test": "WORD SPLICERS"
+    },
+    {
+      "day": 8,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 7 — Smart IoT & Ranging Sensors (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 9,
+      "topic": "Python Data Plotter",
+      "parts": "PYTHON",
+      "desc": "Matplotlib drawing line charts of temperature lists",
+      "test": "DATA CHARTS"
+    },
+    {
+      "day": 10,
+      "topic": "Ultrasonic Distance Meter",
+      "parts": "ROBOTICS",
+      "desc": "HC-SR04 sound wave reflection calculations",
+      "test": "DISTANCE METERS"
+    },
+    {
+      "day": 11,
+      "topic": "Blind Obstacle Stick",
+      "parts": "ROBOTICS",
+      "desc": "Buzzer warning sounds speed up as objects get closer",
+      "test": "SAFE STICKS"
+    },
+    {
+      "day": 12,
+      "topic": "Security Alarm Gate",
+      "parts": "ROBOTICS",
+      "desc": "IR break sensors triggering buzzer alarms",
+      "test": "IR BREAK GATES"
+    },
+    {
+      "day": 13,
+      "topic": "Soil Moisture Sensor",
+      "parts": "ROBOTICS",
+      "desc": "Reading soil voltage bounds and display values",
+      "test": "SOIL SENSORS"
+    },
+    {
+      "day": 14,
+      "topic": "Automated Drip Irrigation",
+      "parts": "ROBOTICS",
+      "desc": "Automatic water pump activation when soil goes dry",
+      "test": "SMART WATERING"
+    },
+    {
+      "day": 15,
+      "topic": "Motion Siren Security",
+      "parts": "ROBOTICS",
+      "desc": "IR motion modules triggering sweeping alarms",
+      "test": "MOTION SIRENS"
+    },
+    {
+      "day": 16,
+      "topic": "DHT11 Room Temperature",
+      "parts": "ROBOTICS",
+      "desc": "Reading digital sensors and displaying values",
+      "test": "TEMP SCREENS"
+    },
+    {
+      "day": 17,
+      "topic": "Sweep Servo Calibration",
+      "parts": "ROBOTICS",
+      "desc": "Speed control loops sweeping micro servos",
+      "test": "SERVO SWEEPS"
+    },
+    {
+      "day": 18,
+      "topic": "Breathing Mood Lamp",
+      "parts": "ROBOTICS",
+      "desc": "C++ loops smoothly shifting RGB color brightness",
+      "test": "MOOD LAMPS"
+    },
+    {
+      "day": 19,
+      "topic": "WiFi Smart Light Switch",
+      "parts": "IOT",
+      "desc": "Connecting phone browser to NodeMCU local web server",
+      "test": "WIFI SWITCHES"
+    },
+    {
+      "day": 20,
+      "topic": "IoT Smart Light Board",
+      "parts": "IOT",
+      "desc": "Toggling relay switch boards from local web dashboards",
+      "test": "SMART RELAYS"
+    },
+    {
+      "day": 21,
+      "topic": "IoT Weather Station",
+      "parts": "IOT",
+      "desc": "ESP8266 sending DHT11 data to online ThingSpeak dashboards",
+      "test": "CLOUD LOGGING"
+    },
+    {
+      "day": 22,
+      "topic": "IoT Plant Health Alert",
+      "parts": "IOT",
+      "desc": "Triggering email alerts when soil goes dry",
+      "test": "SOIL ALERTS"
+    },
+    {
+      "day": 23,
+      "topic": "IoT Motion Detector",
+      "parts": "IOT",
+      "desc": "Wireless motion triggers sending status alerts",
+      "test": "MOTION ALARMS"
+    },
+    {
+      "day": 24,
+      "topic": "OLED Screen Telemetry",
+      "parts": "IOT",
+      "desc": "Interfacing digital mini screens to print graphics",
+      "test": "OLED TELEMETRY"
+    },
+    {
+      "day": 25,
+      "topic": "Cloud Temperature Chart",
+      "parts": "IOT",
+      "desc": "DHT11 readings plotted on remote cloud feeds",
+      "test": "CLOUD FEEDS"
+    },
+    {
+      "day": 26,
+      "topic": "ESP8266 Local WiFi Hotspot",
+      "parts": "IOT",
+      "desc": "Creating standalone local networks without modems",
+      "test": "WIFI HOTSPOTS"
+    },
+    {
+      "day": 27,
+      "topic": "Wireless Program Upload",
+      "parts": "IOT",
+      "desc": "Over-the-air updates flashing code to ESP8266",
+      "test": "REMOTE UPLOADS"
+    },
+    {
+      "day": 28,
+      "topic": "Temp-Controlled Fan",
+      "parts": "IOT",
+      "desc": "Automatic relay fan activation if sensor goes hot",
+      "test": "TEMP FANS"
+    },
+    {
+      "day": 29,
+      "topic": "ESP8266 WiFi Toy Car",
+      "parts": "IOT",
+      "desc": "Slider values on phone browser driving DC motors",
+      "test": "PHONE CARS"
+    },
+    {
+      "day": 30,
+      "topic": "Mobile Dash Controls",
+      "parts": "IOT",
+      "desc": "Blynk mobile buttons toggling physical LED indicators",
+      "test": "MOBILE DASHBOARDS"
+    }
+  ],
+  "8": [
+    {
+      "day": 1,
+      "topic": "Python List Sorter",
+      "parts": "PYTHON",
+      "desc": "Appending items and using build-in lists methods",
+      "test": "LISTS SORTERS"
+    },
+    {
+      "day": 2,
+      "topic": "Python Stock Tracker",
+      "parts": "PYTHON",
+      "desc": "Storing item prices in key-value dictionaries",
+      "test": "DICTIONARIES"
+    },
+    {
+      "day": 3,
+      "topic": "Python Modular Code",
+      "parts": "PYTHON",
+      "desc": "Defining input variables and return statements",
+      "test": "MODULAR CODE"
+    },
+    {
+      "day": 4,
+      "topic": "Python Math Functions",
+      "parts": "PYTHON",
+      "desc": "Area, squareroot, and calculations loops",
+      "test": "MATH SCRIPTS"
+    },
+    {
+      "day": 5,
+      "topic": "Error Protection Loops",
+      "parts": "PYTHON",
+      "desc": "Using Try-Except loops to handle keyboard input errors",
+      "test": "EXCEPTION CODE"
+    },
+    {
+      "day": 6,
+      "topic": "Servo Angle Sweeper",
+      "parts": "ROBOTICS",
+      "desc": "Precision degree sweeps using micro servo loops",
+      "test": "SERVO CALIBRATE"
+    },
+    {
+      "day": 7,
+      "topic": "Motor Driver Board",
+      "parts": "ROBOTICS",
+      "desc": "Connecting BO motors and drivers for wheels",
+      "test": "MOTOR DRIVERS"
+    },
+    {
+      "day": 8,
+      "topic": "Bluetooth Remote Car",
+      "parts": "ROBOTICS",
+      "desc": "Phone bluetooth serial keys driving toy wheels",
+      "test": "BLUETOOTH CARS"
+    },
+    {
+      "day": 9,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 8 — Precision Robotics & AI NLP (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 10,
+      "topic": "Smoke Alert Fan",
+      "parts": "ROBOTICS",
+      "desc": "Gas sensor threshold sounding alarms and spinning fan",
+      "test": "SMOKE FANS"
+    },
+    {
+      "day": 11,
+      "topic": "Walking Biped Robot",
+      "parts": "ROBOTICS",
+      "desc": "Synchronizing two micro servos for walking gaits",
+      "test": "WALKERS"
+    },
+    {
+      "day": 12,
+      "topic": "Touchless Dustbin Lid",
+      "parts": "ROBOTICS",
+      "desc": "Hand wave near sensor triggers servo to open lid",
+      "test": "SMART DUSTBINS"
+    },
+    {
+      "day": 13,
+      "topic": "Smart Collision Avoider",
+      "parts": "ROBOTICS",
+      "desc": "Ultrasonic sensors steer car away from obstacles",
+      "test": "AVOID CARS"
+    },
+    {
+      "day": 14,
+      "topic": "Smart Line Follower",
+      "parts": "ROBOTICS",
+      "desc": "IR sensors tracking black tape paths on white floor",
+      "test": "LINE FOLLOWERS"
+    },
+    {
+      "day": 15,
+      "topic": "TV Remote Control Car",
+      "parts": "ROBOTICS",
+      "desc": "Standard TV remotes driving toy motor steps",
+      "test": "REMOTE CARS"
+    },
+    {
+      "day": 16,
+      "topic": "Neopixel LED Arrays",
+      "parts": "ROBOTICS",
+      "desc": "Addressable pixel rings flashing rainbow sweeps",
+      "test": "NEOPIXEL RINGS"
+    },
+    {
+      "day": 17,
+      "topic": "OTTO Walking Calibrator",
+      "parts": "ROBOTICS",
+      "desc": "Centering leg servo joints for stable posture",
+      "test": "OTTO CALIBRATION"
+    },
+    {
+      "day": 18,
+      "topic": "OTTO Walking Obstacles",
+      "parts": "ROBOTICS",
+      "desc": "Integrating distance alerts to walk backwards",
+      "test": "OTTO WAYPOINTS"
+    },
+    {
+      "day": 19,
+      "topic": "Digital Safe Keypad",
+      "parts": "ROBOTICS",
+      "desc": "Pin keys inputs matching password array to unlock",
+      "test": "KEYPADS SAFE"
+    },
+    {
+      "day": 20,
+      "topic": "Robotics Capstone Build",
+      "parts": "ROBOTICS",
+      "desc": "Bluetooth car chassis receiving webcam gesture controls",
+      "test": "AI CAPSTONE"
+    },
+    {
+      "day": 21,
+      "topic": "IoT Text Display Board",
+      "parts": "IOT",
+      "desc": "NodeMCU updating remote message lines on LCD",
+      "test": "WIRELESS LCDS"
+    },
+    {
+      "day": 22,
+      "topic": "ESP8266 Smart Notice LCD",
+      "parts": "IOT",
+      "desc": "Remote dashboard lines updating local LCD screens",
+      "test": "NOTICE SCREENS"
+    },
+    {
+      "day": 23,
+      "topic": "Cloud Farm Station",
+      "parts": "IOT",
+      "desc": "ThingSpeak logging light, moisture, and temp values",
+      "test": "CLOUD FARMS"
+    },
+    {
+      "day": 24,
+      "topic": "RFID Smart Entry Lock",
+      "parts": "IOT",
+      "desc": "Scanning RFID cards to unlock door servos",
+      "test": "RFID SECURITY"
+    },
+    {
+      "day": 25,
+      "topic": "Voice Smart Home",
+      "parts": "AI",
+      "desc": "Scratch voice commands toggling virtual bulbs",
+      "test": "VOICE SMART HOME"
+    },
+    {
+      "day": 26,
+      "topic": "Visual Trash Classifier",
+      "parts": "AI",
+      "desc": "Webcam AI sorting recycling vs organic items",
+      "test": "VISUAL CLASSIFIERS"
+    },
+    {
+      "day": 27,
+      "topic": "Scratch Mood Chatbot",
+      "parts": "AI",
+      "desc": "Text chat parsing keywords to change emoji faces",
+      "test": "CHATBOTS"
+    },
+    {
+      "day": 28,
+      "topic": "Visual Face Lock",
+      "parts": "AI",
+      "desc": "webcam AI comparing face embeds for vault door servo",
+      "test": "FACE VAULTS"
+    },
+    {
+      "day": 29,
+      "topic": "Multilingual Vocalist",
+      "parts": "AI",
+      "desc": "Text speaking translation blocks in Scratch",
+      "test": "TRANSLATION SPEAK"
+    },
+    {
+      "day": 30,
+      "topic": "Sound Controlled Game",
+      "parts": "AI",
+      "desc": "Game jump trigger based on mic loudness peaks",
+      "test": "MIC GAMES"
+    }
+  ],
+  "9": [
+    {
+      "day": 1,
+      "topic": "Python Input & Output",
+      "parts": "PYTHON",
+      "desc": "Storing user text values in variables, formatting prints",
+      "test": "BASIC IO"
+    },
+    {
+      "day": 2,
+      "topic": "Python Limit Checks",
+      "parts": "PYTHON",
+      "desc": "Comparing sensor input variable bounds with threshold",
+      "test": "COMPARISON LOGIC"
+    },
+    {
+      "day": 3,
+      "topic": "Python Data Loop averages",
+      "parts": "PYTHON",
+      "desc": "Repeating loops parsing temperature integer lists",
+      "test": "LOOP MATH"
+    },
+    {
+      "day": 4,
+      "topic": "Python Local Data Files",
+      "parts": "PYTHON",
+      "desc": "Writing lines of text measurements to disk files",
+      "test": "TEXT FILE WRITING"
+    },
+    {
+      "day": 5,
+      "topic": "Python Lift Simulator",
+      "parts": "PYTHON",
+      "desc": "Basic mathematical variables for flight parameters",
+      "test": "AVIONICS VARIABLES"
+    },
+    {
+      "day": 6,
+      "topic": "Python Telemetry Dictionaries",
+      "parts": "PYTHON",
+      "desc": "Storing key-value pairs of speed, height",
+      "test": "DATA DICTS"
+    },
+    {
+      "day": 7,
+      "topic": "Python Modular Flight Math",
+      "parts": "PYTHON",
+      "desc": "Writing simple functions calculating drone payloads",
+      "test": "FLIGHT FUNCTIONS"
+    },
+    {
+      "day": 8,
+      "topic": "Python Range Protection",
+      "parts": "PYTHON",
+      "desc": "Try-Except validation blocks checking invalid variables",
+      "test": "ERROR HANDLERS"
+    },
+    {
+      "day": 9,
+      "topic": "Python List Slices",
+      "parts": "PYTHON",
+      "desc": "Extracting segments of data arrays",
+      "test": "SLICING ARRAYS"
+    },
+    {
+      "day": 10,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 9 — Python & Additive Slicing (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 11,
+      "topic": "Arduino LCD Screen C++",
+      "parts": "ROBOTICS",
+      "desc": "Displaying speed, height values on I2C LCD lines",
+      "test": "LCD INTERFACES"
+    },
+    {
+      "day": 12,
+      "topic": "Arduino Neopixel Indicator",
+      "parts": "ROBOTICS",
+      "desc": "Changing RGB ring lights based on sensor distances",
+      "test": "VISUAL INDICATORS"
+    },
+    {
+      "day": 13,
+      "topic": "Arduino Collision Avoider",
+      "parts": "ROBOTICS",
+      "desc": "Ultrasonic sensors steering chassis motors away from walls",
+      "test": "AVOIDANCE CARS"
+    },
+    {
+      "day": 14,
+      "topic": "Arduino Bluetooth remote",
+      "parts": "ROBOTICS",
+      "desc": "Toggling output relays using Bluetooth phone keys",
+      "test": "BT CONTROLS"
+    },
+    {
+      "day": 15,
+      "topic": "Arduino Noise Level monitor",
+      "parts": "ROBOTICS",
+      "desc": "Glow series LEDs based on microphone peak signals",
+      "test": "SOUND DECIBELS"
+    },
+    {
+      "day": 16,
+      "topic": "Sun Tracker Panel",
+      "parts": "ROBOTICS",
+      "desc": "Light sensors driving servo to tilt toward flashlight",
+      "test": "SUN TRACKERS"
+    },
+    {
+      "day": 17,
+      "topic": "Servo Sweeper calibration",
+      "parts": "ROBOTICS",
+      "desc": "Calibrating micro servo travel limits, custom delays",
+      "test": "SERVO SWEEPS"
+    },
+    {
+      "day": 18,
+      "topic": "Security Keypad locks",
+      "parts": "ROBOTICS",
+      "desc": "Interfacing keypad pins to check codes against storage",
+      "test": "KEYPAD SECURITY"
+    },
+    {
+      "day": 19,
+      "topic": "OTTO Walk Calibration",
+      "parts": "ROBOTICS",
+      "desc": "Adjusting legs zero offsets, walk loops parameters",
+      "test": "BIPED GAITS"
+    },
+    {
+      "day": 20,
+      "topic": "Smart Assembly capstone",
+      "parts": "ROBOTICS",
+      "desc": "Mounting Arduino boards, servos, sensors into printed frames",
+      "test": "CUSTOM ASSEMBLIES"
+    },
+    {
+      "day": 21,
+      "topic": "Slicing Software Setup",
+      "parts": "3D PRINTING",
+      "desc": "Importing 3D bracket STL files, setting layer heights",
+      "test": "SLICING SOFTWARE"
+    },
+    {
+      "day": 22,
+      "topic": "3D Printer Bed Leveling",
+      "parts": "3D PRINTING",
+      "desc": "Bambu Lab nozzle temperatures, layer speeds PLA",
+      "test": "PRINTER SETUP"
+    },
+    {
+      "day": 23,
+      "topic": "3D Printed Parts Design",
+      "parts": "3D PRINTING",
+      "desc": "Drafting high strength structural plates in Tinkercad",
+      "test": "PARTS DESIGN"
+    },
+    {
+      "day": 24,
+      "topic": "3D Propeller Mounts",
+      "parts": "3D PRINTING",
+      "desc": "Printing replacement mounts with robust structural infills",
+      "test": "REPLACEMENT SPARES"
+    },
+    {
+      "day": 25,
+      "topic": "3D Printing Tree Supports",
+      "parts": "3D PRINTING",
+      "desc": "Enabling supports for overhanging structural models",
+      "test": "TREE SUPPORTS"
+    },
+    {
+      "day": 26,
+      "topic": "3D Print Filament Swapping",
+      "parts": "3D PRINTING",
+      "desc": "Performing dual-color model layers setup",
+      "test": "COLOR PRINTS"
+    },
+    {
+      "day": 27,
+      "topic": "3D Printed Airfoil Curved",
+      "parts": "3D PRINTING",
+      "desc": "Slicing and printing smooth wing models",
+      "test": "WING MODELS"
+    },
+    {
+      "day": 28,
+      "topic": "3D Toy Camera Pivot",
+      "parts": "3D PRINTING",
+      "desc": "Assembling rotating frames with manual locking pins",
+      "test": "CAMERA PIVOTS"
+    },
+    {
+      "day": 29,
+      "topic": "3D Battery Shell Guard",
+      "parts": "3D PRINTING",
+      "desc": "Printing lightweight clip-on structural protectors",
+      "test": "SHELL GUARDS"
+    },
+    {
+      "day": 30,
+      "topic": "AI Safety Guidelines",
+      "parts": "AI",
+      "desc": "Classroom discussion on ethical AI, data privacy limits",
+      "test": "AI ETHICS"
+    }
+  ],
+  "10": [
+    {
+      "day": 1,
+      "topic": "Web Camera Color Mask",
+      "parts": "PYTHON",
+      "desc": "Filtering green/red ranges in browser stream",
+      "test": "COLOR FILTERS"
+    },
+    {
+      "day": 2,
+      "topic": "Python Data Logs list",
+      "parts": "PYTHON",
+      "desc": "Writing sensor entries to text spreadsheets",
+      "test": "FILE LOGGING"
+    },
+    {
+      "day": 3,
+      "topic": "Python Weather Averages",
+      "parts": "PYTHON",
+      "desc": "Calculating mean temperatures from text records",
+      "test": "DATA AVERAGES"
+    },
+    {
+      "day": 4,
+      "topic": "Python Range Validator",
+      "parts": "PYTHON",
+      "desc": "Try-Except statements catching sensor float errors",
+      "test": "SAFE PROGRAMS"
+    },
+    {
+      "day": 5,
+      "topic": "Remote Steering Camera",
+      "parts": "ROBOTICS",
+      "desc": "Steering toy wheels toward tracked colored balls",
+      "test": "TRACKING VEHICLES"
+    },
+    {
+      "day": 6,
+      "topic": "Visual Security Alarm",
+      "parts": "ROBOTICS",
+      "desc": "Webcam motion sensor triggers buzzer siren alerts",
+      "test": "VISUAL ALARMS"
+    },
+    {
+      "day": 7,
+      "topic": "Arduino C++ LCD panel",
+      "parts": "ROBOTICS",
+      "desc": "Displaying real-time Edge AI coordinates on text lines",
+      "test": "LCD OUTPUTS"
+    },
+    {
+      "day": 8,
+      "topic": "Arduino C++ Alert Strips",
+      "parts": "ROBOTICS",
+      "desc": "RGB rings blinking warning signals based on camera signals",
+      "test": "LED WARNING"
+    },
+    {
+      "day": 9,
+      "topic": "Obstacle Avoidance Car",
+      "parts": "ROBOTICS",
+      "desc": "Dual IR sensor boards stopping car from hitting chairs",
+      "test": "SAFE MOBILITY"
+    },
+    {
+      "day": 10,
+      "topic": "Bluetooth Command parser",
+      "parts": "ROBOTICS",
+      "desc": "Decoding remote characters to toggle DC motors",
+      "test": "BT COMMANDS"
+    },
+    {
+      "day": 11,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 10 — Edge AI & Computer Vision (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 12,
+      "topic": "Biped Walking Calibrations",
+      "parts": "ROBOTICS",
+      "desc": "Aligning 4 hip-ankle joint servo frames",
+      "test": "BIPED CALIBRATES"
+    },
+    {
+      "day": 13,
+      "topic": "Edge AI Capstone Assembly",
+      "parts": "ROBOTICS",
+      "desc": "Edge camera serial coordinates driving toy steering",
+      "test": "AI CAPSTONE"
+    },
+    {
+      "day": 14,
+      "topic": "3D Helix DNA Model",
+      "parts": "3D PRINTING",
+      "desc": "Slicing and printing interlocking structural spirals",
+      "test": "DNA MODELS"
+    },
+    {
+      "day": 15,
+      "topic": "ESP32 − CAM WiFi video server",
+      "parts": "AI",
+      "desc": "Setting up wireless video feed local IP",
+      "test": "WIFI SERVERS"
+    },
+    {
+      "day": 16,
+      "topic": "ESP32 − CAM Color Tracking",
+      "parts": "AI",
+      "desc": "Detecting color blocks in video stream",
+      "test": "COLOR TRACKING"
+    },
+    {
+      "day": 17,
+      "topic": "Camera Target Centroid",
+      "parts": "AI",
+      "desc": "Finding X-Y coordinates of detected colored items",
+      "test": "CENTROID MAP"
+    },
+    {
+      "day": 18,
+      "topic": "Camera Face Identification",
+      "parts": "AI",
+      "desc": "Simple webcam profile data matching lock simulator",
+      "test": "FACE MATCHES"
+    },
+    {
+      "day": 19,
+      "topic": "Web-Based Face Recognition",
+      "parts": "AI",
+      "desc": "Webcam face lock triggers physical servo gate",
+      "test": "FACIAL SECURITY"
+    },
+    {
+      "day": 20,
+      "topic": "Simple Object Classifier",
+      "parts": "AI",
+      "desc": "Training models to trigger buzzer signals",
+      "test": "CLASSIFIER BUZZ"
+    },
+    {
+      "day": 21,
+      "topic": "AI Classroom Rules",
+      "parts": "AI",
+      "desc": "Discussion on deepfakes and responsible AI tools",
+      "test": "DIGITAL SAFETY"
+    },
+    {
+      "day": 22,
+      "topic": "ESP32 − CAM QR code log",
+      "parts": "AI",
+      "desc": "Printing decoded bar parameters on Serial screen",
+      "test": "QR READERS"
+    },
+    {
+      "day": 23,
+      "topic": "Camera Time-Lapse Capture",
+      "parts": "AI",
+      "desc": "Writing timed image snapshots to SD card files",
+      "test": "CAPTURE LOGS"
+    },
+    {
+      "day": 24,
+      "topic": "WiFi Camera Pan-Tilt servo",
+      "parts": "AI",
+      "desc": "Phone browser sliders tilting camera brackets",
+      "test": "PAN-TILT SERVOS"
+    },
+    {
+      "day": 25,
+      "topic": "Smart Interactive Target",
+      "parts": "AI",
+      "desc": "Pointing laser on webcam target to trigger sounds",
+      "test": "LASER TARGETS"
+    },
+    {
+      "day": 26,
+      "topic": "Gesture Target Counter",
+      "parts": "AI",
+      "desc": "Drawing boxes around hand gesture targets in video",
+      "test": "VISUAL HAND GESTURES"
+    },
+    {
+      "day": 27,
+      "topic": "Target Tracking telemetry",
+      "parts": "AI",
+      "desc": "Serial printing target coordinates to monitor",
+      "test": "TRACKING COORDINATES"
+    },
+    {
+      "day": 28,
+      "topic": "Edge AI Alarm Trigger",
+      "parts": "AI",
+      "desc": "Sounding buzzers when camera registers unexpected movement",
+      "test": "PROXIMITY CAMERAS"
+    },
+    {
+      "day": 29,
+      "topic": "Camera Sleep optimization",
+      "parts": "AI",
+      "desc": "Sleep mode pin triggers to save battery current",
+      "test": "CAMERA SLEEP"
+    },
+    {
+      "day": 30,
+      "topic": "Web AI Inventory Scanner",
+      "parts": "AI",
+      "desc": "Counting specific items passed in front of webcam",
+      "test": "VISUAL INVENTORY"
+    }
+  ],
+  "11": [
+    {
+      "day": 1,
+      "topic": "Python Waypoint Lists",
+      "parts": "PYTHON",
+      "desc": "Creating coordinate lists for virtual missions",
+      "test": "WAYPOINT LISTS"
+    },
+    {
+      "day": 2,
+      "topic": "Python Flight Logger",
+      "parts": "PYTHON",
+      "desc": "Storing speed and height variables inside data logs",
+      "test": "FLIGHT LOGS"
+    },
+    {
+      "day": 3,
+      "topic": "Python Flight Graphs",
+      "parts": "PYTHON",
+      "desc": "Drawing height charts using simple lists plots",
+      "test": "FLIGHT GRAPHS"
+    },
+    {
+      "day": 4,
+      "topic": "3D Propeller Guards",
+      "parts": "3D PRINTING",
+      "desc": "Printing impact-resistant TPU propeller covers",
+      "test": "PROP GUARDS"
+    },
+    {
+      "day": 5,
+      "topic": "3D Print Airframe spares",
+      "parts": "3D PRINTING",
+      "desc": "Slicing replacement arm landing legs, structural strength",
+      "test": "AIRFRAME SPARES"
+    },
+    {
+      "day": 6,
+      "topic": "3D Printed GoPro mounts",
+      "parts": "3D PRINTING",
+      "desc": "Lightweight camera brackets, custom TPU tilts",
+      "test": "CAMERA BRACKETS"
+    },
+    {
+      "day": 7,
+      "topic": "3D Printed Accessories",
+      "parts": "3D PRINTING",
+      "desc": "Lightweight wire clip protectors, landing pads",
+      "test": "CLIP PROTECTORS"
+    },
+    {
+      "day": 8,
+      "topic": "Leg Extension prints",
+      "parts": "3D PRINTING",
+      "desc": "Extruded replacement legs, weight balance check",
+      "test": "LEG EXTENSIONS"
+    },
+    {
+      "day": 9,
+      "topic": "3D Printed Drone Frame assembly",
+      "parts": "DRONE",
+      "desc": "Quadcopter frame components: lightweight 3D printed whoop frame, motor mounting slots, component placement.",
+      "test": "DRONE PARTS"
+    },
+    {
+      "day": 10,
+      "topic": "Brushed Motor plug-ins",
+      "parts": "DRONE",
+      "desc": "Connecting brushed coreless motor plugs to flight board sockets",
+      "test": "MOTOR DRIVER CONTROLS"
+    },
+    {
+      "day": 11,
+      "topic": "Custom Flight Controller assembly",
+      "parts": "DRONE",
+      "desc": "Assembling the custom flight controller: connecting ESP32 DevKit V1, MPU6050 sensor, and Motor Driver PCB on a breadboard or pre-soldered board.",
+      "test": "FLIGHT CONTROLLERS"
+    },
+    {
+      "day": 12,
+      "topic": "📘",
+      "parts": "#",
+      "desc": "Class 11 — Avionics & Autonomous Drones (30 Topics)",
+      "test": "TOPIC / PROJECT NAME"
+    },
+    {
+      "day": 13,
+      "topic": "Drone Safe Flying Rules",
+      "parts": "DRONE",
+      "desc": "Altitude limits, safe hover areas, local flight regulations",
+      "test": "SAFE FLIGHTS"
+    },
+    {
+      "day": 14,
+      "topic": "Power Management & Step-up conversion",
+      "parts": "DRONE",
+      "desc": "Wiring the MT3608 boost converter to step up 3.7V LiPo battery voltage to 5V for powering the ESP32 stably.",
+      "test": "VIDEO SCREENS"
+    },
+    {
+      "day": 15,
+      "topic": "Safe Tethered Hover check",
+      "parts": "DRONE",
+      "desc": "Low-altitude tether ropes, throttle balance tests",
+      "test": "HOVER BASICS"
+    },
+    {
+      "day": 16,
+      "topic": "Propeller Aerodynamics",
+      "parts": "DRONE",
+      "desc": "Mounting CW and CCW 65mm propellers, identifying motor rotation directions, thrust generation principles.",
+      "test": "AERIAL PHOTOS"
+    },
+    {
+      "day": 17,
+      "topic": "Drone Air Space Rules",
+      "parts": "DRONE",
+      "desc": "Classroom safety, local aviation rules, emergency cutoffs",
+      "test": "AIR ETHICS"
+    },
+    {
+      "day": 18,
+      "topic": "Motor Driver wiring",
+      "parts": "DRONE",
+      "desc": "Wiring the pre-built Motor Driver PCB to the ESP32 PWM pins and connecting coreless brushed motors.",
+      "test": "BOARD PINOUTS"
+    },
+    {
+      "day": 19,
+      "topic": "Flight Controller configuration",
+      "parts": "DRONE",
+      "desc": "Configuring motor directions and rate limits via software",
+      "test": "MOTOR CONFIGURATIONS"
+    },
+    {
+      "day": 20,
+      "topic": "Software Arming & Safety",
+      "parts": "DRONE",
+      "desc": "Implementing a software arming switch in the mobile app UI to prevent accidental motor spin-ups.",
+      "test": "SAFE ARMING"
+    },
+    {
+      "day": 21,
+      "topic": "Drone Failsafe cutoffs",
+      "parts": "DRONE",
+      "desc": "Automatic motor shutdown checks when signals are lost",
+      "test": "SAFE DEFAULTS"
+    },
+    {
+      "day": 22,
+      "topic": "Battery Level Sirens",
+      "parts": "DRONE",
+      "desc": "Connecting low voltage warning sensors to buzzers",
+      "test": "LOW BATTERY"
+    },
+    {
+      "day": 23,
+      "topic": "Flight Gyroscope basics",
+      "parts": "DRONE",
+      "desc": "Understanding angular rates and drone tilt sensors",
+      "test": "GYRO SENSORS"
+    },
+    {
+      "day": 24,
+      "topic": "PID Stabilization - Roll & Pitch",
+      "parts": "DRONE",
+      "desc": "Coding a Proportional-Integral- Derivative control loop to stabilize roll and pitch angles using MPU6050 data.",
+      "test": "VTX CONFIG"
+    },
+    {
+      "day": 25,
+      "topic": "PID Stabilization - Yaw & Altitude",
+      "parts": "DRONE",
+      "desc": "Tuning yaw rate controls and manual altitude throttle mapping for stable hover.",
+      "test": "ALTITUDE HOLDS"
+    },
+    {
+      "day": 26,
+      "topic": "Wi-Fi Control Setup",
+      "parts": "DRONE",
+      "desc": "Configuring ESP32 as a WiFi Access Point and parsing UDP control packets received from the mobile app.",
+      "test": "GPS SATELLITES"
+    },
+    {
+      "day": 27,
+      "topic": "Madgwick AHRS Sensor Fusion",
+      "parts": "DRONE",
+      "desc": "Implementing the Madgwick filter algorithm to fuse accelerometer and gyroscope readings for precise tilt angle estimation.",
+      "test": "DRIFT SENSOR"
+    },
+    {
+      "day": 28,
+      "topic": "Sensor Calibration & Trimming",
+      "parts": "DRONE",
+      "desc": "Accelerometer and gyro calibrations, drift trim settings",
+      "test": "COMPASS SWEEPS"
+    },
+    {
+      "day": 29,
+      "topic": "Serial Telemetry & PID Tuning",
+      "parts": "DRONE",
+      "desc": "Streaming real-time flight telemetry variables to a PC serial monitor for PID tuning and diagnostics.",
+      "test": "FLIGHT DIAGNOSIS"
+    },
+    {
+      "day": 30,
+      "topic": "Drone Capstone Mission",
+      "parts": "DRONE",
+      "desc": "Fully manual safe arming, hover, flight loops and land",
+      "test": "DRONE CAPSTONE"
+    }
+  ]
+}

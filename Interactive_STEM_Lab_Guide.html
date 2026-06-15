@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satpuda STEM Lab — Interactive Scaling & Deployment Guide</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg: #070913;
+      --card-bg: rgba(16, 22, 38, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-bg: rgba(25, 33, 56, 0.9);
+      --card-hover-border: rgba(255, 255, 255, 0.18);
+      
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --purple: #8b5cf6;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --grey: #64748b;
+      
+      --glow-cyan: rgba(6, 182, 212, 0.15);
+      --glow-green: rgba(16, 185, 129, 0.15);
+      --glow-yellow: rgba(245, 158, 11, 0.15);
+      --glow-purple: rgba(139, 92, 246, 0.15);
+      --glow-red: rgba(239, 68, 68, 0.15);
+      --glow-blue: rgba(59, 130, 246, 0.15);
+      --glow-grey: rgba(100, 116, 139, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-bottom: 3rem;
+    }
+
+    .container { max-width: 1300px; margin: 0 auto; padding: 1.5rem; }
+
+    header {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    header::before {
+      content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%); pointer-events: none;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2); padding: 6px 16px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 1.2rem;
+    }
+    header h1 {
+      font-family: 'Outfit', sans-serif; font-size: 2.6rem; font-weight: 900; letter-spacing: -0.02em;
+      line-height: 1.2; background: linear-gradient(135deg, #ffffff 30%, #94a3b8 70%, var(--cyan) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+    }
+    header p { color: var(--text-muted); font-size: 1.1rem; max-width: 850px; line-height: 1.6; }
+
+    .nav-tabs {
+      display: flex; gap: 0.8rem; margin-bottom: 2rem; border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.8rem; flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: transparent; border: 1px solid transparent; color: var(--text-muted);
+      padding: 0.8rem 1.4rem; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700;
+      border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 0.6rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(255, 255, 255, 0.03); }
+    .tab-btn.active {
+      color: #fff; background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.08);
+    }
+
+    .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .glass-card {
+      background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;
+      padding: 2rem; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); transition: border-color 0.3s;
+    }
+    .glass-card:hover { border-color: rgba(255, 255, 255, 0.12); }
+    .glass-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 1.2rem; color: #fff; display: flex; align-items: center; gap: 0.6rem; }
+    .text-glow-cyan { text-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
+
+    /* Matrix Table Styling */
+    .matrix-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .matrix-table th { background: rgba(255,255,255,0.05); color: var(--cyan); text-align: left; padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.05em; border-bottom: 2px solid var(--card-border); }
+    .matrix-table td { padding: 1rem; border-bottom: 1px solid var(--card-border); font-size: 0.9rem; color: #fff; }
+    .matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .matrix-table td.muted { color: var(--text-muted); font-size: 0.85rem; }
+
+    .box-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 700; font-size: 0.75rem; border: 1px solid transparent; cursor: pointer; transition: all 0.2s; }
+    .box-badge:hover { transform: translateY(-2px); filter: brightness(1.2); }
+    .box-badge.yellow { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--yellow); }
+    .box-badge.blue { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--blue); }
+    .box-badge.green { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--green); }
+    .box-badge.red { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: var(--red); }
+    .box-badge.purple { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--purple); }
+    .box-badge.grey { background: rgba(100,116,139,0.1); border-color: rgba(100,116,139,0.3); color: var(--text-muted); }
+    
+    /* Modal Styles */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+    .modal-content { background: var(--card-bg); border: 1px solid var(--cyan); width: 90%; max-width: 600px; border-radius: 16px; padding: 2rem; position: relative; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 30px rgba(6,182,212,0.2); }
+    .modal-close { position: absolute; top: 1rem; right: 1.5rem; color: var(--text-muted); cursor: pointer; font-size: 1.8rem; line-height: 1; }
+    .modal-close:hover { color: #fff; }
+    .modal-item-row { display: flex; flex-direction: column; gap: 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.8rem 0; }
+    .modal-item-name { font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .modal-item-desc { font-size: 0.8rem; color: var(--text-secondary); }
+    .modal-item-qty { font-size: 0.8rem; color: var(--cyan); font-weight: 800; display: inline-block; background: rgba(6,182,212,0.1); padding: 1px 6px; border-radius: 4px; margin-top: 0.2rem; align-self: flex-start; }
+
+    /* Budget Breakdown Grid */
+    .budget-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .budget-metric { background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+    .budget-metric .val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900; color: var(--cyan); margin-bottom: 0.3rem; }
+    .budget-metric .lbl { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* Visualizer Layout */
+    .visualizer-layout { display: grid; grid-template-columns: 1fr 2.2fr; gap: 2rem; }
+    .box-selector-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .box-selector-btn { width: 100%; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; color: var(--text); cursor: pointer; text-align: left; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; transition: all 0.2s ease; }
+    .box-selector-btn:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.15); transform: translateX(3px); }
+    .box-selector-btn .color-indicator { display: flex; align-items: center; gap: 0.8rem; }
+    .color-dot { width: 14px; height: 14px; border-radius: 4px; }
+    .box-selector-btn.active { background: rgba(255, 255, 255, 0.04); border-color: var(--box-accent); box-shadow: 0 0 15px var(--box-glow); }
+    .box-selector-btn.active .name { color: var(--box-accent); }
+
+    .box-grid-display { background: rgba(0, 0, 0, 0.3); border: 2px solid var(--box-accent); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative; }
+    .box-grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.8rem; }
+    .box-grid-header h4 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: #fff; }
+    .box-row-container { display: flex; flex-direction: column; gap: 0.6rem; }
+    .grid-row-header { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--box-accent); margin-bottom: 0.1rem; }
+    .grid-cells-row { display: flex; gap: 0.6rem; width: 100%; }
+    .grid-cell { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 100px; cursor: pointer; transition: all 0.2s ease; position: relative; }
+    .grid-cell:hover { background: var(--card-hover-bg); border-color: var(--box-accent); transform: scale(1.02); }
+    .grid-cell.active { background: rgba(255, 255, 255, 0.04); border-color: var(--box-accent); box-shadow: inset 0 0 10px var(--box-glow); }
+    .grid-cell .coord { font-size: 0.52rem; font-weight: 800; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1px 4px; border-radius: 3px; margin-bottom: 0.4rem; color: var(--box-accent); }
+    .grid-cell .item-name { font-size: 0.78rem; font-weight: 700; line-height: 1.3; color: #fff; }
+    .grid-cell .item-qty { font-size: 0.72rem; font-weight: 800; color: var(--box-accent); background: rgba(255, 255, 255, 0.03); padding: 1px 6px; border-radius: 4px; margin-top: 0.3rem; border: 1px solid rgba(255, 255, 255, 0.04); }
+    
+    .w-1 { flex: 1; } .w-2 { flex: 2; } .w-3 { flex: 3; } .w-4 { flex: 4; } .w-5 { flex: 5; }
+
+    .compartment-details { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.5rem; min-height: 180px; }
+    .details-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-dim); text-align: center; padding: 2rem 0; }
+    .details-placeholder i { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
+    .details-item h5 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+    .details-item p { font-size: 0.9rem; font-weight: 700; color: #fff; }
+    .details-item.accent p { color: var(--box-accent); }
+
+    /* Curriculum Explorer */
+    .curriculum-filters { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .class-tabs-row { display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.4rem; flex-grow: 1; }
+    .class-tab-chip { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+    .class-tab-chip:hover { background: rgba(255, 255, 255, 0.04); color: #fff; }
+    .class-tab-chip.active { background: var(--cyan); border-color: var(--cyan); color: #fff; box-shadow: 0 0 10px rgba(6,182,212,0.4); }
+    .search-wrap { display: flex; align-items: center; gap: 0.5rem; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--card-border); border-radius: 10px; padding: 0.5rem 0.8rem; min-width: 250px; }
+    .search-wrap i { color: var(--text-dim); font-size: 0.85rem; }
+    .search-wrap input { background: transparent; border: none; outline: none; color: #fff; font-size: 0.85rem; width: 100%; }
+
+    .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .day-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; transition: all 0.25s; }
+    .day-card:hover { border-color: var(--cyan); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(6,182,212,0.1); }
+    .day-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+    .day-chip { font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 5px; letter-spacing: 0.05em; background: rgba(6,182,212,0.1); color: var(--cyan); }
+    .day-num { font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+    .day-title { font-size: 0.95rem; font-weight: 750; color: #fff; margin-bottom: 0.4rem; line-height: 1.3; }
+    .day-desc { font-size: 0.76rem; color: var(--text-secondary); line-height: 1.45; margin-bottom: 0.8rem; }
+    .day-footer { border-top: 1px solid rgba(255,255,255,0.03); margin-top: auto; padding-top: 0.5rem; font-size: 0.68rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.3rem; }
+
+    /* Team Section */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .team-card { background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.5rem; text-align: center; }
+    .team-card h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: #fff; margin-bottom: 0.2rem; }
+    .team-card p { font-size: 0.8rem; color: var(--cyan); font-weight: 700; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand-pill"><i class="fas fa-satellite-dish"></i> Connect Shiksha — Satpuda Valley Project 2026</div>
+      <h1>STEM Tinkering Lab Console</h1>
+      <p>Centralized Curriculum Database (300 Topics), 4-Box Category Visualizer, Scale-up Allocation Matrix, Budget Breakdown, and Technical Proposal details mapped to NEP 2020 guidelines.</p>
+    </header>
+
+    <!-- BOX MODAL -->
+    <div id="boxModal" class="modal-overlay" onclick="if(event.target==this) this.style.display='none'">
+      <div class="modal-content" id="modalContentBlock">
+        <span class="modal-close" onclick="document.getElementById('boxModal').style.display='none'">&times;</span>
+        <h2 id="modalTitle" style="margin-bottom: 0.5rem; font-family:'Outfit'; color:var(--cyan);">Box Name</h2>
+        <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom: 1.5rem;">Below is the complete inventory inside this container.</p>
+        <div id="modalItemsList" style="display: flex; flex-direction: column;"></div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('tab-schedule')"><i class="fas fa-calendar-alt"></i> Lab Schedule & Flow</button>
+      <button class="tab-btn" onclick="switchTab('tab-boxes')"><i class="fas fa-box"></i> Box Maps</button>
+      <button class="tab-btn" onclick="switchTab('tab-distribution')"><i class="fas fa-sitemap"></i> Kit Distribution</button>
+      <button class="tab-btn" onclick="switchTab('tab-curriculum')"><i class="fas fa-book-open"></i> Syllabus (300 Topics)</button>
+      <button class="tab-btn" onclick="switchTab('tab-proposal')"><i class="fas fa-file-invoice-dollar"></i> Budget & Proposal</button>
+    </div>
+
+    <!-- TAB: CURRICULUM EXPLORER -->
+    <div id="tab-curriculum" class="tab-panel">
+      
+      <!-- LECTURE FLOW SECTION -->
+      <div class="glass-card" style="margin-bottom: 2rem; border-left: 4px solid var(--cyan);">
+        <h3 style="font-family:'Outfit'; font-size:1.4rem; color:var(--cyan); margin-bottom: 1rem;"><i class="fas fa-stopwatch"></i> Standard 40-Minute Lecture Flow</h3>
+        <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom: 1rem;">To ensure active engagement and practical learning, every STEM class strictly follows this optimized 40-minute structure:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem; border-radius: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 4rem; color: var(--yellow);"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h4 style="color: var(--yellow); font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-clock"></i> 10 Mins</h4>
+            <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 0.3rem;">Conceptual Briefing</h5>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Teacher explains the daily mechanism, electronic concept, or logic block using the whiteboard.</p>
+          </div>
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem; border-radius: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 4rem; color: var(--blue);"><i class="fas fa-tools"></i></div>
+            <h4 style="color: var(--blue); font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-clock"></i> 25 Mins</h4>
+            <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 0.3rem;">Hands-On Lab Work</h5>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Students work in teams of 3 to assemble the hardware, configure the code, and test the active build.</p>
+          </div>
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem; border-radius: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 4rem; color: var(--green);"><i class="fas fa-check-double"></i></div>
+            <h4 style="color: var(--green); font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-clock"></i> 5 Mins</h4>
+            <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 0.3rem;">Verification & Clean-up</h5>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Check outputs using diagnostic checks and organize all kit components back into their boxes safely.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="curriculum-filters">
+        <span class="filter-label" style="font-weight:700; font-size:0.85rem; color:var(--text-muted)"><i class="fas fa-filter"></i> CLASS:</span>
+        <div class="class-tabs-row">
+          <span class="class-tab-chip active" onclick="filterClass(2)">Class 2</span>
+          <span class="class-tab-chip" onclick="filterClass(3)">Class 3</span>
+          <span class="class-tab-chip" onclick="filterClass(4)">Class 4</span>
+          <span class="class-tab-chip" onclick="filterClass(5)">Class 5</span>
+          <span class="class-tab-chip" onclick="filterClass(6)">Class 6</span>
+          <span class="class-tab-chip" onclick="filterClass(7)">Class 7</span>
+          <span class="class-tab-chip" onclick="filterClass(8)">Class 8</span>
+          <span class="class-tab-chip" onclick="filterClass(9)">Class 9</span>
+          <span class="class-tab-chip" onclick="filterClass(10)">Class 10</span>
+          <span class="class-tab-chip" onclick="filterClass(11)">Class 11</span>
+        </div>
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="curriculum-search" placeholder="Search topics, domains..." oninput="searchCurriculum()">
+        </div>
+      </div>
+      <div class="days-grid" id="curriculum-days-target"></div>
+    </div>
+
+    <!-- TAB: BOX COMPARTMENTS -->
+    <div id="tab-boxes" class="tab-panel">
+      <div class="visualizer-layout">
+        <div>
+          <h3 style="font-family:'Outfit', sans-serif; font-size:1.2rem; margin-bottom:1rem; color:#fff"><i class="fas fa-layer-group"></i> Box Categories (10 Sets Each)</h3>
+          <div class="box-selector-list">
+            <button class="box-selector-btn active" onclick="loadBoxGrid('boxA')" style="--box-accent: var(--yellow); --box-glow: var(--glow-yellow)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--yellow)"></span> <span class="name">Box A: Mechatronics</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="box-selector-btn" onclick="loadBoxGrid('boxB')" style="--box-accent: var(--blue); --box-glow: var(--glow-blue)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--blue)"></span> <span class="name">Box B: Basic Electronics</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="box-selector-btn" onclick="loadBoxGrid('boxC')" style="--box-accent: var(--green); --box-glow: var(--glow-green)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--green)"></span> <span class="name">Box C: Advanced IoT & Sensors</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="box-selector-btn" onclick="loadBoxGrid('boxD')" style="--box-accent: var(--red); --box-glow: var(--glow-red)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--red)"></span> <span class="name">Box D: Drone Assembly</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="box-selector-btn" onclick="loadBoxGrid('binE')" style="--box-accent: var(--grey); --box-glow: var(--glow-grey)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--grey)"></span> <span class="name">Bin E: Teacher Vault (Grey)</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="box-selector-btn" onclick="loadBoxGrid('boxF')" style="--box-accent: var(--purple); --box-glow: var(--glow-purple)">
+              <span class="color-indicator"><span class="color-dot" style="background:var(--purple)"></span> <span class="name">Box F: Lab Safety & Consumables</span></span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="box-grid-display" id="box-grid-frame" style="--box-accent: var(--yellow); --box-glow: var(--glow-yellow)">
+            <div class="box-grid-header">
+              <h4 id="box-grid-title">Box A: Mechatronics Compartment Map</h4>
+              <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700;">Zero Contamination Audit System</span>
+            </div>
+            <div class="box-row-container" id="grid-rows-target"></div>
+          </div>
+          <div class="compartment-details" id="compartment-details-box">
+            <div class="details-placeholder">
+              <i class="fas fa-info-circle"></i>
+              <p>Click any compartment slot above to view detailed sourcing specifications and quantities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: DISTRIBUTION MATRIX -->
+    <div id="tab-distribution" class="tab-panel">
+      
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family:'Outfit'; font-size:1.8rem; margin-bottom: 0.5rem;">Lab Deployment Strategies</h2>
+        <p style="color:var(--text-muted);">Choose the deployment model that best fits your school's budget and operational preferences. Below are the two strategies detailing how kits are distributed and why.</p>
+      </div>
+
+      <div class="glass-card" style="margin-bottom: 2rem; border-left: 4px solid var(--blue);">
+        <h3><i class="fas fa-coins text-glow-cyan" style="color:var(--blue)"></i> Option 1: Hybrid Sharing Model (Budget-Optimized)</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;"><strong>Why this model?</strong> This is the standard, cost-effective approach. Instead of duplicating base electronics (Arduino, Breadboards, Motors) across all kits, we keep them strictly in Box B. When senior classes (Class 6, 8, 9) build advanced projects, they check out Box B (Base) + Box C (Sensors). This keeps the total kit count at exactly 40 and strictly controls the lab setup budget.</p>
+        
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th width="10%">Class</th>
+              <th width="25%">Syllabus Module</th>
+              <th width="25%">Required Workbench Box</th>
+              <th width="40%">Teacher Vault Checkout Items</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Class 2</b></td><td>Junior Mechatronics Linkages</td><td><span class="box-badge yellow" onclick="showBoxModal('boxA')">📦 Box A (Structural)</span></td><td class="muted">None.</td></tr>
+            <tr><td><b>Class 3</b></td><td>Block Coding & 3D Drafting</td><td><span class="box-badge yellow" onclick="showBoxModal('boxA')">📦 Box A (Structural)</span></td><td class="muted">3D Pen + PLA filaments.</td></tr>
+            <tr><td><b>Class 4</b></td><td>Scratch Level 2 & Circuit Laws</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B (Basic Electronics)</span></td><td class="muted">Multimeter.</td></tr>
+            <tr><td><b>Class 5</b></td><td>AI Principles & Active Circuits</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B (Basic Electronics)</span></td><td class="muted">ESP32 + webcam.</td></tr>
+            <tr><td><b>Class 6</b></td><td>Embedded C++ & Web Basics</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B</span> + <span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C</span></td><td class="muted">Base (Box B) + Sensors (Box C).</td></tr>
+            <tr><td><b>Class 7</b></td><td>Smart IoT & Ranging Sensors</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Sensors & IoT)</span></td><td class="muted">NodeMCU programmer modules.</td></tr>
+            <tr><td><b>Class 8</b></td><td>Precision Robotics & AI NLP</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B</span> + <span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C</span></td><td class="muted">ESP32 (Vault) + Drivers (Box B) + Sensors (Box C).</td></tr>
+            <tr><td><b>Class 9</b></td><td>Python & Additive Slicing</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B</span> + <span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C</span></td><td class="muted">Bambu Lab P1S 3D Printer.</td></tr>
+            <tr><td><b>Class 10</b></td><td>Edge AI & Computer Vision</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Sensors & IoT)</span></td><td class="muted">ESP32-CAM + Programmer.</td></tr>
+            <tr><td><b>Class 11</b></td><td>Avionics & Autonomous Drones</td><td><span class="box-badge red" onclick="showBoxModal('boxD')">📦 Box D (Drone Assembly)</span></td><td class="muted">3S LiPo + Radio controller.</td></tr>
+            <tr style="background:rgba(139,92,246,0.1);"><td><b>All Classes</b></td><td>Safety & Tools Base</td><td><span class="box-badge purple" onclick="showBoxModal('boxF')">📦 Box F (Safety & Consumables)</span></td><td class="muted">Available at all times for tools & glue.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="glass-card" style="border-left: 4px solid var(--green);">
+        <h3><i class="fas fa-box-open text-glow-cyan" style="color:var(--green)"></i> Option 2: Universal Box Model (High-Convenience)</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;"><strong>Why this model?</strong> In this premium approach, we upgrade Box C to be a fully independent "Universal IoT Kit" by adding base electronics directly into it. Students in Class 6 through 10 only need to manage a single box on their desk, preventing clutter and saving class setup time. <br><em>Note: Adds approx. ₹1,500 - ₹2,000 per Box C (Total lab budget increases by approx. +₹20k).</em></p>
+        
+        <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem;">
+          <h4 style="font-size:0.85rem; color:var(--green); margin-bottom:0.5rem; text-transform:uppercase;">✨ Universal Box C Upgrades (Added Components):</h4>
+          <ul style="font-size:0.85rem; color:#fff; margin-left: 1.5rem;">
+            <li>1x Arduino Uno R3 + 1x Solderless Breadboard (830 pin)</li>
+            <li>2x BO Gear Motors + 2x Wheels + 1x Motor Driver (L298N)</li>
+            <li>Jumper Wires, LEDs, and Resistors Pack</li>
+          </ul>
+        </div>
+
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th width="10%">Class</th>
+              <th width="25%">Syllabus Module</th>
+              <th width="25%">Required Workbench Box</th>
+              <th width="40%">Operational Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Class 2 & 3</b></td><td>Mechatronics & 3D</td><td><span class="box-badge yellow" onclick="showBoxModal('boxA')">📦 Box A</span></td><td class="muted">Standard setup.</td></tr>
+            <tr><td><b>Class 4 & 5</b></td><td>Basic Electronics</td><td><span class="box-badge blue" onclick="showBoxModal('boxB')">📦 Box B</span></td><td class="muted">Standard setup.</td></tr>
+            <tr><td><b>Class 6</b></td><td>Embedded C++ & Web</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Universal)</span></td><td class="muted">Single box used. Arduino is built inside Box C.</td></tr>
+            <tr><td><b>Class 7</b></td><td>Smart IoT & Sensors</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Universal)</span></td><td class="muted">Single box used.</td></tr>
+            <tr><td><b>Class 8</b></td><td>Precision Robotics</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Universal)</span></td><td class="muted">Single box used. Motors & Drivers are inside Box C.</td></tr>
+            <tr><td><b>Class 9</b></td><td>Python & IoT</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Universal)</span></td><td class="muted">Single box used.</td></tr>
+            <tr><td><b>Class 10</b></td><td>Edge AI & Vision</td><td><span class="box-badge green" onclick="showBoxModal('boxC')">📦 Box C (Universal)</span></td><td class="muted">Single box used.</td></tr>
+            <tr><td><b>Class 11</b></td><td>Drones</td><td><span class="box-badge red" onclick="showBoxModal('boxD')">📦 Box D</span></td><td class="muted">Standard setup.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB: BUDGET & PROPOSAL -->
+    <div id="tab-proposal" class="tab-panel">
+      <div class="budget-summary">
+        <div class="budget-metric">
+          <div class="val">₹4.07L</div>
+          <div class="lbl">Total Investment (Excl GST)</div>
+        </div>
+        <div class="budget-metric">
+          <div class="val">40</div>
+          <div class="lbl">Workbench Kits Provided</div>
+        </div>
+        <div class="budget-metric">
+          <div class="val">300</div>
+          <div class="lbl">Syllabus Topics Covered</div>
+        </div>
+        <div class="budget-metric">
+          <div class="val">1 Yr</div>
+          <div class="lbl">Comprehensive Warranty</div>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <h3><i class="fas fa-file-invoice-dollar text-glow-cyan"></i> Tinkering Lab Setup Pricing Breakdown</h3>
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Setup Item / Service Description</th>
+              <th>Unit Cost</th>
+              <th>Qty</th>
+              <th style="text-align:right">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Module 1: Junior Mechatronics Kit (Grade 1-2)</td>
+              <td>₹ 2,200</td>
+              <td>10</td>
+              <td style="text-align:right">₹ 22,000</td>
+            </tr>
+            <tr>
+              <td>Module 2: Foundation Electronics Kit (Grade 3-5)</td>
+              <td>₹ 3,500</td>
+              <td>10</td>
+              <td style="text-align:right">₹ 35,000</td>
+            </tr>
+            <tr>
+              <td>Module 3: Intermediate Robotics & IoT Kit (Grade 6-8)</td>
+              <td>₹ 5,800</td>
+              <td>10</td>
+              <td style="text-align:right">₹ 58,000</td>
+            </tr>
+            <tr>
+              <td>Module 4: Advanced Edge AI & Drone Kit (Grade 9-10)</td>
+              <td>₹ 16,500</td>
+              <td>10</td>
+              <td style="text-align:right">₹ 1,65,000</td>
+            </tr>
+            <tr>
+              <td>Bambu Lab P1S 3D Printer</td>
+              <td>₹ 52,450</td>
+              <td>1</td>
+              <td style="text-align:right">₹ 52,450</td>
+            </tr>
+            <tr>
+              <td>Heavy-Duty Tools & Consumables Pack</td>
+              <td>₹ 20,000</td>
+              <td>1</td>
+              <td style="text-align:right">₹ 20,000</td>
+            </tr>
+            <tr>
+              <td>Lab Safety Equipment & Branding Pack</td>
+              <td>₹ 10,000</td>
+              <td>1</td>
+              <td style="text-align:right">₹ 10,000</td>
+            </tr>
+            <tr>
+              <td>Onsite Visiting Trainer Program (4-Month)</td>
+              <td>₹ 45,000</td>
+              <td>1 Set</td>
+              <td style="text-align:right">₹ 45,000</td>
+            </tr>
+            <tr style="background: rgba(16,185,129,0.05);">
+              <td>Professional Onsite Setup & LMS Hosting (Value Add)</td>
+              <td>Included</td>
+              <td>1 Set</td>
+              <td style="text-align:right; color:var(--green); font-weight:bold;">FREE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB: LAB SCHEDULE & FLOW -->
+    <div id="tab-schedule" class="tab-panel active">
+      <div class="glass-card" style="border-left: 4px solid var(--purple);">
+        <h3><i class="fas fa-calendar-alt text-glow-cyan" style="color:var(--purple)"></i> School Timetable Integration & Robotics Lecture Flow</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">This section illustrates how the Connect Shiksha robotics classes seamlessly integrate into standard school timetables. The focus is strictly on maintaining high practical engagement within limited school periods.</p>
+        
+        <h4 style="font-family:'Outfit'; color:#fff; margin-bottom:1rem; font-size:1.1rem;">📅 Master Weekly Timetable (Semester 1)</h4>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+          
+          <!-- Mon-Tue -->
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden;">
+            <div style="background: rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.3); padding: 0.8rem; text-align: center;">
+              <h5 style="color: var(--cyan); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">Mon - Tue</h5>
+            </div>
+            <div style="padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">5th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">11:30 - 12:10</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge yellow" onclick="showBoxModal('boxA')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box A</span> Class 2nd A</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">6th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:10 - 12:50</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge yellow" onclick="showBoxModal('boxA')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box A</span> Class 2nd B</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">7th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:50 - 1:30</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge yellow" onclick="showBoxModal('boxA')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box A</span> Class 3rd</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wed-Thu -->
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden;">
+            <div style="background: rgba(245, 158, 11, 0.15); border-bottom: 1px solid rgba(245, 158, 11, 0.3); padding: 0.8rem; text-align: center;">
+              <h5 style="color: var(--yellow); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">Wed - Thu</h5>
+            </div>
+            <div style="padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">5th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">11:30 - 12:10</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge blue" onclick="showBoxModal('boxB')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box B</span> Class 4th</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">6th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:10 - 12:50</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge blue" onclick="showBoxModal('boxB')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box B</span> Class 5th A</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">7th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:50 - 1:30</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge blue" onclick="showBoxModal('boxB')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box B</span> Class 5th B</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fri-Sat -->
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden;">
+            <div style="background: rgba(16, 185, 129, 0.15); border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding: 0.8rem; text-align: center;">
+              <h5 style="color: var(--green); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">Fri - Sat</h5>
+            </div>
+            <div style="padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">5th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">11:30 - 12:10</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge green" onclick="showBoxModal('boxC')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box C</span> Class 6th A</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">6th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:10 - 12:50</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge green" onclick="showBoxModal('boxC')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box C</span> Class 6th B</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 0.6rem; border-radius: 6px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; line-height: 1.2;">7th Period<br><span style="font-size: 0.65rem; font-weight: normal; opacity: 0.8;">12:50 - 1:30</span></span>
+                <span style="font-size: 0.9rem; color: #fff; font-weight: 800;"><span class="box-badge green" onclick="showBoxModal('boxC')" style="padding: 2px 6px; font-size:0.65rem; margin-right:5px; border:none; background:transparent;">📦 Box C</span> Class 7th</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(139, 92, 246, 0.1); border: 1px dashed rgba(139, 92, 246, 0.4); padding: 1rem 1.5rem; border-radius: 12px; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1.5rem;">
+          <div style="font-size: 2.5rem; color: var(--purple); opacity: 0.8;"><i class="fas fa-forward"></i></div>
+          <div>
+            <h5 style="color: var(--purple); font-size: 1.05rem; margin-bottom: 0.2rem;">Semester 2 & Senior Classes Planning</h5>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Classes 8, 9, 10, and 11 (Python, Edge AI, and Drone Assembly) will be scheduled in Semester 2 using their respective Box C and Box D allocations.</p>
+          </div>
+        </div>
+
+        <h4 style="font-family:'Outfit'; color:#fff; margin-bottom:1rem; font-size:1.1rem;">⏱️ The 40-Minute Standard Robotics Lecture Flow</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1.5rem;">For single-period sessions, the following timeline is strictly enforced to ensure students complete practical tasks without spilling over into the next class.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem 1.5rem; border-radius: 12px; display:flex; align-items:center; gap: 1.5rem;">
+            <div style="background:rgba(245, 158, 11, 0.1); color:var(--yellow); border-radius:50%; width:60px; height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:2px solid var(--yellow);">
+              <span style="font-size:1.2rem; font-weight:800; line-height:1;">10</span>
+              <span style="font-size:0.6rem; font-weight:700;">MINS</span>
+            </div>
+            <div>
+              <h5 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem;">Phase 1: Conceptual Briefing & Kit Checkout</h5>
+              <p style="color: var(--text-secondary); font-size: 0.85rem;">Teacher explains the core electronics/coding concept on the whiteboard. Workbench Captains collect their designated Box (A, B, C, or D) from the rack.</p>
+            </div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem 1.5rem; border-radius: 12px; display:flex; align-items:center; gap: 1.5rem;">
+            <div style="background:rgba(59, 130, 246, 0.1); color:var(--blue); border-radius:50%; width:60px; height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:2px solid var(--blue);">
+              <span style="font-size:1.2rem; font-weight:800; line-height:1;">25</span>
+              <span style="font-size:0.6rem; font-weight:700;">MINS</span>
+            </div>
+            <div>
+              <h5 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem;">Phase 2: Hands-On Execution (Build & Code)</h5>
+              <p style="color: var(--text-secondary); font-size: 0.85rem;">Students work collaboratively (Builder, Coder, Tester roles). They follow visual guides to wire breadboards, assemble mechatronics, and upload code via laptops.</p>
+            </div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 1.2rem 1.5rem; border-radius: 12px; display:flex; align-items:center; gap: 1.5rem;">
+            <div style="background:rgba(16, 185, 129, 0.1); color:var(--green); border-radius:50%; width:60px; height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:2px solid var(--green);">
+              <span style="font-size:1.2rem; font-weight:800; line-height:1;">05</span>
+              <span style="font-size:0.6rem; font-weight:700;">MINS</span>
+            </div>
+            <div>
+              <h5 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem;">Phase 3: Verification & Zero-Contamination Audit</h5>
+              <p style="color: var(--text-secondary); font-size: 0.85rem;">Teacher verifies the project output. Inventory Officers disassemble the kits, cross-check component counts with the lid map, and safely return boxes to the rack.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const curriculumData = {"2":[{"day":1,"topic":"Wheeling Cart Build","parts":"MECHATRONICS","desc":"How wheels and axles roll","test":"WHEEL LOGIC"},{"day":2,"topic":"Balloon Car","parts":"MECHATRONICS","desc":"Air power and pushing forces","test":"AIR POWER"},{"day":4,"topic":"Suspension Car","parts":"MECHATRONICS","desc":"Springs and bumpy road absorbers","test":"SPRINGS & SHOCKS"},{"day":5,"topic":"Truss Bridge","parts":"MECHATRONICS","desc":"How triangles make structures strong","test":"STRONG TRIANGLES"},{"day":6,"topic":"Simple Steering Car","parts":"MECHATRONICS","desc":"How cars turn and steer","test":"TURNING CARS"},{"day":7,"topic":"Maze Board Game","parts":"MECHATRONICS","desc":"Finding routes and solving pathways","test":"MAZE PATHWAYS"},{"day":8,"topic":"Scissor Arm Linkage","parts":"MECHATRONICS","desc":"Extending arms and lazy tongs","test":"EXTENDING ARMS"},{"day":9,"topic":"Table Fan Model","parts":"MECHATRONICS","desc":"How gears speed up spinning blades","test":"FAST FANS"},{"day":10,"topic":"Railway Barrier Gate","parts":"MECHATRONICS","desc":"Pivot arms and balancing weights","test":"PIVOT GATES"},{"day":11,"topic":"Windmill Model","parts":"MECHATRONICS","desc":"Converting wind direction to rotation","test":"WIND ENERGY"},{"day":12,"topic":"Revolving Swivel Seat","parts":"MECHATRONICS","desc":"How rotating shafts spin smoothly","test":"SMOOTH SWIVELS"},{"day":13,"topic":"Desk Lamp Linkage","parts":"MECHATRONICS","desc":"Keeping a lamp steady at different angles","test":"LAMP ARMS"},{"day":14,"topic":"Food Grabber Tool","parts":"MECHATRONICS","desc":"Using mechanical pincers to pick up items","test":"GRABBERS"},{"day":15,"topic":"Multi-Gear Speed Box","parts":"MECHATRONICS","desc":"Connect driver gear to follower gear","test":"GEAR DRIVES"},{"day":16,"topic":"High-Torque Gear Box","parts":"MECHATRONICS","desc":"Using small gears to drive large gears","test":"HIGH TORQUE"},{"day":17,"topic":"Reverse Gear System","parts":"MECHATRONICS","desc":"Changing rotation direction with idler gears","test":"REVERSE GEARS"},{"day":18,"topic":"Pulley & Belt System","parts":"MECHATRONICS","desc":"Connecting two rotating wheels with a band","test":"BELT DRIVES"},{"day":19,"topic":"Rope Lift Elevator","parts":"MECHATRONICS","desc":"Hoisting small items with string pulleys","test":"CABLE LIFTS"},{"day":20,"topic":"Measuring Wheel","parts":"MECHATRONICS","desc":"Counting wheel turns to measure distance","test":"DISTANCE WHEELS"},{"day":21,"topic":"Balance Scale Model","parts":"MECHATRONICS","desc":"Equal arm balance and weight comparisons","test":"BALANCE SCALES"},{"day":22,"topic":"Coin Tipping Box","parts":"MECHATRONICS","desc":"Lever balances that tip when a coin falls","test":"COIN TIPPERS"},{"day":23,"topic":"Quick-Release Clip","parts":"MECHATRONICS","desc":"Trigger pins that release stored rubber band power","test":"SPRING RELEASE"},{"day":24,"topic":"Parallel Ruler Linkage","parts":"MECHATRONICS","desc":"Drawing straight parallel lines using links","test":"PARALLEL ARMS"},{"day":25,"topic":"Soil Plow Simulator","parts":"MECHATRONICS","desc":"Dragging blades to simulate tillage","test":"FARM TOOLS"},{"day":26,"topic":"Catapult Game","parts":"MECHATRONICS","desc":"Throwing paper balls using elastic tension","test":"PAPER LAUNCHERS"},{"day":27,"topic":"Carousel Model","parts":"MECHATRONICS","desc":"Spinning crowns and right-angle gear joints","test":"CAROUSELS"},{"day":28,"topic":"Walking Horse Linkage","parts":"MECHATRONICS","desc":"Converting rotation into a walking foot movement","test":"WALKING GAITS"},{"day":29,"topic":"Goal Kicker Toy","parts":"MECHATRONICS","desc":"Swivel levers that strike a small ball","test":"KICKER ARMS"},{"day":30,"topic":"Drumming Robot","parts":"MECHATRONICS","desc":"Cam wheels that lift and drop drum sticks","test":"CAM DRUMS"}],"3":[{"day":1,"topic":"Scratch Block Coding Intro","parts":"CODING","desc":"Visual blocks, sprites, making things move","test":"VISUAL CODING"},{"day":2,"topic":"Walking Sprite","parts":"CODING","desc":"Step-by-step loops and moving characters","test":"SPRITE MOVEMENT"},{"day":3,"topic":"Aquarium Screen","parts":"CODING","desc":"Adding fish sprites, bouncing off screen edges","test":"AQUARIUM SCENES"},{"day":5,"topic":"Simple Add-Calculator","parts":"CODING","desc":"Storing numbers in variables and adding them","test":"SIMPLE ADDERS"},{"day":6,"topic":"Rainbow Spirographs","parts":"CODING","desc":"Drawing repeating patterns with the Pen tool","test":"DRAWING LOOPS"},{"day":7,"topic":"Dance Party Animation","parts":"CODING","desc":"Changing costumes on beats","test":"CHARACTER COSTUMES"},{"day":8,"topic":"Balloon Pop Game","parts":"CODING","desc":"Popping falling balloons with mouse clicks","test":"CLICK GAMES"},{"day":9,"topic":"Simple Maze Game","parts":"CODING","desc":"Keyboard arrows control, wall sensing blocks","test":"EASY MAZES"},{"day":10,"topic":"Keyboard Piano","parts":"CODING","desc":"Assigning key presses to sound notes","test":"PIANO KEYS"},{"day":11,"topic":"Jumping Game","parts":"CODING","desc":"Simulating a simple jump using vertical movements","test":"JUMPING LOGIC"},{"day":12,"topic":"Score Counter Game","parts":"CODING","desc":"Adding points to a score variable","test":"SCORE VARIABLES"},{"day":13,"topic":"Falling Apple Catch","parts":"CODING","desc":"Catching falling apples in a basket","test":"CATCHING GAMES"},{"day":14,"topic":"Talking Character Story","parts":"CODING","desc":"Broadcasting messages to sync character talk","test":"SYNC TALK"},{"day":15,"topic":"LED Light Bulb circuit","parts":"ELECTRONICS","desc":"Connecting batteries to bulbs with wires","test":"SIMPLE LIGHTS"},{"day":16,"topic":"Switch LED Circuit","parts":"ELECTRONICS","desc":"Toggling lights using a sliding switch","test":"LIGHT SWITCHES"},{"day":17,"topic":"Motor Fan Propeller","parts":"ELECTRONICS","desc":"Connecting a battery to a small spinning fan","test":"DC FANS"},{"day":18,"topic":"Series Lights string","parts":"ELECTRONICS","desc":"Connecting multiple LEDs in a single line","test":"SERIES LIGHTS"},{"day":19,"topic":"Parallel Lights board","parts":"ELECTRONICS","desc":"Branching wires to glow multiple LEDs","test":"PARALLEL LIGHTS"},{"day":20,"topic":"Pencil Lead Conductor","parts":"ELECTRONICS","desc":"Testing if pencil graphite conducts electricity","test":"CONDUCTORS"},{"day":21,"topic":"Solderless Breadboard Intro","parts":"ELECTRONICS","desc":"How to insert wires into breadboard sockets","test":"BREADBOARDS"},{"day":22,"topic":"Rubber Band Launcher","parts":"MECHATRONICS","desc":"Releasing tension to throw soft objects","test":"ELASTIC LAUNCH"},{"day":23,"topic":"Ferris Wheel Model","parts":"MECHATRONICS","desc":"Simple pulley rotation from motor to wheel","test":"FERRIS WHEELS"},{"day":24,"topic":"Trailer Hitch Joint","parts":"MECHATRONICS","desc":"Designing pivot hitches for wagon toys","test":"HITCH JOINTS"},{"day":25,"topic":"3D Pen Basics","parts":"3D PRINTING","desc":"Safety rules, melting plastic, drawing straight lines","test":"DRAW LINES"},{"day":26,"topic":"3D Pen Butterfly","parts":"3D PRINTING","desc":"Drawing flat stencils and joining wing parts","test":"2D TO 3D"},{"day":27,"topic":"3D Pen Flower Assembly","parts":"3D PRINTING","desc":"Layering petals and stems","test":"LAYERS ASSEMBLY"},{"day":28,"topic":"3D Pen Glasses","parts":"3D PRINTING","desc":"Creating customized wearable frames","test":"GLASSES FRAMES"},{"day":29,"topic":"3D Pen Mini-House","parts":"3D PRINTING","desc":"Drawing wall panels and connecting them","test":"BUILDING WALLS"},{"day":30,"topic":"3D Pen Toy Bicycle","parts":"3D PRINTING","desc":"Making wireframe wheels and frames","test":"BICYCLE MODELS"}],"4":[{"day":1,"topic":"Repeating Shape Draw","parts":"CODING","desc":"Using repeat loops to draw squares and circles","test":"DRAWING SHAPES"},{"day":2,"topic":"Ask & Answer shapes","parts":"CODING","desc":"Getting user input for number of sides","test":"INTERACTIVE SHAPES"},{"day":3,"topic":"Backdrop Color Changers","parts":"CODING","desc":"Clicking buttons to change background layouts","test":"COLOR CHANGERS"},{"day":4,"topic":"Multi-Choice Quiz Game","parts":"CODING","desc":"Creating score counters and correct/incorrect paths","test":"VISUAL QUIZZES"},{"day":6,"topic":"Draw Screen Paint Brush","parts":"CODING","desc":"Making cursor draw trailing colored lines","test":"PAINT TOOLS"},{"day":7,"topic":"Countdown Timer game","parts":"CODING","desc":"Creating decrementing variables for game-over alerts","test":"TIMER BLOCKS"},{"day":8,"topic":"Virtual Pet Simulator","parts":"CODING","desc":"Happy/Hungry variables dropping over time","test":"PET STATS"},{"day":9,"topic":"Space Invaders Clone","parts":"CODING","desc":"Spawning laser clones on spacebar press","test":"SPRITE CLONES"},{"day":10,"topic":"Solderless LED Circuits","parts":"ELECTRONICS","desc":"Plugging LEDs and battery clips into breadboards","test":"BREADBOARD LEDS"},{"day":11,"topic":"Resistors & Safety","parts":"ELECTRONICS","desc":"What are resistors, how they protect delicate LEDs","test":"RESISTOR SAFETY"},{"day":12,"topic":"Custom Toggle Switch","parts":"ELECTRONICS","desc":"Designing manual paper-clip switches","test":"DIY SWITCHES"},{"day":13,"topic":"Parallel LED Arrays","parts":"ELECTRONICS","desc":"Splitting current across parallel lines on breadboard","test":"PARALLEL WIRES"},{"day":14,"topic":"Series LED String drop","parts":"ELECTRONICS","desc":"Observing brightness drop across series lines","test":"SERIES WIRES"},{"day":15,"topic":"Buzzer Alert Sounder","parts":"ELECTRONICS","desc":"Connecting buzzers with battery keys","test":"ALARM BUZZERS"},{"day":16,"topic":"Resistor Tester","parts":"ELECTRONICS","desc":"Comparing brightness of LEDs with different resistors","test":"RESISTOR TESTING"},{"day":17,"topic":"Dial Light Controller","parts":"ELECTRONICS","desc":"Using variable dials to fade LEDs","test":"LIGHT DIALS"},{"day":18,"topic":"Night Light Sensor","parts":"ELECTRONICS","desc":"Using light-dependent resistors to control output","test":"LIGHT SENSORS"},{"day":19,"topic":"Transistor Switch Block","parts":"ELECTRONICS","desc":"Using transistors as automatic switches","test":"TRANSISTORS"},{"day":20,"topic":"Body Touch Light","parts":"ELECTRONICS","desc":"Glowing LEDs by touching wire tips","test":"TOUCH LIGHTS"},{"day":21,"topic":"Sound Siren Buzzer","parts":"ELECTRONICS","desc":"Combining capacitors and buzzers for fade alarms","test":"FADE SIRENS"},{"day":22,"topic":"Security Door Alarm","parts":"ELECTRONICS","desc":"Building pressure switch wire trigger systems","test":"DIY ALARMS"},{"day":23,"topic":"Balloon Chassis Car","parts":"MECHATRONICS","desc":"Building light chassis powered by balloon nozzles","test":"BALLOON VEHICLES"},{"day":24,"topic":"Wobbly Crawling Robot","parts":"MECHATRONICS","desc":"Using asymmetric motor weights to crawl","test":"WOBBLY BOTS"},{"day":25,"topic":"Waving Robot Arms","parts":"MECHATRONICS","desc":"Crank linkages converting spin to waves","test":"WAVING ARMS"},{"day":26,"topic":"Crown Gear Rotator","parts":"MECHATRONICS","desc":"Changing spin from flat to upright","test":"CROWN GEARS"},{"day":27,"topic":"Multi-Axle Gearbox","parts":"MECHATRONICS","desc":"Fitting motor drives to turn multiple wheels","test":"AXLE DRIVES"},{"day":28,"topic":"Slow & Fast Gear Drives","parts":"MECHATRONICS","desc":"Combining small and large gears for speed adjustments","test":"GEAR BOX SPEED"},{"day":29,"topic":"3D Pen Cube Stencils","parts":"3D PRINTING","desc":"Joining flat square drawings into 3D boxes","test":"3D BOXES"},{"day":30,"topic":"3D Pen Sculpture","parts":"3D PRINTING","desc":"Assembling stable animal skeletons","test":"WIREFRAME SCULPTING"}],"5":[{"day":1,"topic":"Score Calculator program","parts":"CODING","desc":"Collecting marks variables and printing averages","test":"AVERAGE MATH"},{"day":2,"topic":"Voting Machine check","parts":"CODING","desc":"Conditional checks if age variable is 18 or above","test":"SIMPLE CHECKERS"},{"day":3,"topic":"Catching Falling Objects","parts":"CODING","desc":"Score counts, random coordinates drop loops","test":"CATCH GAMES"},{"day":4,"topic":"Virtual Shopping List","parts":"CODING","desc":"Storing items inside Scratch list arrays","test":"LIST BLOCKS"},{"day":5,"topic":"Asteroids Splitting Clones","parts":"CODING","desc":"Spawning clone obstacles with random positions","test":"CLONE TRAJECTORIES"},{"day":7,"topic":"Touch Trigger Transistor","parts":"ELECTRONICS","desc":"Body current switching NPN base lines","test":"TRANSISTOR SWITCHES"},{"day":8,"topic":"Charge Storage Capacitor","parts":"ELECTRONICS","desc":"Storing energy and slowly discharging to dim LED","test":"ENERGY STORAGE"},{"day":9,"topic":"Automatic Night Light","parts":"ELECTRONICS","desc":"LDR turning on LED automatically in the dark","test":"NIGHT LIGHTS"},{"day":10,"topic":"Smart Emergency Light","parts":"ELECTRONICS","desc":"Transistor routing power when primary LDR goes dark","test":"EMERGENCY BACKUPS"},{"day":11,"topic":"Police Siren Sounder","parts":"ELECTRONICS","desc":"Capacitor discharge timing a buzzer sweep","test":"SIREN ALARMS"},{"day":12,"topic":"Darkness Alert Siren","parts":"ELECTRONICS","desc":"LDR resistance drops sounding emergency buzzers","test":"DARK ALARMS"},{"day":13,"topic":"Sound Switch LED","parts":"ELECTRONICS","desc":"Clapping hands to trigger transistor switches","test":"SOUND SWITCHES"},{"day":14,"topic":"H-Bridge Motor Swapper","parts":"ELECTRONICS","desc":"Double pole switch reversing DC motor spin direction","test":"DIRECTION CONTROLS"},{"day":15,"topic":"Fan Speed Regulator","parts":"ELECTRONICS","desc":"Rotary dials adjusting voltages fed to DC motors","test":"SPEED CONTROLS"},{"day":16,"topic":"Sound Level Indicators","parts":"ELECTRONICS","desc":"Series LEDs glowing based on mic sound volumes","test":"SOUND INDICATORS"},{"day":17,"topic":"Fire Alarm Simulator","parts":"ELECTRONICS","desc":"Heat sensor resistance drop sounding alarm buzzers","test":"HEAT SENSORS"},{"day":18,"topic":"Water Level Indicator","parts":"ELECTRONICS","desc":"Water bridging open wire ends to glow indicator LEDs","test":"LIQUID SENSORS"},{"day":19,"topic":"Wiggle Crawling Bug","parts":"MECHATRONICS","desc":"Motor off-center weights driving structural bug limbs","test":"MOTOR BUGS"},{"day":20,"topic":"Motorized Tractor Build","parts":"MECHATRONICS","desc":"Mounting AA cells, slider switches, and BO motors on a chassis","test":"TOY TRACTORS"},{"day":21,"topic":"String Lift Winch","parts":"MECHATRONICS","desc":"Building rotating string drums to lift light keys","test":"WINCH MODELS"},{"day":22,"topic":"Secret Dial Vault","parts":"MECHATRONICS","desc":"Interlocking cardboard wheels with gear notches","test":"GEAR LOCKS"},{"day":23,"topic":"Drumming Robot Assembly","parts":"MECHATRONICS","desc":"Tuning cam alignments for custom tap rhythms","test":"CAM ADJUSTERS"},{"day":24,"topic":"3D Pen Spinning Top","parts":"3D PRINTING","desc":"Perfect balance circles with a central spindle","test":"SPINNER MODELS"},{"day":25,"topic":"3D Pen Sturdy Arch","parts":"3D PRINTING","desc":"Building interlocking load-bearing arches","test":"ARCH BUILDINGS"},{"day":26,"topic":"Teachable Machine Game","parts":"AI","desc":"Training Scratch webcam to recognize Hand gestures","test":"GESTURE RECOG"},{"day":27,"topic":"Visual Object Classifier","parts":"AI","desc":"Training models to recognize classroom items","test":"OBJECT CLASSIFIER"},{"day":28,"topic":"Happy/Sad Text Tester","parts":"AI","desc":"Detecting emoji keywords to change background moods","test":"TEXT MOODS"},{"day":29,"topic":"Voice Control Sprite","parts":"AI","desc":"Moving sprites up/down using mic speech triggers","test":"VOICE COMMANDS"},{"day":30,"topic":"Language Translator bot","parts":"AI","desc":"Translating text variables to Spanish/French blocks","test":"LANGUAGE BOTS"}],"6":[{"day":1,"topic":"Personal Webpage HTML","parts":"CODING","desc":"Writing basic tags (h1, p, body, colors)","test":"HTML BASICS"},{"day":2,"topic":"Webpage Multi-Pages","parts":"CODING","desc":"Adding anchors, images and menu bars to websites","test":"MULTI-PAGE HTML"},{"day":3,"topic":"Webpage Layout Design","parts":"CODING","desc":"Div borders, background colors, text margins","test":"WEB STYLING"},{"day":4,"topic":"Online Quiz Page","parts":"CODING","desc":"Button inputs triggering popup alert answers","test":"INTERACTIVE FORMS"},{"day":5,"topic":"Arduino LED Blinker","parts":"ROBOTICS","desc":"Setting digital pin 13 to HIGH/LOW delay states","test":"ARDUINO BLINKS"},{"day":6,"topic":"SOS Morse Code Siren","parts":"ROBOTICS","desc":"Delay pulses creating buzzer SOS flashes","test":"MORSE SIRENS"},{"day":8,"topic":"3 − Phase Traffic Lights","parts":"ROBOTICS","desc":"Red, yellow, green timing delay cycles","test":"TRAFFIC LIGHTS"},{"day":9,"topic":"Light Theremin Sounder","parts":"ROBOTICS","desc":"LDR sensor changing pitch outputs of buzzers","test":"LIGHT INSTRUMENTS"},{"day":10,"topic":"Laser Intruder Alarm","parts":"ROBOTICS","desc":"Laser pointer shining on LDR, buzzer sounds if broken","test":"LASER ALARMS"},{"day":11,"topic":"Arduino Serial Monitor","parts":"ROBOTICS","desc":"Reading analog voltages and printing to laptop screen","test":"SERIAL LOGS"},{"day":12,"topic":"Arduino Push Button Toggle","parts":"ROBOTICS","desc":"Arduino checking pin state to toggle LEDs","test":"BUTTON TOGGLES"},{"day":13,"topic":"Police Alarms C++","parts":"ROBOTICS","desc":"Frequency sweeping buzzers inside Arduino loops","test":"C++ SOUNDERS"},{"day":14,"topic":"Dial Servo Controller","parts":"ROBOTICS","desc":"Dial positions sweeping micro servos 0 to 180 degrees","test":"SERVOS DIAL"},{"day":15,"topic":"Light-Sensitive LED","parts":"ROBOTICS","desc":"Arduino reading LDR values to turn on night lamp","test":"LIGHT LAMPS"},{"day":16,"topic":"Digital Piano Keyboard","parts":"ROBOTICS","desc":"Interfacing push buttons to trigger specific tones","test":"PIANO KEYS"},{"day":17,"topic":"Binary LED Display","parts":"ROBOTICS","desc":"3 digital pins showing numbers 0 to 7 in binary","test":"BINARY LEDS"},{"day":18,"topic":"Slow Dimming Lamps","parts":"ROBOTICS","desc":"AnalogWrite PWM cycles fading LEDs","test":"LAMP DIMMING"},{"day":19,"topic":"Plant Soil Monitor","parts":"ROBOTICS","desc":"Reading moisture sensor bounds, serial prints","test":"SOIL MONITORS"},{"day":20,"topic":"Non-Blocking LED Blink","parts":"ROBOTICS","desc":"Double timers using simple C++ variables","test":"TIMING LOOPS"},{"day":21,"topic":"3D Toy Name Plate","parts":"3D PRINTING","desc":"Tinkercad text shapes extruded on a base","test":"3D NAME PLATES"},{"day":22,"topic":"3D Toy Pencil Cup","parts":"3D PRINTING","desc":"Designing hollow cylinder shapes in Tinkercad","test":"HOLLOW PRISMS"},{"day":23,"topic":"3D Precision Nut-Bolt","parts":"3D PRINTING","desc":"Designing matching screw threading parameters","test":"PRECISION FITS"},{"day":24,"topic":"3D Car Chassis Model","parts":"3D PRINTING","desc":"Assembling base plates, axles and wheels","test":"MODEL CARS"},{"day":25,"topic":"3D Mechanical Gears","parts":"3D PRINTING","desc":"Designing matching teeth circles in Tinkercad","test":"GEAR MODELS"},{"day":26,"topic":"Hand Gesture Counter","parts":"AI","desc":"Webcam AI counts raised fingers in Scratch","test":"VISUAL COUNTERS"},{"day":27,"topic":"Smart Talking Assistant","parts":"AI","desc":"Text intents mapped to interactive answers in Scratch","test":"CHATBOT BASICS"},{"day":28,"topic":"Webcam Paddle Game","parts":"AI","desc":"Game paddle tracking user nose location","test":"WEBCAM GAMES"},{"day":29,"topic":"AI Spam Filter","parts":"AI","desc":"Supervised machine learning labels sorting text inputs","test":"SMART SORTING"},{"day":30,"topic":"Self-Routing Sprite","parts":"AI","desc":"Pathfinding blocks routing sprite around maze walls","test":"SMART PATHS"}],"7":[{"day":1,"topic":"Python First Programs","parts":"PYTHON","desc":"Code syntax, print expressions, running scripts","test":"PYTHON BASICS"},{"day":2,"topic":"Python Score Calculator","parts":"PYTHON","desc":"Variable comparisons, True/False outputs","test":"COMPARISON CODE"},{"day":3,"topic":"Python Simple Calculator","parts":"PYTHON","desc":"Scripting math operations using user inputs","test":"CALCULATORS"},{"day":4,"topic":"Python Guess Game","parts":"PYTHON","desc":"Guessing random numbers using simple while-loops","test":"NUMBER GAMES"},{"day":5,"topic":"Python Shopping List","parts":"PYTHON","desc":"Append, pop, and search list items","test":"LISTS ARRAYS"},{"day":6,"topic":"Python Grading System","parts":"PYTHON","desc":"Multi-conditional if-elif-else statements","test":"DECISION LOGIC"},{"day":7,"topic":"Python Word Reverser","parts":"PYTHON","desc":"Loop algorithms reversing string characters","test":"WORD SPLICERS"},{"day":9,"topic":"Python Data Plotter","parts":"PYTHON","desc":"Matplotlib drawing line charts of temperature lists","test":"DATA CHARTS"},{"day":10,"topic":"Ultrasonic Distance Meter","parts":"ROBOTICS","desc":"HC-SR04 sound wave reflection calculations","test":"DISTANCE METERS"},{"day":11,"topic":"Blind Obstacle Stick","parts":"ROBOTICS","desc":"Buzzer warning sounds speed up as objects get closer","test":"SAFE STICKS"},{"day":12,"topic":"Security Alarm Gate","parts":"ROBOTICS","desc":"IR break sensors triggering buzzer alarms","test":"IR BREAK GATES"},{"day":13,"topic":"Soil Moisture Sensor","parts":"ROBOTICS","desc":"Reading soil voltage bounds and display values","test":"SOIL SENSORS"},{"day":14,"topic":"Automated Drip Irrigation","parts":"ROBOTICS","desc":"Automatic water pump activation when soil goes dry","test":"SMART WATERING"},{"day":15,"topic":"Motion Siren Security","parts":"ROBOTICS","desc":"IR motion modules triggering sweeping alarms","test":"MOTION SIRENS"},{"day":16,"topic":"DHT11 Room Temperature","parts":"ROBOTICS","desc":"Reading digital sensors and displaying values","test":"TEMP SCREENS"},{"day":17,"topic":"Sweep Servo Calibration","parts":"ROBOTICS","desc":"Speed control loops sweeping micro servos","test":"SERVO SWEEPS"},{"day":18,"topic":"Breathing Mood Lamp","parts":"ROBOTICS","desc":"C++ loops smoothly shifting RGB color brightness","test":"MOOD LAMPS"},{"day":19,"topic":"WiFi Smart Light Switch","parts":"IOT","desc":"Connecting phone browser to NodeMCU local web server","test":"WIFI SWITCHES"},{"day":20,"topic":"IoT Smart Light Board","parts":"IOT","desc":"Toggling relay switch boards from local web dashboards","test":"SMART RELAYS"},{"day":21,"topic":"IoT Weather Station","parts":"IOT","desc":"ESP8266 sending DHT11 data to online ThingSpeak dashboards","test":"CLOUD LOGGING"},{"day":22,"topic":"IoT Plant Health Alert","parts":"IOT","desc":"Triggering email alerts when soil goes dry","test":"SOIL ALERTS"},{"day":23,"topic":"IoT Motion Detector","parts":"IOT","desc":"Wireless motion triggers sending status alerts","test":"MOTION ALARMS"},{"day":24,"topic":"OLED Screen Telemetry","parts":"IOT","desc":"Interfacing digital mini screens to print graphics","test":"OLED TELEMETRY"},{"day":25,"topic":"Cloud Temperature Chart","parts":"IOT","desc":"DHT11 readings plotted on remote cloud feeds","test":"CLOUD FEEDS"},{"day":26,"topic":"ESP8266 Local WiFi Hotspot","parts":"IOT","desc":"Creating standalone local networks without modems","test":"WIFI HOTSPOTS"},{"day":27,"topic":"Wireless Program Upload","parts":"IOT","desc":"Over-the-air updates flashing code to ESP8266","test":"REMOTE UPLOADS"},{"day":28,"topic":"Temp-Controlled Fan","parts":"IOT","desc":"Automatic relay fan activation if sensor goes hot","test":"TEMP FANS"},{"day":29,"topic":"ESP8266 WiFi Toy Car","parts":"IOT","desc":"Slider values on phone browser driving DC motors","test":"PHONE CARS"},{"day":30,"topic":"Mobile Dash Controls","parts":"IOT","desc":"Blynk mobile buttons toggling physical LED indicators","test":"MOBILE DASHBOARDS"}],"8":[{"day":1,"topic":"Python List Sorter","parts":"PYTHON","desc":"Appending items and using build-in lists methods","test":"LISTS SORTERS"},{"day":2,"topic":"Python Stock Tracker","parts":"PYTHON","desc":"Storing item prices in key-value dictionaries","test":"DICTIONARIES"},{"day":3,"topic":"Python Modular Code","parts":"PYTHON","desc":"Defining input variables and return statements","test":"MODULAR CODE"},{"day":4,"topic":"Python Math Functions","parts":"PYTHON","desc":"Area, squareroot, and calculations loops","test":"MATH SCRIPTS"},{"day":5,"topic":"Error Protection Loops","parts":"PYTHON","desc":"Using Try-Except loops to handle keyboard input errors","test":"EXCEPTION CODE"},{"day":6,"topic":"Servo Angle Sweeper","parts":"ROBOTICS","desc":"Precision degree sweeps using micro servo loops","test":"SERVO CALIBRATE"},{"day":7,"topic":"Motor Driver Board","parts":"ROBOTICS","desc":"Connecting BO motors and drivers for wheels","test":"MOTOR DRIVERS"},{"day":8,"topic":"Bluetooth Remote Car","parts":"ROBOTICS","desc":"Phone bluetooth serial keys driving toy wheels","test":"BLUETOOTH CARS"},{"day":10,"topic":"Smoke Alert Fan","parts":"ROBOTICS","desc":"Gas sensor threshold sounding alarms and spinning fan","test":"SMOKE FANS"},{"day":11,"topic":"Walking Biped Robot","parts":"ROBOTICS","desc":"Synchronizing two micro servos for walking gaits","test":"WALKERS"},{"day":12,"topic":"Touchless Dustbin Lid","parts":"ROBOTICS","desc":"Hand wave near sensor triggers servo to open lid","test":"SMART DUSTBINS"},{"day":13,"topic":"Smart Collision Avoider","parts":"ROBOTICS","desc":"Ultrasonic sensors steer car away from obstacles","test":"AVOID CARS"},{"day":14,"topic":"Smart Line Follower","parts":"ROBOTICS","desc":"IR sensors tracking black tape paths on white floor","test":"LINE FOLLOWERS"},{"day":15,"topic":"TV Remote Control Car","parts":"ROBOTICS","desc":"Standard TV remotes driving toy motor steps","test":"REMOTE CARS"},{"day":16,"topic":"Neopixel LED Arrays","parts":"ROBOTICS","desc":"Addressable pixel rings flashing rainbow sweeps","test":"NEOPIXEL RINGS"},{"day":17,"topic":"OTTO Walking Calibrator","parts":"ROBOTICS","desc":"Centering leg servo joints for stable posture","test":"OTTO CALIBRATION"},{"day":18,"topic":"OTTO Walking Obstacles","parts":"ROBOTICS","desc":"Integrating distance alerts to walk backwards","test":"OTTO WAYPOINTS"},{"day":19,"topic":"Digital Safe Keypad","parts":"ROBOTICS","desc":"Pin keys inputs matching password array to unlock","test":"KEYPADS SAFE"},{"day":20,"topic":"Robotics Capstone Build","parts":"ROBOTICS","desc":"Bluetooth car chassis receiving webcam gesture controls","test":"AI CAPSTONE"},{"day":21,"topic":"IoT Text Display Board","parts":"IOT","desc":"NodeMCU updating remote message lines on LCD","test":"WIRELESS LCDS"},{"day":22,"topic":"ESP8266 Smart Notice LCD","parts":"IOT","desc":"Remote dashboard lines updating local LCD screens","test":"NOTICE SCREENS"},{"day":23,"topic":"Cloud Farm Station","parts":"IOT","desc":"ThingSpeak logging light, moisture, and temp values","test":"CLOUD FARMS"},{"day":24,"topic":"RFID Smart Entry Lock","parts":"IOT","desc":"Scanning RFID cards to unlock door servos","test":"RFID SECURITY"},{"day":25,"topic":"Voice Smart Home","parts":"AI","desc":"Scratch voice commands toggling virtual bulbs","test":"VOICE SMART HOME"},{"day":26,"topic":"Visual Trash Classifier","parts":"AI","desc":"Webcam AI sorting recycling vs organic items","test":"VISUAL CLASSIFIERS"},{"day":27,"topic":"Scratch Mood Chatbot","parts":"AI","desc":"Text chat parsing keywords to change emoji faces","test":"CHATBOTS"},{"day":28,"topic":"Visual Face Lock","parts":"AI","desc":"webcam AI comparing face embeds for vault door servo","test":"FACE VAULTS"},{"day":29,"topic":"Multilingual Vocalist","parts":"AI","desc":"Text speaking translation blocks in Scratch","test":"TRANSLATION SPEAK"},{"day":30,"topic":"Sound Controlled Game","parts":"AI","desc":"Game jump trigger based on mic loudness peaks","test":"MIC GAMES"}],"9":[{"day":1,"topic":"Python Input & Output","parts":"PYTHON","desc":"Storing user text values in variables, formatting prints","test":"BASIC IO"},{"day":2,"topic":"Python Limit Checks","parts":"PYTHON","desc":"Comparing sensor input variable bounds with threshold","test":"COMPARISON LOGIC"},{"day":3,"topic":"Python Data Loop averages","parts":"PYTHON","desc":"Repeating loops parsing temperature integer lists","test":"LOOP MATH"},{"day":4,"topic":"Python Local Data Files","parts":"PYTHON","desc":"Writing lines of text measurements to disk files","test":"TEXT FILE WRITING"},{"day":5,"topic":"Python Lift Simulator","parts":"PYTHON","desc":"Basic mathematical variables for flight parameters","test":"AVIONICS VARIABLES"},{"day":6,"topic":"Python Telemetry Dictionaries","parts":"PYTHON","desc":"Storing key-value pairs of speed, height","test":"DATA DICTS"},{"day":7,"topic":"Python Modular Flight Math","parts":"PYTHON","desc":"Writing simple functions calculating drone payloads","test":"FLIGHT FUNCTIONS"},{"day":8,"topic":"Python Range Protection","parts":"PYTHON","desc":"Try-Except validation blocks checking invalid variables","test":"ERROR HANDLERS"},{"day":9,"topic":"Python List Slices","parts":"PYTHON","desc":"Extracting segments of data arrays","test":"SLICING ARRAYS"},{"day":11,"topic":"Arduino LCD Screen C++","parts":"ROBOTICS","desc":"Displaying speed, height values on I2C LCD lines","test":"LCD INTERFACES"},{"day":12,"topic":"Arduino Neopixel Indicator","parts":"ROBOTICS","desc":"Changing RGB ring lights based on sensor distances","test":"VISUAL INDICATORS"},{"day":13,"topic":"Arduino Collision Avoider","parts":"ROBOTICS","desc":"Ultrasonic sensors steering chassis motors away from walls","test":"AVOIDANCE CARS"},{"day":14,"topic":"Arduino Bluetooth remote","parts":"ROBOTICS","desc":"Toggling output relays using Bluetooth phone keys","test":"BT CONTROLS"},{"day":15,"topic":"Arduino Noise Level monitor","parts":"ROBOTICS","desc":"Glow series LEDs based on microphone peak signals","test":"SOUND DECIBELS"},{"day":16,"topic":"Sun Tracker Panel","parts":"ROBOTICS","desc":"Light sensors driving servo to tilt toward flashlight","test":"SUN TRACKERS"},{"day":17,"topic":"Servo Sweeper calibration","parts":"ROBOTICS","desc":"Calibrating micro servo travel limits, custom delays","test":"SERVO SWEEPS"},{"day":18,"topic":"Security Keypad locks","parts":"ROBOTICS","desc":"Interfacing keypad pins to check codes against storage","test":"KEYPAD SECURITY"},{"day":19,"topic":"OTTO Walk Calibration","parts":"ROBOTICS","desc":"Adjusting legs zero offsets, walk loops parameters","test":"BIPED GAITS"},{"day":20,"topic":"Smart Assembly capstone","parts":"ROBOTICS","desc":"Mounting Arduino boards, servos, sensors into printed frames","test":"CUSTOM ASSEMBLIES"},{"day":21,"topic":"Slicing Software Setup","parts":"3D PRINTING","desc":"Importing 3D bracket STL files, setting layer heights","test":"SLICING SOFTWARE"},{"day":22,"topic":"3D Printer Bed Leveling","parts":"3D PRINTING","desc":"Bambu Lab nozzle temperatures, layer speeds PLA","test":"PRINTER SETUP"},{"day":23,"topic":"3D Printed Parts Design","parts":"3D PRINTING","desc":"Drafting high strength structural plates in Tinkercad","test":"PARTS DESIGN"},{"day":24,"topic":"3D Propeller Mounts","parts":"3D PRINTING","desc":"Printing replacement mounts with robust structural infills","test":"REPLACEMENT SPARES"},{"day":25,"topic":"3D Printing Tree Supports","parts":"3D PRINTING","desc":"Enabling supports for overhanging structural models","test":"TREE SUPPORTS"},{"day":26,"topic":"3D Print Filament Swapping","parts":"3D PRINTING","desc":"Performing dual-color model layers setup","test":"COLOR PRINTS"},{"day":27,"topic":"3D Printed Airfoil Curved","parts":"3D PRINTING","desc":"Slicing and printing smooth wing models","test":"WING MODELS"},{"day":28,"topic":"3D Toy Camera Pivot","parts":"3D PRINTING","desc":"Assembling rotating frames with manual locking pins","test":"CAMERA PIVOTS"},{"day":29,"topic":"3D Battery Shell Guard","parts":"3D PRINTING","desc":"Printing lightweight clip-on structural protectors","test":"SHELL GUARDS"},{"day":30,"topic":"AI Safety Guidelines","parts":"AI","desc":"Classroom discussion on ethical AI, data privacy limits","test":"AI ETHICS"}],"10":[{"day":1,"topic":"Web Camera Color Mask","parts":"PYTHON","desc":"Filtering green/red ranges in browser stream","test":"COLOR FILTERS"},{"day":2,"topic":"Python Data Logs list","parts":"PYTHON","desc":"Writing sensor entries to text spreadsheets","test":"FILE LOGGING"},{"day":3,"topic":"Python Weather Averages","parts":"PYTHON","desc":"Calculating mean temperatures from text records","test":"DATA AVERAGES"},{"day":4,"topic":"Python Range Validator","parts":"PYTHON","desc":"Try-Except statements catching sensor float errors","test":"SAFE PROGRAMS"},{"day":5,"topic":"Remote Steering Camera","parts":"ROBOTICS","desc":"Steering toy wheels toward tracked colored balls","test":"TRACKING VEHICLES"},{"day":6,"topic":"Visual Security Alarm","parts":"ROBOTICS","desc":"Webcam motion sensor triggers buzzer siren alerts","test":"VISUAL ALARMS"},{"day":7,"topic":"Arduino C++ LCD panel","parts":"ROBOTICS","desc":"Displaying real-time Edge AI coordinates on text lines","test":"LCD OUTPUTS"},{"day":8,"topic":"Arduino C++ Alert Strips","parts":"ROBOTICS","desc":"RGB rings blinking warning signals based on camera signals","test":"LED WARNING"},{"day":9,"topic":"Obstacle Avoidance Car","parts":"ROBOTICS","desc":"Dual IR sensor boards stopping car from hitting chairs","test":"SAFE MOBILITY"},{"day":10,"topic":"Bluetooth Command parser","parts":"ROBOTICS","desc":"Decoding remote characters to toggle DC motors","test":"BT COMMANDS"},{"day":12,"topic":"Biped Walking Calibrations","parts":"ROBOTICS","desc":"Aligning 4 hip-ankle joint servo frames","test":"BIPED CALIBRATES"},{"day":13,"topic":"Edge AI Capstone Assembly","parts":"ROBOTICS","desc":"Edge camera serial coordinates driving toy steering","test":"AI CAPSTONE"},{"day":14,"topic":"3D Helix DNA Model","parts":"3D PRINTING","desc":"Slicing and printing interlocking structural spirals","test":"DNA MODELS"},{"day":15,"topic":"ESP32 − CAM WiFi video server","parts":"AI","desc":"Setting up wireless video feed local IP","test":"WIFI SERVERS"},{"day":16,"topic":"ESP32 − CAM Color Tracking","parts":"AI","desc":"Detecting color blocks in video stream","test":"COLOR TRACKING"},{"day":17,"topic":"Camera Target Centroid","parts":"AI","desc":"Finding X-Y coordinates of detected colored items","test":"CENTROID MAP"},{"day":18,"topic":"Camera Face Identification","parts":"AI","desc":"Simple webcam profile data matching lock simulator","test":"FACE MATCHES"},{"day":19,"topic":"Web-Based Face Recognition","parts":"AI","desc":"Webcam face lock triggers physical servo gate","test":"FACIAL SECURITY"},{"day":20,"topic":"Simple Object Classifier","parts":"AI","desc":"Training models to trigger buzzer signals","test":"CLASSIFIER BUZZ"},{"day":21,"topic":"AI Classroom Rules","parts":"AI","desc":"Discussion on deepfakes and responsible AI tools","test":"DIGITAL SAFETY"},{"day":22,"topic":"ESP32 − CAM QR code log","parts":"AI","desc":"Printing decoded bar parameters on Serial screen","test":"QR READERS"},{"day":23,"topic":"Camera Time-Lapse Capture","parts":"AI","desc":"Writing timed image snapshots to SD card files","test":"CAPTURE LOGS"},{"day":24,"topic":"WiFi Camera Pan-Tilt servo","parts":"AI","desc":"Phone browser sliders tilting camera brackets","test":"PAN-TILT SERVOS"},{"day":25,"topic":"Smart Interactive Target","parts":"AI","desc":"Pointing laser on webcam target to trigger sounds","test":"LASER TARGETS"},{"day":26,"topic":"Gesture Target Counter","parts":"AI","desc":"Drawing boxes around hand gesture targets in video","test":"VISUAL HAND GESTURES"},{"day":27,"topic":"Target Tracking telemetry","parts":"AI","desc":"Serial printing target coordinates to monitor","test":"TRACKING COORDINATES"},{"day":28,"topic":"Edge AI Alarm Trigger","parts":"AI","desc":"Sounding buzzers when camera registers unexpected movement","test":"PROXIMITY CAMERAS"},{"day":29,"topic":"Camera Sleep optimization","parts":"AI","desc":"Sleep mode pin triggers to save battery current","test":"CAMERA SLEEP"},{"day":30,"topic":"Web AI Inventory Scanner","parts":"AI","desc":"Counting specific items passed in front of webcam","test":"VISUAL INVENTORY"}],"11":[{"day":1,"topic":"Python Waypoint Lists","parts":"PYTHON","desc":"Creating coordinate lists for virtual missions","test":"WAYPOINT LISTS"},{"day":2,"topic":"Python Flight Logger","parts":"PYTHON","desc":"Storing speed and height variables inside data logs","test":"FLIGHT LOGS"},{"day":3,"topic":"Python Flight Graphs","parts":"PYTHON","desc":"Drawing height charts using simple lists plots","test":"FLIGHT GRAPHS"},{"day":4,"topic":"3D Propeller Guards","parts":"3D PRINTING","desc":"Printing impact-resistant TPU propeller covers","test":"PROP GUARDS"},{"day":5,"topic":"3D Print Airframe spares","parts":"3D PRINTING","desc":"Slicing replacement arm landing legs, structural strength","test":"AIRFRAME SPARES"},{"day":6,"topic":"3D Printed GoPro mounts","parts":"3D PRINTING","desc":"Lightweight camera brackets, custom TPU tilts","test":"CAMERA BRACKETS"},{"day":7,"topic":"3D Printed Accessories","parts":"3D PRINTING","desc":"Lightweight wire clip protectors, landing pads","test":"CLIP PROTECTORS"},{"day":8,"topic":"Leg Extension prints","parts":"3D PRINTING","desc":"Extruded replacement legs, weight balance check","test":"LEG EXTENSIONS"},{"day":9,"topic":"3D Printed Drone Frame assembly","parts":"DRONE","desc":"Quadcopter frame components: lightweight 3D printed whoop frame, motor mounting slots, component placement.","test":"DRONE PARTS"},{"day":10,"topic":"Brushed Motor plug-ins","parts":"DRONE","desc":"Connecting brushed coreless motor plugs to flight board sockets","test":"MOTOR DRIVER CONTROLS"},{"day":11,"topic":"Custom Flight Controller assembly","parts":"DRONE","desc":"Assembling the custom flight controller: connecting ESP32 DevKit V1, MPU6050 sensor, and Motor Driver PCB on a breadboard or pre-soldered board.","test":"FLIGHT CONTROLLERS"},{"day":13,"topic":"Drone Safe Flying Rules","parts":"DRONE","desc":"Altitude limits, safe hover areas, local flight regulations","test":"SAFE FLIGHTS"},{"day":14,"topic":"Power Management & Step-up conversion","parts":"DRONE","desc":"Wiring the MT3608 boost converter to step up 3.7V LiPo battery voltage to 5V for powering the ESP32 stably.","test":"VIDEO SCREENS"},{"day":15,"topic":"Safe Tethered Hover check","parts":"DRONE","desc":"Low-altitude tether ropes, throttle balance tests","test":"HOVER BASICS"},{"day":16,"topic":"Propeller Aerodynamics","parts":"DRONE","desc":"Mounting CW and CCW 65mm propellers, identifying motor rotation directions, thrust generation principles.","test":"AERIAL PHOTOS"},{"day":17,"topic":"Drone Air Space Rules","parts":"DRONE","desc":"Classroom safety, local aviation rules, emergency cutoffs","test":"AIR ETHICS"},{"day":18,"topic":"Motor Driver wiring","parts":"DRONE","desc":"Wiring the pre-built Motor Driver PCB to the ESP32 PWM pins and connecting coreless brushed motors.","test":"BOARD PINOUTS"},{"day":19,"topic":"Flight Controller configuration","parts":"DRONE","desc":"Configuring motor directions and rate limits via software","test":"MOTOR CONFIGURATIONS"},{"day":20,"topic":"Software Arming & Safety","parts":"DRONE","desc":"Implementing a software arming switch in the mobile app UI to prevent accidental motor spin-ups.","test":"SAFE ARMING"},{"day":21,"topic":"Drone Failsafe cutoffs","parts":"DRONE","desc":"Automatic motor shutdown checks when signals are lost","test":"SAFE DEFAULTS"},{"day":22,"topic":"Battery Level Sirens","parts":"DRONE","desc":"Connecting low voltage warning sensors to buzzers","test":"LOW BATTERY"},{"day":23,"topic":"Flight Gyroscope basics","parts":"DRONE","desc":"Understanding angular rates and drone tilt sensors","test":"GYRO SENSORS"},{"day":24,"topic":"PID Stabilization - Roll & Pitch","parts":"DRONE","desc":"Coding a Proportional-Integral- Derivative control loop to stabilize roll and pitch angles using MPU6050 data.","test":"VTX CONFIG"},{"day":25,"topic":"PID Stabilization - Yaw & Altitude","parts":"DRONE","desc":"Tuning yaw rate controls and manual altitude throttle mapping for stable hover.","test":"ALTITUDE HOLDS"},{"day":26,"topic":"Wi-Fi Control Setup","parts":"DRONE","desc":"Configuring ESP32 as a WiFi Access Point and parsing UDP control packets received from the mobile app.","test":"GPS SATELLITES"},{"day":27,"topic":"Madgwick AHRS Sensor Fusion","parts":"DRONE","desc":"Implementing the Madgwick filter algorithm to fuse accelerometer and gyroscope readings for precise tilt angle estimation.","test":"DRIFT SENSOR"},{"day":28,"topic":"Sensor Calibration & Trimming","parts":"DRONE","desc":"Accelerometer and gyro calibrations, drift trim settings","test":"COMPASS SWEEPS"},{"day":29,"topic":"Serial Telemetry & PID Tuning","parts":"DRONE","desc":"Streaming real-time flight telemetry variables to a PC serial monitor for PID tuning and diagnostics.","test":"FLIGHT DIAGNOSIS"},{"day":30,"topic":"Drone Capstone Mission","parts":"DRONE","desc":"Fully manual safe arming, hover, flight loops and land","test":"DRONE CAPSTONE"}]};
+    
+    const boxData = {
+      boxA: {
+        name: "Box A: Mechatronics Structural Kit", accent: "var(--yellow)", glow: "var(--glow-yellow)",
+        grid: [
+          {
+            row: "Structural Parts",
+            cells: [
+              { coord: "Cell 1", merge: 3, name: "Perforated Plastic Beams", qty: "40 Units", desc: "Lego-compatible structural beams with holes (various lengths)." },
+              { coord: "Cell 2", merge: 2, name: "Connector Pegs", qty: "80 Units", desc: "Quick-snap connector pins (black friction pegs, grey axle pegs)." }
+            ]
+          },
+          {
+            row: "Mechanical Drive Parts",
+            cells: [
+              { coord: "Cell 1", merge: 1, name: "Spur Gears", qty: "12 Units", desc: "8T, 20T, 40T gears." },
+              { coord: "Cell 2", merge: 1, name: "Specialty Gears", qty: "8 Units", desc: "Bevel & Crown gears." },
+              { coord: "Cell 3", merge: 1, name: "Plastic Pulleys", qty: "6 Units", desc: "For belt linkages." },
+              { coord: "Cell 4", merge: 1, name: "Axles/Shafts", qty: "10 Units", desc: "Steel or hard plastic." },
+              { coord: "Cell 5", merge: 1, name: "Wheels & Locks", qty: "24 Units", desc: "4 High-Grip Wheels + 20 Bushings." }
+            ]
+          }
+        ]
+      },
+      boxB: {
+        name: "Box B: Basic Electronics Kit", accent: "var(--blue)", glow: "var(--glow-blue)",
+        grid: [
+          {
+            row: "Controllers & Boards",
+            cells: [
+              { coord: "Cell 1", merge: 2, name: "Arduino Uno R3", qty: "1 Set", desc: "SMD development board + blue USB cable." },
+              { coord: "Cell 2", merge: 2, name: "NodeMCU ESP8266", qty: "1 Set", desc: "Wi-Fi board + micro-USB cable." },
+              { coord: "Cell 3", merge: 1, name: "Breadboards", qty: "2 Units", desc: "830 tie-point dual bus strip." }
+            ]
+          },
+          {
+            row: "Motors & Actuators",
+            cells: [
+              { coord: "Cell 1", merge: 2, name: "DC BO Motors & Wheels", qty: "6 Units", desc: "2 Yellow gear motors + 4 high-grip wheels." },
+              { coord: "Cell 2", merge: 1, name: "SG90 Servo", qty: "2 Units", desc: "9g miniature analog servo." },
+              { coord: "Cell 3", merge: 2, name: "Passives & Wires", qty: "1 Pack", desc: "100 jumper wires, 40 LEDs, 40 Resistors, Buzzers, Switches." }
+            ]
+          }
+        ]
+      },
+      boxC: {
+        name: "Box C: Advanced IoT & Sensors Kit", accent: "var(--green)", glow: "var(--glow-green)",
+        grid: [
+          {
+            row: "Environmental & Input Sensors",
+            cells: [
+              { coord: "Cell 1", merge: 1, name: "HC-SR04", qty: "1 Unit", desc: "Ultrasonic distance sensor." },
+              { coord: "Cell 2", merge: 1, name: "HC-05 Bluetooth", qty: "1 Unit", desc: "Serial RF transceiver." },
+              { coord: "Cell 3", merge: 1, name: "Soil & Rain", qty: "2 Sets", desc: "Soil moisture and Rain sensor modules." },
+              { coord: "Cell 4", merge: 1, name: "DHT11 & LDR", qty: "2 Units", desc: "Temp/Humidity and Light sensors." },
+              { coord: "Cell 5", merge: 1, name: "Membrane Keypad", qty: "1 Unit", desc: "16-key matrix flat keypad." }
+            ]
+          },
+          {
+            row: "Displays & Modules",
+            cells: [
+              { coord: "Cell 1", merge: 2, name: "LCD1602 (I2C)", qty: "1 Unit", desc: "16x2 character blue backlight LCD." },
+              { coord: "Cell 2", merge: 1, name: "MPU6050", qty: "1 Unit", desc: "3-axis gyro + accel module." },
+              { coord: "Cell 3", merge: 1, name: "Neo-6M GPS", qty: "1 Set", desc: "Satellite receiver board." },
+              { coord: "Cell 4", merge: 1, name: "IR Set & Relay", qty: "2 Units", desc: "IR Receiver/Remote + 1CH 5V Relay." }
+            ]
+          }
+        ]
+      },
+      boxD: {
+        name: "Box D: Drone Assembly Kit", accent: "var(--red)", glow: "var(--glow-red)",
+        grid: [
+          {
+            row: "Flight Core",
+            cells: [
+              { coord: "Cell 1", merge: 2, name: "ESP32 DevKit V1", qty: "1 Unit", desc: "Acts as flight controller." },
+              { coord: "Cell 2", merge: 2, name: "Motor Driver PCB", qty: "1 Board", desc: "Pre-built custom PCB." },
+              { coord: "Cell 3", merge: 1, name: "MPU6050 & Boost", qty: "2 Units", desc: "Gyro module + MT3608 boost converter." }
+            ]
+          },
+          {
+            row: "Drone Hardware",
+            cells: [
+              { coord: "Cell 1", merge: 2, name: "8520 Coreless Motors", qty: "6 Units", desc: "4 active + 2 spare high-speed motors." },
+              { coord: "Cell 2", merge: 1, name: "65mm Propellers", qty: "3 Sets", desc: "CW and CCW pairs." },
+              { coord: "Cell 3", merge: 2, name: "Frame & Battery", qty: "3 Units", desc: "3D Printed Frame + 2x 1S LiPo Batteries." }
+            ]
+          }
+        ]
+      },
+      binE: {
+        name: "Bin E: Teacher Vault (High Value)", accent: "var(--grey)", glow: "var(--glow-grey)",
+        grid: [
+          {
+            row: "Secure Assets",
+            cells: [
+              { coord: "Vault", merge: 2, name: "ESP32-CAM", qty: "Vault", desc: "High value camera modules." },
+              { coord: "Vault", merge: 3, name: "3S LiPo & Smart Chargers", qty: "Vault", desc: "Drone high-discharge batteries." }
+            ]
+          },
+          {
+            row: "Tools",
+            cells: [
+              { coord: "Vault", merge: 5, name: "Multimeters, Soldering Kits, 3D Pens", qty: "Vault", desc: "Issued by teacher only during specific practicals." }
+            ]
+          }
+        ]
+      },
+      boxF: {
+        name: "Box F: Lab Safety & Consumables Kit", accent: "var(--purple)", glow: "var(--glow-purple)",
+        grid: [
+          {
+            row: "Safety & First Aid",
+            cells: [
+              { coord: "F1", merge: 2, name: "First Aid Kit", qty: "1 Set", desc: "Basic medical supplies, band-aids, burn cream." },
+              { coord: "F2", merge: 3, name: "Safety Glasses", qty: "10 Pairs", desc: "Clear polycarbonate safety goggles for drilling/soldering." }
+            ]
+          },
+          {
+            row: "Hand Tools",
+            cells: [
+              { coord: "F3", merge: 2, name: "Wire Strippers", qty: "5 Units", desc: "Automatic wire strippers/cutters." },
+              { coord: "F4", merge: 2, name: "Hot Glue Guns", qty: "5 Units", desc: "40W glue guns + 50 glue sticks." },
+              { coord: "F5", merge: 1, name: "Soldering Irons", qty: "2 Units", desc: "60W Temperature controlled iron." }
+            ]
+          },
+          {
+            row: "Consumables",
+            cells: [
+              { coord: "F6", merge: 2, name: "Insulation Tape", qty: "10 Rolls", desc: "Electrical tape rolls (Red/Black/Yellow)." },
+              { coord: "F7", merge: 3, name: "Misc Hardware", qty: "Bulk", desc: "Zip ties, double-sided tape, spare batteries." }
+            ]
+          }
+        ]
+      }
+    };
+
+    function showBoxModal(boxId) {
+      const b = boxData[boxId];
+      if(!b) return;
+      document.getElementById('modalTitle').innerText = b.name;
+      document.getElementById('modalTitle').style.color = b.accent;
+      document.getElementById('modalContentBlock').style.borderColor = b.accent;
+      document.getElementById('modalContentBlock').style.boxShadow = '0 0 30px ' + b.glow;
+      
+      let html = '';
+      b.grid.forEach(row => {
+        html += '<h4 style="color:'+b.accent+'; font-size:0.8rem; text-transform:uppercase; margin-top:1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.2rem;">' + row.row + '</h4>';
+        row.cells.forEach(cell => {
+          html += '<div class="modal-item-row">';
+          html += '  <span class="modal-item-name">' + cell.name + '</span>';
+          html += '  <span class="modal-item-desc">' + cell.desc + '</span>';
+          html += '  <span class="modal-item-qty">' + cell.qty + '</span>';
+          html += '</div>';
+        });
+      });
+      document.getElementById('modalItemsList').innerHTML = html;
+      document.getElementById('boxModal').style.display = 'flex';
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (btn) btn.classList.add('active');
+      if (tabId === 'tab-boxes') loadBoxGrid('boxA');
+      if (tabId === 'tab-curriculum') filterClass(2);
+    }
+
+    function loadBoxGrid(boxType) {
+      document.querySelectorAll('.box-selector-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick').includes(boxType)) btn.classList.add('active');
+      });
+      const config = boxData[boxType];
+      const gridFrame = document.getElementById('box-grid-frame');
+      gridFrame.style.setProperty('--box-accent', config.accent);
+      gridFrame.style.setProperty('--box-glow', config.glow);
+      document.getElementById('box-grid-title').innerText = config.name + " Map";
+      
+      const target = document.getElementById('grid-rows-target');
+      target.innerHTML = '';
+      
+      config.grid.forEach((row, rowIdx) => {
+        const rowHeader = document.createElement('div');
+        rowHeader.className = 'grid-row-header';
+        rowHeader.innerText = row.row;
+        target.appendChild(rowHeader);
+        
+        const cellsRow = document.createElement('div');
+        cellsRow.className = 'grid-cells-row';
+        
+        row.cells.forEach((cell, cellIdx) => {
+          const cellDiv = document.createElement('div');
+          cellDiv.className = `grid-cell w-${cell.merge}`;
+          cellDiv.setAttribute('onclick', `showCompartmentDetails('${boxType}', ${rowIdx}, ${cellIdx})`);
+          cellDiv.innerHTML = `<div class="coord">${cell.coord}</div><div class="item-name">${cell.name}</div><div class="item-qty">${cell.qty}</div>`;
+          cellsRow.appendChild(cellDiv);
+        });
+        target.appendChild(cellsRow);
+      });
+      document.getElementById('compartment-details-box').innerHTML = `
+        <div class="details-placeholder"><i class="fas fa-info-circle" style="color:${config.accent}"></i>
+        <p>Click any compartment slot in the grid above to view details, component inventory, dimension specs, and fitment checks.</p></div>
+      `;
+    }
+
+    function showCompartmentDetails(boxType, rowIdx, cellIdx) {
+      document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      const config = boxData[boxType];
+      const cell = config.grid[rowIdx].cells[cellIdx];
+      const detailsBox = document.getElementById('compartment-details-box');
+      detailsBox.style.borderLeft = `4px solid ${config.accent}`;
+      detailsBox.innerHTML = `
+        <h3 style="font-family:'Outfit',sans-serif; font-size:1.25rem; color:#fff; display:flex; align-items:center; gap:0.5rem">
+          <i class="fas fa-box" style="color:${config.accent}"></i> ${cell.name}
+        </h3>
+        <div class="details-grid">
+          <div class="details-item accent" style="--box-accent: ${config.accent}"><h5>Coordinate Slot</h5><p>${cell.coord}</p></div>
+          <div class="details-item accent" style="--box-accent: ${config.accent}"><h5>Stock Quantity</h5><p>${cell.qty}</p></div>
+        </div>
+        <div style="margin-top: 1.2rem; border-top: 1px solid var(--card-border); padding-top: 0.8rem;">
+          <h5 style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem;">Sourcing Specification</h5>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">${cell.desc}</p>
+        </div>
+      `;
+    }
+
+    let selectedClassNum = 2;
+    function filterClass(classNum) {
+      selectedClassNum = classNum;
+      document.querySelectorAll('.class-tab-chip').forEach(chip => {
+        chip.classList.remove('active');
+        if (chip.innerText.trim() === `Class ${classNum}`) chip.classList.add('active');
+      });
+      renderCurriculumGrid();
+    }
+
+    function renderCurriculumGrid() {
+      const days = curriculumData[selectedClassNum] || [];
+      const searchQuery = document.getElementById('curriculum-search').value.toLowerCase();
+      const target = document.getElementById('curriculum-days-target');
+      target.innerHTML = '';
+
+      const filtered = days.filter(d => {
+        return (d.topic && d.topic.toLowerCase().includes(searchQuery)) || 
+               (d.parts && d.parts.toLowerCase().includes(searchQuery)) ||
+               (d.desc && d.desc.toLowerCase().includes(searchQuery));
+      });
+
+      if (filtered.length === 0) {
+        target.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 3rem; color: var(--text-dim);"><i class="fas fa-search-minus" style="font-size: 2rem; margin-bottom: 0.5rem;"></i><p>No worksheets match your query.</p></div>`;
+        return;
+      }
+
+      filtered.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.innerHTML = `
+          <div>
+            <div class="day-card-header"><span class="day-num">Topic ${d.day}</span><span class="day-chip">${d.parts}</span></div>
+            <div class="day-title">${d.topic}</div>
+            <div class="day-desc">${d.desc}</div>
+          </div>
+          <div class="day-footer">
+            <span>🎯 <b>Goal:</b> ${d.test}</span>
+          </div>
+        `;
+        target.appendChild(card);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      switchTab('tab-schedule');
+    });
+  </script>
+</body>
+</html>
