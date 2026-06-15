@@ -45,18 +45,25 @@ To achieve maximum Value for Money (VFM) and easy storage, the lab is set up wit
 
 * **Box A: Mechatronics Structural Kit (YELLOW)**
   * Eligible Grades: Class 2, 3
-  * Primary Hardware: Lego-compatible perforated beams, pegs, axles, wheels, gears, pulleys.
-* **Box B: Basic Coding & Electronics Kit (BLUE)**
+  * Primary Hardware: Lego-compatible perforated beams, snap connector pegs, spur gears, axles, rubber wheels, pulleys & belts, manual cranks, and cams (No controllers).
+* **Box B: Foundation Electronics & Pico Kit (BLUE)**
   * Eligible Grades: Class 4, 5
-  * Primary Hardware: Arduino Uno, NodeMCU, Breadboards, SG90 Servo, BO Motors, DC Motors, LEDs, passives.
-* **Box C: Advanced IoT & Sensors Kit (GREEN)**
-  * Eligible Grades: Class 5, 6, 7, 8, 9, 10
-  * Primary Hardware: LCD1602, HC-SR04, Bluetooth, Soil/Rain sensor, DHT11, Keypad, MPU6050, GPS.
-* **Box D: Drone Assemblies Kit (RED)**
-  * Eligible Grades: Class 10, 11
-  * Primary Hardware: ESP32 DevKit V1, MPU6050, Motor Driver PCB, Boost Converter, Coreless Motors, Frame.
-* **Bin E: Teacher's Vault (GREY)**
-  * High-value items checkout only.
+  * Primary Hardware: Raspberry Pi Pico (MicroPython), solderless breadboard, analog LDR and LM35 temperature sensors, TSOP1838 IR Receiver & Remote, LEDs, active buzzer, small DC hobby motor + fan propeller, vibration pager motor, SG90 micro servo.
+* **Box C: Standalone Universal IoT & Sensors Kit (GREEN)**
+  * Eligible Grades: Class 6, 7, 8, 9, 10
+  * Primary Hardware: Solderless breadboard, acrylic robotics chassis, BO gear motors + wheels, L298N motor driver, SG90 micro servo, LCD1602 (I2C) display. Dedicated class-wise controllers & sensors:
+    * Arduino Uno R3 (Class 6 & 7): HC-SR04 Sonar, HC-05 Bluetooth, LDR digital sensor.
+    * NodeMCU ESP8266 (Class 8 & 9): WiFi, DHT11 weather sensor, Soil moisture sensor, Rain sensor, 1-Channel Relay, 4x4 keypad, 5V mini submersible water pump.
+    * ESP32 DevKit V1 & ESP32-CAM DevKit (Class 10 Edge AI/IoT): RC522 RFID security module, MQ-135 Air Quality, Pulse rate biosensor, Neo-6M GPS, MAX983571 Audio Amp & Speaker.
+* **Box D: Drone Assembly & Avionics Kit (RED)**
+  * Eligible Grades: Class 11
+  * Primary Hardware: ESP32 Flight Controller (using ESP32 DevKit V1), MPU6050 Gyro/Accel, custom MOSFET Motor Driver PCB, MT3608 boost converter, 8520 coreless brushed motors, 65mm propellers, 3D printed drone frame + prop guards, JST LiPo flight batteries, JST multi-port USB charger, 2.4GHz radio transceiver controller.
+* **Bin E: Teacher's Shared Vault (GREY)**
+  * Eligible Grades: All grades (facilitated by teacher)
+  * Primary Hardware: Bambu Lab P1S 3D Printer, PLA filaments, 25W soldering iron kits, digital multimeters, wire strippers, hot glue guns with sticks, precision screwdrivers, extension boards, and 18650 smart battery chargers.
+* **Box F: Lab Safety & Consumables (PURPLE)**
+  * Eligible Grades: All grades (available for safety & maintenance)
+  * Primary Hardware: Safety goggles, first aid kit, ABC chemical powder fire extinguisher, heat shrink sleeves, and insulation PVC tapes.
 
 ---
 
@@ -84,18 +91,18 @@ Workbenches rotate through three student roles each week:
 
 Teachers should only distribute the specific box needed for the class topic.
 
-| Class | Syllabus Module | Required Workbench Box | Teacher Vault Checkout Items |
+| Class | Syllabus Module | Required Workbench Box | Standalone Dedicated Controllers & Sensors |
 |---|---|---|---|
-| Class 2 | Junior Mechatronics | Box A (Yellow) | None |
-| Class 3 | Block Coding & 3D | Box A (Yellow) | 3D Pen + PLA Filaments |
-| Class 4 | Scratch 2 & Circuits | Box B (Blue) | Multimeter DT830D |
-| Class 5 | AI Principles | Box B (Blue) | ESP32 board + webcam |
-| Class 6 | Embedded C++ & Web | Box B + Box C | Arduino Uno (Box B) + sensors |
-| Class 7 | Smart IoT & Sensors | Box C (Green) | ESP8266 NodeMCU |
-| Class 8 | Precision Robotics | Box B + Box C | ESP32 (Vault) + Drivers + Sensors |
-| Class 9 | Python & 3D Slicing | Box B + Box C | Bambu Lab P1S 3D Printer |
-| Class 10 | Edge AI & Vision | Box C (Green) | ESP32-CAM + Programmer |
-| Class 11 | Avionics & Drones | Box D (Red) | 3S LiPo + Radio Controller |
+| Class 2 | Junior Mechatronics | Box A (Yellow) | No Controller. Basic linkages, cams, and structural beams. |
+| Class 3 | Block Coding & 3D Drafting | Box A (Yellow) | No Controller. 3D Pen & PLA filaments for mechanical designs. |
+| Class 4 | Scratch Coding & Circuits | Box B (Blue) | Raspberry Pi Pico (MicroPython). Analog LDR & LM35 sensors. |
+| Class 5 | Active Circuits & Remote | Box B (Blue) | Raspberry Pi Pico. TSOP1838 IR Receiver & Remote (Remote Control logic). |
+| Class 6 | Embedded C++ & Beginner IoT | Box C (Green) | Arduino Uno R3. HC-SR04 Ultrasonic Sonar & HC-05 Bluetooth module. |
+| Class 7 | Smart Robotics & Display | Box C (Green) | Arduino Uno R3. LCD1602 I2C Display, BO motors, chassis & L298N driver. |
+| Class 8 | WiFi IoT & Weather station | Box C (Green) | NodeMCU ESP8266 (WiFi). DHT11, Soil Moisture probe, and Rain sensor. |
+| Class 9 | Python & Home Automation | Box C (Green) | NodeMCU ESP8266. 4x4 Membrane Keypad, 1CH Relay, and Submersible Pump. |
+| Class 10 | Edge AI, RFID & Biosensing | Box C (Green) | ESP32 DevKit V1 & ESP32-CAM. RFID RC522, MQ-135, Pulse sensor, and Speakers. |
+| Class 11 | Avionics & Drone Flight | Box D (Red) | ESP32 Flight Controller (DevKit V1), MPU6050 Gyro, and coreless motors. |
 
 ---
 
