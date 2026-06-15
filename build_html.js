@@ -242,6 +242,45 @@ const htmlContent = `<!DOCTYPE html>
     .mini-task-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
     .mini-task-desc { font-size: 0.72rem; color: var(--text-secondary); line-height: 1.35; margin-bottom: 0.4rem; }
     .mini-task-goal { font-size: 0.65rem; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.02); padding-top: 0.3rem; display: block; }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 1024px) {
+      .visualizer-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+      .budget-summary { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0.8rem; }
+      header { padding: 1.5rem 1.2rem; margin-bottom: 1.5rem; }
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 0.88rem; }
+      
+      .tab-btn { padding: 0.6rem 1rem; font-size: 0.85rem; border-radius: 10px; }
+      .level-columns { grid-template-columns: 1fr; gap: 1.2rem; }
+      .universal-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .team-grid { grid-template-columns: 1fr; gap: 1rem; }
+      
+      .box-row-container { width: 100%; overflow-x: auto; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+      .grid-cells-row { min-width: 650px; } /* Prevent kit box from squeezing too much on mobile */
+      
+      .matrix-table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .modal-content { padding: 1.2rem; width: 95%; max-height: 90vh; }
+      
+      .curriculum-filters { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+      .search-wrap { min-width: 100%; }
+      .class-tabs-row { width: 100%; }
+      
+      .budget-summary { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+      .budget-metric { padding: 1rem; }
+      .budget-metric .val { font-size: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      .tab-btn { width: 100%; text-align: left; justify-content: flex-start; }
+      .universal-grid { grid-template-columns: 1fr; }
+      .budget-summary { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
